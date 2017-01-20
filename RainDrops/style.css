@@ -1,0 +1,151 @@
+#rectangle{
+    width:200px;
+    height:100px;
+    background:blue;
+}
+
+#rectangle2{
+    width:200px;
+    height:100px;
+    background:yellow;
+}
+
+#main1Style  img{
+    position:relative;
+	left:50px;
+	top:50px;
+  	width: 900px;
+	height: 500px;
+}
+
+#main2Style  img{
+    position:relative;
+	left:1000px;
+	top:100px;
+  	width: 900px;
+	height: 500px;
+}
+
+#mainImg1  img{
+	width: 900px;
+	height: 500px;
+	position:relative;
+}
+
+#mainImg2  img{
+	width: 900px;
+	height: 500px;
+	position:relative;
+}
+
+#secondImg1  img{
+	width: 900px;
+	height: 500px;
+	position:relative;
+}
+
+#secondImg2  img{
+	width: 900px;
+	height: 500px;
+	position:relative;
+}
+
+/* containers  ---------------------*/
+#main-container {
+	width: 1920px;
+	height: 1080px;
+	position:absolute;
+	background-color:#9400D3;
+}
+/* 1 ---------------------*/
+#Left-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:1920;
+	position:absolute;
+	background:orange;
+}
+/* 2 ---------------------*/
+#Centre-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background:purple;
+}
+
+#Right-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background:blue;
+}
+
+#vid-container {
+	width: 1280px;
+	height: 720px;
+	position:absolute;
+	bottom: 100px;
+}
+
+/* Positioning  */ 
+
+.topLeft {
+    position: absolute;
+	top: 20px;
+	left: 20px;
+  	width: 900px;
+	height: 500px;
+}
+
+.topRight {
+    position: absolute;
+	top: 20px;
+	left: 1200px;
+  	width: 900px;
+	height: 500px;
+}
+
+.bottomRight {
+    position:absolute;
+	left:1200px;
+	top:700px;
+  	width: 600px;
+	height: 300px;
+}
+
+.bottomLeft {
+    position:absolute;
+	left:20px;
+	top:700px;
+  	width: 600px;
+	height: 300px;
+}
+
+
+.Middle {
+    position:absolute;
+	left:600px;
+	top:290px;
+  	width: 640px;
+	height: 360px;
+}
+
+.overlay{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.photo{
+    height:50px;
+    width:250px;
+	background-color: #4CAF50;
+    color: white;
+	font-size: 20px;
+    margin: 4px 2px;
+}

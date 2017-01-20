@@ -1,0 +1,267 @@
+<!-- // main for a scrolling html page which will have a few images on it  -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic scroll page </title>
+	<link rel="stylesheet" href="style.css">
+	<script src='jquery-3.1.1.min.js'></script>
+	<!-- use this transit library! better for bright sign performace  -->
+	<script src='jquery.transit.js'></script>
+	<script src='functions.js'></script>
+</head>
+
+<body>
+	
+	<div id="main-container">
+	
+		<div id="Centre-container">
+		<!-- drop -->
+		<!-- middle left -->
+			<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="">
+		<!-- middle -->
+			<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
+		<!-- top right -->
+			<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" >
+		
+		<!-- fade1 -->
+		<!-- middle left -->
+			<img id="centreImg3" class="Middle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="">
+		<!-- middle -->
+			<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="">
+		<!-- top right -->
+			<img id="centreImg1" class="Middle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
+			
+		<!-- fade2 -->
+		<!-- middle left -->
+			<!-- <img id="centreImg7" src="http://192.168.2.239/RoyalityFree/07.jpg" alt="" -->
+			<!-- style="position:absolute; top:500px; left:20px; width:600px; height:300px;" > -->
+		<!-- middle -->
+			<!-- <img id="centreImg8"  src="http://192.168.2.239/RoyalityFree/08.jpg" alt=""  -->
+			<!-- style="position:absolute; top:450px; left:500px; width:600px; height:300px;" > -->
+		<!-- top right -->
+			<!-- <img id="centreImg9" src="http://192.168.2.239/RoyalityFree/09.jpg" alt=""  -->
+			<!-- style="position:absolute; top:300px; left:1000px; width:600px; height:300px;" > -->
+		<!-- overlay -->	
+			<img id="overlay2" class="overlay" src="mask.png" >
+			
+		</div>
+		
+	</div>
+	
+
+	<script id= 'code'>
+	{
+		//the start up function 
+		$(function (){
+			console.log("initializing");
+
+			// preloading the images 
+			for(i = 0; i < imgArray.length; i++){
+				var url = imgArray[i],
+					img = new Image(960, 540);
+		 
+				img.src = url;
+			};  
+			setTimeout(FadeTransition, 1000);
+		});
+		
+		var imgPath  = "http://192.168.2.239/RoyalityFree/";
+		var totalDuration = 2000; //total time between slides 
+		var inDuration = 1000; //the duration for the transition 
+		var outDuration = 1000; //the duration for the wait between transition 
+		var TransitionState=0;
+		var xLeftPos = -500;
+		var xRightPos = 500;
+		var yTargetPos = 100;
+		var yTargetPos2 = 200;
+		
+		
+		var currentImg=0;
+		var maxImages=15;
+		var imgArray = 
+			[	imgPath+"01.jpg",
+				imgPath+"02.jpg",
+				imgPath+"03.jpg",
+				imgPath+"04.jpg",
+				imgPath+"05.jpg",
+				imgPath+"06.jpg",
+				imgPath+"07.jpg",
+				imgPath+"08.jpg",
+				imgPath+"09.jpg",
+				imgPath+"10.jpg",
+				imgPath+"11.jpg",
+				imgPath+"12.jpg",
+				imgPath+"13.jpg",
+				imgPath+"14.jpg",
+				imgPath+"15.jpg"
+			];
+		var xOffset = [-50,50];
+		var Angle1 = [-15,15];
+		var Angle2 = [-15,15];
+		var Angle3 = [-15,15];
+		
+		function FadeTransition()
+		{
+			DropIn();
+			FadeOut1();
+			NextImage();
+			
+			<!----- change to for loop --->
+			if (TransitionState == 2)
+				TransitionState = 0;	
+			else 
+				TransitionState = Math.min(TransitionState+1, 2);
+			
+			setTimeout(FadeTransition,totalDuration);
+		}
+		
+		
+		function DropIn()
+		{
+			if (TransitionState == 0)
+			{
+				ChangeImg('#centreImg2',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
+				ChangeImg('#centreImg3',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
+				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
+				
+				SetPosition('#centreImg3',xRightPos,0,-35,0);
+				SetPosition('#centreImg2',0,yTargetPos,-10,0);	
+				rainDropTransition('#centreImg1',xLeftPos,yTargetPos2,15,inDuration,0);
+			}
+			else if (TransitionState == 1)
+			{
+				ChangeImg('#centreImg3',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
+				ChangeImg('#centreImg2',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
+				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
+				
+				SetPosition('#centreImg3',xRightPos,0,-35,0);
+				SetPosition('#centreImg2',xLeftPos,yTargetPos2,15,0);	
+				rainDropTransition('#centreImg1',0,yTargetPos,-10,inDuration,0);
+			}
+			else if (TransitionState == 2)
+			{
+				ChangeImg('#centreImg3',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
+				ChangeImg('#centreImg2',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
+				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
+				
+				SetPosition('#centreImg3',xLeftPos,yTargetPos2,15,0);
+				SetPosition('#centreImg2',0,yTargetPos,-10,0);	
+				rainDropTransition('#centreImg1',xRightPos,0,-35,inDuration,0);
+			}
+			
+		}		
+		
+		function FadeOut1()
+		{
+			var tempImage=returnPreviousInt();
+			<!-- FadeTransition1('#centreImg3',xOffset[otherTransition+1],-35,5000,4000); -->
+			
+			if (TransitionState == 0)
+			{
+				ChangeImg('#centreImg6',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
+				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,outDuration,inDuration);
+			}
+			else if (TransitionState == 1)
+			{
+				ChangeImg('#centreImg5',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
+				outTransition('#centreImg5',0,yTargetPos,-10,outDuration,inDuration);
+			}
+			else if (TransitionState == 2)
+			{
+				ChangeImg('#centreImg4',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
+				outTransition('#centreImg4',xRightPos,0,-35,outDuration,inDuration);
+			}
+		}
+		
+		function FadeOut2()
+		{
+			rainDropTransition('#centreImg1',20,20,1000,10);
+			rainDropTransition('#centreImg2',500,-15,1000,1000);
+			rainDropTransition('#centreImg3',1000,-40,1000,2000);
+		}
+		
+		function PreviousButton()
+		{
+			var previousImg_i = currentImg;
+			if (currentImg == 0)
+				currentImg = maxImages-1;
+			else
+				currentImg = Math.max(currentImg-1, 0);
+		
+			ChangeContainer('#main-container',imgArray[previousImg_i]);
+			ChangeContainer('#Right-container',imgArray[currentImg]);
+			
+		}
+
+		
+		//the next image in the list 
+		function NextImage()
+		{
+			var previousImg_i = currentImg;
+			if (currentImg+1== maxImages)
+				currentImg = 0;	
+			else 
+				currentImg = Math.min(currentImg+1, maxImages);
+
+			if (currentImg==0)
+			{
+				// preloading the images 
+				for(i = 0; i < imgArray.length; i++){
+					var url = imgArray[i],
+						img = new Image(960, 540);
+			 
+					img.src = url;
+				};  
+			}
+		}
+		
+		//the function to call each transition 
+		function slideTransition()
+		{
+			if (CurrentTransition==1)
+			{
+				<!-- console.log(currentImg+" and transition 1"); -->
+				ChangeImg('#centreImg1',imgArray[currentImg]);
+				ChangeImg('#centreImg2',imgArray[currentImg+1]);
+				ChangeImg('#centreImg3',imgArray[currentImg+2]);
+				slideTransitionFromLeft('#Left-container','#Centre-container',transitDuration,waitDuration);
+				$('#Right-container').attr('disabled', true);
+			}
+			else if  (CurrentTransition==2)
+			{
+				<!-- console.log(currentImg+" and transition 2"); -->
+				ChangeImg('#rightImg1',imgArray[currentImg]);
+				ChangeImg('#rightImg2',imgArray[currentImg+1]);
+				ChangeImg('#rightImg3',imgArray[currentImg+2]);
+				slideTransitionFromLeft('#Centre-container','#Right-container',transitDuration,waitDuration);
+				$('#Left-container').attr('disabled', true);
+			}
+			else if  (CurrentTransition==3)
+			{
+				<!-- console.log(currentImg+" and transition 3"); -->
+				ChangeImg('#leftImg1',imgArray[currentImg]);
+				ChangeImg('#leftImg2',imgArray[currentImg+1]);
+				ChangeImg('#leftImg3',imgArray[currentImg+2]);
+				slideTransitionFromLeft('#Right-container','#Left-container',transitDuration,waitDuration);
+				$('#Centre-container').attr('disabled', true);
+			}
+			
+			setTimeout(NextButton, totalDuration);
+			
+			CurrentTransition++;
+			if (CurrentTransition>3)
+			{
+				console.log(" Done and reseting ");
+				CurrentTransition=1;
+				if (currentImg ==0)
+				{
+
+				}
+			}
+		}
+		
+	}
+	</script>
+</body>
+
+</html>

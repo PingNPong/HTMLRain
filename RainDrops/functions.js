@@ -81,7 +81,7 @@ function FadeTransition1(ImageName,xOffset,Rotation,time,delayTime)
 
 function SetPosition(ImageName,xOffset,yTarget,Rotation,delayTime)
 {
-	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',delay: delayTime},5,"ease");
+	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',delay: delayTime},80,"ease");
 }
 
 function returnPreviousInt(index,currentImg,maxImages)

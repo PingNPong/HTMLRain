@@ -66,15 +66,15 @@
 		});
 		
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 2000; //total time between slides 
-		var inDuration = 1000; //the duration for the transition 
-		var outDuration = 1000; //the duration for the wait between transition 
+		var totalDuration = 10000; //total time between slides 
+		var inDuration = 5000; //the duration for the transition 
+		var outDuration = 5000; //the duration for the wait between transition 
 		var TransitionState=0;
 		var xLeftPos = -500;
 		var xRightPos = 500;
 		var yTargetPos = 100;
 		var yTargetPos2 = 200;
-		
+		var isSwitchTime = false;
 		
 		var currentImg=0;
 		var maxImages=15;
@@ -120,6 +120,7 @@
 		{
 			if (TransitionState == 0)
 			{
+				<!----- change to for loop --->
 				ChangeImg('#centreImg2',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
 				ChangeImg('#centreImg3',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
 				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
@@ -153,6 +154,13 @@
 		
 		function FadeOut1()
 		{
+			var addition=0; 
+			if (isSwitchTime)
+			{
+				addition=50
+				isSwitchTime=false;
+			}
+			isSwitchTime = !isSwitchTime;
 			var tempImage=returnPreviousInt();
 			<!-- FadeTransition1('#centreImg3',xOffset[otherTransition+1],-35,5000,4000); -->
 			

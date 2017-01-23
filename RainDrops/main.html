@@ -27,22 +27,12 @@
 		
 		<!-- fade1 -->
 		<!-- middle left -->
-			<img id="centreImg3" class="Middle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" >
+			<img id="centreImg3" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" >
 		<!-- middle -->
 			<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" >
 		<!-- top right -->
-			<img id="centreImg1" class="Middle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
+			<img id="centreImg1" class="RightMiddle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
 			
-		<!-- fade2 -->
-		<!-- middle left -->
-			<!-- <img id="centreImg7" src="http://192.168.2.239/RoyalityFree/07.jpg" alt="" -->
-			<!-- style="position:absolute; top:500px; left:20px; width:600px; height:300px;" > -->
-		<!-- middle -->
-			<!-- <img id="centreImg8"  src="http://192.168.2.239/RoyalityFree/08.jpg" alt=""  -->
-			<!-- style="position:absolute; top:450px; left:500px; width:600px; height:300px;" > -->
-		<!-- top right -->
-			<!-- <img id="centreImg9" src="http://192.168.2.239/RoyalityFree/09.jpg" alt=""  -->
-			<!-- style="position:absolute; top:300px; left:1000px; width:600px; height:300px;" > -->
 		<!-- overlay -->	
 			<img id="overlay2" class="overlay" src="mask.png" >
 			
@@ -72,7 +62,7 @@
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 2000; //the duration for the wait between transition 
 		var TransitionState=0;
-		var xLeftPos = -500;
+		var xLeftPos = -500;// 500
 		var xRightPos = 500;
 		var yTargetPos = 100;
 		var yTargetPos2 = 200;
@@ -123,18 +113,27 @@
 		{
 			if (TransitionState == 0)
 			{
+				$('#centreImg3').css('z-index', 4); // trying to set 
+				$('#centreImg2').css('z-index', 3); // trying to set 
+				$('#centreImg1').css('z-index', 2); // trying to set 
 				ChangeImg('#centreImg3',imgArray[currentImg]);
-				rainDropTransition('#centreImg3',xLeftPos,yTargetPos2,15,3000,0);
+				rainDropTransition('#centreImg3',0,yTargetPos2,15,3000,0);
 			}
 			else if (TransitionState == 1)
 			{
+				$('#centreImg3').css('z-index', 3); // trying to set 
+				$('#centreImg2').css('z-index', 4); // trying to set 
+				$('#centreImg1').css('z-index', 2); // trying to set 
 				ChangeImg('#centreImg2',imgArray[currentImg]);
 				rainDropTransition('#centreImg2',0,yTargetPos,-10,3000,0);
 			}
 			else if (TransitionState == 2)
 			{
+				$('#centreImg3').css('z-index', 2); // trying to set 
+				$('#centreImg2').css('z-index', 3); // trying to set 
+				$('#centreImg1').css('z-index', 4); // trying to set 
 				ChangeImg('#centreImg1',imgArray[currentImg]);
-				rainDropTransition('#centreImg1',xRightPos,0,-35,3000,0);
+				rainDropTransition('#centreImg1',0,0,-35,3000,0);
 			}
 			
 		}		

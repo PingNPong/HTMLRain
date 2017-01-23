@@ -4,10 +4,8 @@
     background:blue;
 }
 
-#rectangle2{
-    width:200px;
-    height:100px;
-    background:yellow;
+#overlay2{
+    z-index:5;
 }
 
 #main1Style  img{
@@ -26,29 +24,18 @@
 	height: 500px;
 }
 
-#mainImg1  img{
-	width: 900px;
-	height: 500px;
-	position:relative;
+#centreImg1  img{
+	z-index:4;
 }
 
-#mainImg2  img{
-	width: 900px;
-	height: 500px;
-	position:relative;
+#centreImg2  img{
+	z-index:3;
 }
 
-#secondImg1  img{
-	width: 900px;
-	height: 500px;
-	position:relative;
+#centreImg3  img{
+	z-index:2;
 }
 
-#secondImg2  img{
-	width: 900px;
-	height: 500px;
-	position:relative;
-}
 
 /* containers  ---------------------*/
 #main-container {
@@ -74,6 +61,7 @@
 	right:0;
 	position:absolute;
 	background:purple;
+	z-index:1;
 }
 
 #Right-container {
@@ -133,6 +121,7 @@
 	top:280px;
   	width: 640px;
 	height: 360px;
+	z-index:3;
 }
 
 .Middle {
@@ -141,7 +130,7 @@
 	top:290px;
   	width: 640px;
 	height: 360px;
-
+	z-index:2;
 }
 
 .RightMiddle {
@@ -150,12 +139,14 @@
 	top:300px;
   	width: 640px;
 	height: 360px;
+	z-index:1;
 }
 
 .overlay{
   position: absolute;
   bottom: 0;
   right: 0;
+  z-index:4;
 }
 
 .photo{

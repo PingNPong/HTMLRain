@@ -58,7 +58,7 @@
 		});
 		
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 5000; //total time between slides 
+		var totalDuration = 1000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 2000; //the duration for the wait between transition 
 		var TransitionState=0;
@@ -117,7 +117,7 @@
 				$('#centreImg2').css('z-index', 2); // trying to set z-index 
 				$('#centreImg1').css('z-index', 3); // trying to set  z-index
 				ChangeImg('#centreImg3',imgArray[currentImg]);
-				rainDropTransition('#centreImg3',0,yTargetPos2,15,totalDuration,0);
+				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,0);
 			}
 			else if (TransitionState == 1)
 			{
@@ -125,7 +125,7 @@
 				$('#centreImg2').css('z-index', 4); // trying to set  z-index
 				$('#centreImg1').css('z-index', 2); // trying to set  z-index
 				ChangeImg('#centreImg2',imgArray[currentImg]);
-				rainDropTransition('#centreImg2',0,yTargetPos,-10,totalDuration,0);
+				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,0);
 			}
 			else if (TransitionState == 2)
 			{
@@ -146,12 +146,12 @@
 			if (TransitionState == 0)
 			{
 				ChangeImg('#centreImg6',imgArray[tempImage]);
-				SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,15,0);
+				SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,-10,0);
 			}
 			else if (TransitionState == 1)
 			{
 				ChangeImg('#centreImg5',imgArray[tempImage]);
-				SetPosition('#centreImg5',0,yTargetPos,-10,0);
+				SetPosition('#centreImg5',0,yTargetPos,15,0);
 			}
 			else if (TransitionState == 2)
 			{

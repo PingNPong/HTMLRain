@@ -63,8 +63,8 @@ function SetOpacity(ImageName,SetOpacity,time,delayTime)
 
 function rainDropTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
 {
-	$(ImageName).transition({y:-500,scale: 1},1);
-	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',delay: delayTime},time,"ease");
+	$(ImageName).transition({y:-350,scale: 0.45},1);
+	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: 1,delay: delayTime},time,"ease");
 }
 
 function outTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)

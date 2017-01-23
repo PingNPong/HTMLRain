@@ -48,7 +48,7 @@
 #Left-container {
 	width: 1920px;
 	height: 1080px;
-	top:0;
+	top:-100;
 	right:1920;
 	position:absolute;
 	background:orange;

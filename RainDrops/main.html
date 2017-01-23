@@ -58,14 +58,14 @@
 		});
 		
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 6000; //total time between slides 
+		var totalDuration = 5000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 2000; //the duration for the wait between transition 
 		var TransitionState=0;
-		var xLeftPos = -500;// 500
-		var xRightPos = 500;
+		var xLeftPos = -538;// 500
+		var xRightPos = 498;
 		var yTargetPos = 100;
-		var yTargetPos2 = 200;
+		var yTargetPos2 = 140;
 		
 		
 		var currentImg=0;
@@ -113,27 +113,27 @@
 		{
 			if (TransitionState == 0)
 			{
-				$('#centreImg3').css('z-index', 4); // trying to set 
-				$('#centreImg2').css('z-index', 3); // trying to set 
-				$('#centreImg1').css('z-index', 2); // trying to set 
+				$('#centreImg3').css('z-index', 4); // trying to set z-index
+				$('#centreImg2').css('z-index', 2); // trying to set z-index 
+				$('#centreImg1').css('z-index', 3); // trying to set  z-index
 				ChangeImg('#centreImg3',imgArray[currentImg]);
-				rainDropTransition('#centreImg3',0,yTargetPos2,15,3000,0);
+				rainDropTransition('#centreImg3',0,yTargetPos2,15,totalDuration,0);
 			}
 			else if (TransitionState == 1)
 			{
-				$('#centreImg3').css('z-index', 3); // trying to set 
-				$('#centreImg2').css('z-index', 4); // trying to set 
-				$('#centreImg1').css('z-index', 2); // trying to set 
+				$('#centreImg3').css('z-index', 3); // trying to set  z-index
+				$('#centreImg2').css('z-index', 4); // trying to set  z-index
+				$('#centreImg1').css('z-index', 2); // trying to set  z-index
 				ChangeImg('#centreImg2',imgArray[currentImg]);
-				rainDropTransition('#centreImg2',0,yTargetPos,-10,3000,0);
+				rainDropTransition('#centreImg2',0,yTargetPos,-10,totalDuration,0);
 			}
 			else if (TransitionState == 2)
 			{
-				$('#centreImg3').css('z-index', 2); // trying to set 
-				$('#centreImg2').css('z-index', 3); // trying to set 
-				$('#centreImg1').css('z-index', 4); // trying to set 
+				$('#centreImg3').css('z-index', 2); // trying to set  z-index
+				$('#centreImg2').css('z-index', 3); // trying to set  z-index
+				$('#centreImg1').css('z-index', 4); // trying to set  z-index
 				ChangeImg('#centreImg1',imgArray[currentImg]);
-				rainDropTransition('#centreImg1',0,0,-35,3000,0);
+				rainDropTransition('#centreImg1',0,0,-35,totalDuration,0);
 			}
 			
 		}		
@@ -141,12 +141,12 @@
 		<!----- Setup Transition out for the old images  --->
 		function DropOut1()
 		{
-			var tempImage=returnPreviousInt();
+			var tempImage=returnPreviousInt(1,currentImg,maxImages);
 			
 			if (TransitionState == 0)
 			{
 				ChangeImg('#centreImg6',imgArray[tempImage]);
-				SetPosition('#centreImg6',xLeftPos,yTargetPos2,15,0);
+				SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,15,0);
 			}
 			else if (TransitionState == 1)
 			{
@@ -156,9 +156,9 @@
 			else if (TransitionState == 2)
 			{
 				ChangeImg('#centreImg4',imgArray[tempImage]);
-				SetPosition('#centreImg4',xRightPos,0,-35,0);
+				SetPosition('#centreImg4',xRightPos,15,-35,0);
 			}
-			setTimeout(DropOut2,4000);<!----- Call this transition causes lagg on XD233 --->
+			<!-----setTimeout(DropOut2,4000); Call this transition causes lagg on XD233 --->
 		}
 		
 		<!----- Transition out for the old images ,causes lagg on XD233 --->
@@ -196,7 +196,7 @@
 		function NextImage()
 		{
 			var previousImg_i = currentImg;
-			if (currentImg == maxImages)
+			if (currentImg +1== maxImages)
 				currentImg = 0;	
 			else 
 				currentImg = Math.min(currentImg+1, maxImages);

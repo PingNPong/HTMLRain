@@ -128,6 +128,7 @@
 
 
 .Middle {
+    position:absolute;
 	left:600px;
 	top:290px;
   	width: 640px;

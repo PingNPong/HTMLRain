@@ -8,42 +8,45 @@
 	<!-- use this transit library! better for bright sign performace  -->
 	<script src='jquery.transit.js'></script>
 	<script src='functions.js'></script>
-	<script src='CanvasJava.js'></script>
 </head>
 
-<body onload="canvasDraw();">
+<body>
 	
-	<!-- <div id="main-container" style="z-index: -1"> -->
-		
-		<!-- <canvas id="layer1" width="1920" height="1080"  -->
-		<!-- style="position: absolute; left: 500; top: 0; z-index: 0;"> -->
-		 <!-- drop --> 
-			<!-- middle left --> 
-			<!-- <img id="centreImg6" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
-			<!-- middle --> 
-			<!-- <img id="centreImg5" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
-			<!-- top right --> 
-			<!-- <img id="centreImg4" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
-		<!-- </canvas> -->
-		
-		<!-- <canvas id="canvas" width="1920" height="1080"  -->
-		<!-- style="z-index: 1;"> -->
+	<div id="main-container">
+	
+		<div id="Centre-container">
+		<!-- drop -->
+		<!-- middle left -->
+			<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" z-index=2>
+		<!-- middle -->
+			<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" z-index=2>
+		<!-- top right -->
+			<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" z-index=2>
 		
 		<!-- fade1 -->
 		<!-- middle left -->
-			<img id="centreImg3" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
+			<img id="centreImg3" class="Middle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" z-index=1 >
 		<!-- middle -->
-			<img id="centreImg2" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
+			<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" z-index=1>
 		<!-- top right -->
-			<img id="centreImg1" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
-		<!-- </canvas> -->
+			<img id="centreImg1" class="Middle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" z-index=1>
+			
+		<!-- fade2 -->
+		<!-- middle left -->
+			<!-- <img id="centreImg7" src="http://192.168.2.239/RoyalityFree/07.jpg" alt="" -->
+			<!-- style="position:absolute; top:500px; left:20px; width:600px; height:300px;" > -->
+		<!-- middle -->
+			<!-- <img id="centreImg8"  src="http://192.168.2.239/RoyalityFree/08.jpg" alt=""  -->
+			<!-- style="position:absolute; top:450px; left:500px; width:600px; height:300px;" > -->
+		<!-- top right -->
+			<!-- <img id="centreImg9" src="http://192.168.2.239/RoyalityFree/09.jpg" alt=""  -->
+			<!-- style="position:absolute; top:300px; left:1000px; width:600px; height:300px;" > -->
+		<!-- overlay -->	
+			<img id="overlay2" class="overlay" src="mask.png" >
+			
+		</div>
 		
-		<!-- <canvas id="layer3" width="1920" height="1080"  -->
-		<!-- style="position: absolute; left: 0; top: 0; z-index: -2;"> -->
-			<!-- <img id="overlay2" class="overlay" src="mask.png" > -->
-		</canvas>
-
-	<!-- </div> -->
+	</div>
 	
 
 	<script id= 'code'>
@@ -63,15 +66,15 @@
 		});
 		
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 10000; //total time between slides 
-		var inDuration = 5000; //the duration for the transition 
-		var outDuration = 5000; //the duration for the wait between transition 
+		var totalDuration = 6000; //total time between slides 
+		var transitDuration = 6000; //the duration for the transition 
+		var waitDuration = 2000; //the duration for the wait between transition 
 		var TransitionState=0;
 		var xLeftPos = -500;
 		var xRightPos = 500;
 		var yTargetPos = 100;
 		var yTargetPos2 = 200;
-		var isSwitchTime = false;
+		
 		
 		var currentImg=0;
 		var maxImages=15;
@@ -100,7 +103,7 @@
 		function FadeTransition()
 		{
 			DropIn();
-			<!-- FadeOut1(); -->
+			FadeOut1();
 			NextImage();
 			
 			<!----- change to for loop --->
@@ -117,64 +120,41 @@
 		{
 			if (TransitionState == 0)
 			{
-				<!----- change to for loop --->
-				ChangeImg('#centreImg2',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
-				ChangeImg('#centreImg3',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
-				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
-				
-				SetPosition('#centreImg3',xRightPos,0,-35,0);
-				SetPosition('#centreImg2',0,yTargetPos,-10,0);	
-				rainDropTransition('#centreImg1',xLeftPos,yTargetPos2,15,inDuration,0);
+				ChangeImg('#centreImg3',imgArray[currentImg]);
+				rainDropTransition('#centreImg3',xLeftPos,yTargetPos2,15,3000,0);
 			}
 			else if (TransitionState == 1)
 			{
-				ChangeImg('#centreImg3',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
-				ChangeImg('#centreImg2',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
-				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
-				
-				SetPosition('#centreImg3',xRightPos,0,-35,0);
-				SetPosition('#centreImg2',xLeftPos,yTargetPos2,15,0);	
-				rainDropTransition('#centreImg1',0,yTargetPos,-10,inDuration,0);
+				ChangeImg('#centreImg2',imgArray[currentImg]);
+				rainDropTransition('#centreImg2',0,yTargetPos,-10,3000,0);
 			}
 			else if (TransitionState == 2)
 			{
-				ChangeImg('#centreImg3',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
-				ChangeImg('#centreImg2',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
-				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
-				
-				SetPosition('#centreImg3',xLeftPos,yTargetPos2,15,0);
-				SetPosition('#centreImg2',0,yTargetPos,-10,0);	
-				rainDropTransition('#centreImg1',xRightPos,0,-35,inDuration,0);
+				ChangeImg('#centreImg1',imgArray[currentImg]);
+				rainDropTransition('#centreImg1',xRightPos,0,-35,3000,0);
 			}
 			
 		}		
 		
 		function FadeOut1()
 		{
-			var addition=0; 
-			if (isSwitchTime)
-			{
-				addition=50
-				isSwitchTime=false;
-			}
-			isSwitchTime = !isSwitchTime;
 			var tempImage=returnPreviousInt();
 			<!-- FadeTransition1('#centreImg3',xOffset[otherTransition+1],-35,5000,4000); -->
 			
 			if (TransitionState == 0)
 			{
-				ChangeImg('#centreImg6',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
-				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,outDuration,inDuration);
+				ChangeImg('#centreImg6',imgArray[tempImage]);
+				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,3000);
 			}
 			else if (TransitionState == 1)
 			{
-				ChangeImg('#centreImg5',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
-				outTransition('#centreImg5',0,yTargetPos,-10,outDuration,inDuration);
+				ChangeImg('#centreImg5',imgArray[tempImage]);
+				outTransition('#centreImg5',0,yTargetPos,-10,3000,3000);
 			}
 			else if (TransitionState == 2)
 			{
-				ChangeImg('#centreImg4',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
-				outTransition('#centreImg4',xRightPos,0,-35,outDuration,inDuration);
+				ChangeImg('#centreImg4',imgArray[tempImage]);
+				outTransition('#centreImg4',xRightPos,0,-35,3000,3000);
 			}
 		}
 		
@@ -197,13 +177,25 @@
 			ChangeContainer('#Right-container',imgArray[currentImg]);
 			
 		}
-
+		
+		function returnPreviousInt()
+		{
+			if (currentImg-3<0)
+			{
+			<!-- when the new number will be less than 0 -->
+				return maxImages + (currentImg-3);
+			}
+			else 
+			{
+				return currentImg-3;
+			}
+		}
 		
 		//the next image in the list 
 		function NextImage()
 		{
 			var previousImg_i = currentImg;
-			if (currentImg+1== maxImages)
+			if (currentImg == maxImages)
 				currentImg = 0;	
 			else 
 				currentImg = Math.min(currentImg+1, maxImages);

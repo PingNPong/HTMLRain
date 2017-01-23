@@ -127,10 +127,26 @@
 }
 
 
+.LeftMiddle {
+    position:absolute;
+	left:30px;
+	top:280px;
+  	width: 640px;
+	height: 360px;
+}
+
 .Middle {
     position:absolute;
 	left:600px;
 	top:290px;
+  	width: 640px;
+	height: 360px;
+}
+
+.RightMiddle {
+    position:absolute;
+	left:1100px;
+	top:300px;
   	width: 640px;
 	height: 360px;
 }

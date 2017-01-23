@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dynamic scroll page </title>
+	<title>rain drops page </title>
 	<link rel="stylesheet" href="style.css">
 	<script src='jquery-3.1.1.min.js'></script>
 	<!-- use this transit library! better for bright sign performace  -->
@@ -17,11 +17,11 @@
 		<div id="Centre-container">
 		<!-- drop -->
 		<!-- middle left -->
-			<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" z-index=2>
+			<img id="centreImg6" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" z-index=2>
 		<!-- middle -->
 			<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" z-index=2>
 		<!-- top right -->
-			<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" z-index=2>
+			<img id="centreImg4" class="RightMiddle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" z-index=2>
 		
 		<!-- fade1 -->
 		<!-- middle left -->
@@ -144,17 +144,17 @@
 			if (TransitionState == 0)
 			{
 				ChangeImg('#centreImg6',imgArray[tempImage]);
-				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,3000);
+				<!-- outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,3000); -->
 			}
 			else if (TransitionState == 1)
 			{
 				ChangeImg('#centreImg5',imgArray[tempImage]);
-				outTransition('#centreImg5',0,yTargetPos,-10,3000,3000);
+				<!-- outTransition('#centreImg5',0,yTargetPos,-10,3000,3000); -->
 			}
 			else if (TransitionState == 2)
 			{
 				ChangeImg('#centreImg4',imgArray[tempImage]);
-				outTransition('#centreImg4',xRightPos,0,-35,3000,3000);
+				<!-- outTransition('#centreImg4',xRightPos,0,-35,3000,3000); -->
 			}
 		}
 		

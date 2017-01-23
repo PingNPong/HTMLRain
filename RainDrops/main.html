@@ -8,45 +8,42 @@
 	<!-- use this transit library! better for bright sign performace  -->
 	<script src='jquery.transit.js'></script>
 	<script src='functions.js'></script>
+	<script src='CanvasJava.js'></script>
 </head>
 
-<body>
+<body onload="canvasDraw();">
 	
-	<div id="main-container">
-	
-		<div id="Centre-container">
-		<!-- drop -->
-		<!-- middle left -->
-			<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="">
-		<!-- middle -->
-			<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
-		<!-- top right -->
-			<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" >
+	<!-- <div id="main-container" style="z-index: -1"> -->
+		
+		<!-- <canvas id="layer1" width="1920" height="1080"  -->
+		<!-- style="position: absolute; left: 500; top: 0; z-index: 0;"> -->
+		 <!-- drop --> 
+			<!-- middle left --> 
+			<!-- <img id="centreImg6" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
+			<!-- middle --> 
+			<!-- <img id="centreImg5" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
+			<!-- top right --> 
+			<!-- <img id="centreImg4" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
+		<!-- </canvas> -->
+		
+		<!-- <canvas id="canvas" width="1920" height="1080"  -->
+		<!-- style="z-index: 1;"> -->
 		
 		<!-- fade1 -->
 		<!-- middle left -->
-			<img id="centreImg3" class="Middle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="">
+			<img id="centreImg3" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
 		<!-- middle -->
-			<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="">
+			<img id="centreImg2" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
 		<!-- top right -->
-			<img id="centreImg1" class="Middle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
-			
-		<!-- fade2 -->
-		<!-- middle left -->
-			<!-- <img id="centreImg7" src="http://192.168.2.239/RoyalityFree/07.jpg" alt="" -->
-			<!-- style="position:absolute; top:500px; left:20px; width:600px; height:300px;" > -->
-		<!-- middle -->
-			<!-- <img id="centreImg8"  src="http://192.168.2.239/RoyalityFree/08.jpg" alt=""  -->
-			<!-- style="position:absolute; top:450px; left:500px; width:600px; height:300px;" > -->
-		<!-- top right -->
-			<!-- <img id="centreImg9" src="http://192.168.2.239/RoyalityFree/09.jpg" alt=""  -->
-			<!-- style="position:absolute; top:300px; left:1000px; width:600px; height:300px;" > -->
-		<!-- overlay -->	
-			<img id="overlay2" class="overlay" src="mask.png" >
-			
-		</div>
+			<img id="centreImg1" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
+		<!-- </canvas> -->
 		
-	</div>
+		<!-- <canvas id="layer3" width="1920" height="1080"  -->
+		<!-- style="position: absolute; left: 0; top: 0; z-index: -2;"> -->
+			<!-- <img id="overlay2" class="overlay" src="mask.png" > -->
+		</canvas>
+
+	<!-- </div> -->
 	
 
 	<script id= 'code'>
@@ -103,7 +100,7 @@
 		function FadeTransition()
 		{
 			DropIn();
-			FadeOut1();
+			<!-- FadeOut1(); -->
 			NextImage();
 			
 			<!----- change to for loop --->

@@ -10,6 +10,7 @@
 	<!-- using this transit library will result in better for bright sign performace  -->
 	<script src='jquery.transit.js'></script>
 	<script src='functions.js'></script>
+	<script src='CacheImages.js'></script>
 </head>
 
 <body>
@@ -44,9 +45,9 @@
 	<script id= 'code'>
 	{
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 1000; //total time between slides 
+		var totalDuration = 2000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
-		var waitDuration = 2000; //the duration for the wait between transition 
+		var waitDuration = 3000; //the duration for the wait between transition 
 		var TransitionState=0;
 		var xLeftPos = -538;// 500
 		var xRightPos = 498;
@@ -55,7 +56,7 @@
 		
 		
 		var currentImg=0;
-		var maxImages=15;
+		var maxImages=12;
 		var imgArray = [imgPath+"01.jpg"];
 		var xOffset = [-50,50];
 		var Angle1 = [-15,15];
@@ -64,30 +65,34 @@
 		
 		//the start up function 
 		$(function (){
+			var ImageFound=false;
 			console.log("initializing");
+			<!-- SetImageArray(maxImages); -->
+			PreLoadImages(maxImages);
 			
-			for(i = 2; i < maxImages+1; i++)
-			{
-				var putImage="";
-				if (i<10 )
-				{// if its less than 10 we put 0 before 
-					putImage=imgPath+"0"+i+".jpg";
-				}
-				else 
-				{
-					putImage=imgPath+i+".jpg";
-				}
-				console.log("pushing "+putImage);
-				imgArray.push(putImage);
-			}
+			<!-- ImageFound=CheckImage('#centreImg1',imgArray[0]); -->
 			
-			// preloading the images 
-			for(i = 0; i < imgArray.length; i++){
-				var url = imgArray[i],
-					img = new Image(960, 540);
+			<!-- for(i = 2; i < maxImages+1; i++) -->
+			<!-- {// adding the numbers to the  -->
+				<!-- var putImage=""; -->
+				<!-- if (i<10 ) -->
+				<!-- {// if its less than 10 we put 0 before  -->
+					<!-- putImage=imgPath+"0"+i+".jpg"; -->
+				<!-- } -->
+				<!-- else  -->
+				<!-- { -->
+					<!-- putImage=imgPath+i+".jpg"; -->
+				<!-- } -->
+				<!-- imgArray.push(putImage); -->
+			<!-- } -->
+			
+			<!-- // preloading the images  -->
+			<!-- for(i = 0; i < imgArray.length; i++){ -->
+				<!-- var url = imgArray[i], -->
+					<!-- img = new Image(960, 540); -->
 				
-				img.src = url;
-			};  
+				<!-- img.src = url; -->
+			<!-- };   -->
 			setTimeout(FadeTransition, 1000);
 			
 			
@@ -196,6 +201,7 @@
 		//the next image in the list 
 		function NextImage()
 		{
+			var ImageFound=false;
 			var previousImg_i = currentImg;
 			if (currentImg +1== maxImages)
 				currentImg = 0;	
@@ -203,20 +209,27 @@
 				currentImg = Math.min(currentImg+1, maxImages);
 
 			if (currentImg==0)
-			{
-				// preloading the images 
-				for(i = 0; i < imgArray.length; i++){
-					var url = imgArray[i],
-						img = new Image(960, 540);
+			{// if the current image has been reset 
+				PreLoadImages(maxImages);
+				<!-- ImageFound=CheckImage('#centreImg1',imgArray[0]); -->
+				<!-- if (!ImageFound) -->
+				<!-- { -->
+					<!-- console.log("image not found"); -->
+				<!-- } -->
+				<!-- else  -->
+				<!-- { -->
+					<!-- console.log("image found"); -->
+				<!-- } -->
+			
+				
+				<!-- // preloading the images  -->
+				<!-- for(i = 0; i < imgArray.length; i++){ -->
+					<!-- var url = imgArray[i], -->
+						<!-- img = new Image(960, 540); -->
 			 
-					img.src = url;
-				};  
+					<!-- img.src = url; -->
+				<!-- };   -->
 			}
-		}
-		
-		function cacheImage()
-		{
-		
 		}
 		
 	}

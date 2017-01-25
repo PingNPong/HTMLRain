@@ -99,11 +99,15 @@ function returnPreviousInt(index,currentImg,maxImages)
 	}
 }
 
-// $.get(image_url)
-// .done(function() { 
-	// // Do something now you know the image exists.
-	// console.log("Sucess in loading "+image_url);
-// }).fail(function() { 
-	// // Image doesn't exist - do something else.
-	// console.log("Failure in loading "+image_url);
-// })
+
+// function CheckImage(imageName,image_url)
+// {
+
+	// .done(function() { 
+		// Do something now you know the image exists.
+		// console.log("Sucess in loading "+image_url);
+	//  }).fail(function() { 
+		// Image doesn't exist - do something else.
+		// console.log("Failure in loading "+image_url);
+	// // });
+// }

@@ -1,49 +1,44 @@
-<!-- // main for a scrolling html page which will have a few images on it  -->
+<!-- // main for a image gallery which will display images from a local file  -->
+<!-- // new images will transition in from the top, like rain drops  and old ones should transtion out -->
+<!-- Philip Ong   Jan 23,2017-->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dynamic scroll page </title>
+	<title>rain drops page </title>
 	<link rel="stylesheet" href="style.css">
 	<script src='jquery-3.1.1.min.js'></script>
-	<!-- use this transit library! better for bright sign performace  -->
+	<!-- using this transit library will result in better for bright sign performace  -->
 	<script src='jquery.transit.js'></script>
 	<script src='functions.js'></script>
-	<script src='CanvasJava.js'></script>
 </head>
 
-<body onload="canvasDraw();">
+<body>
 	
-	<!-- <div id="main-container" style="z-index: -1"> -->
-		
-		<!-- <canvas id="layer1" width="1920" height="1080"  -->
-		<!-- style="position: absolute; left: 500; top: 0; z-index: 0;"> -->
-		 <!-- drop --> 
-			<!-- middle left --> 
-			<!-- <img id="centreImg6" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
-			<!-- middle --> 
-			<!-- <img id="centreImg5" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
-			<!-- top right --> 
-			<!-- <img id="centreImg4" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;"> -->
-		<!-- </canvas> -->
-		
-		<!-- <canvas id="canvas" width="1920" height="1080"  -->
-		<!-- style="z-index: 1;"> -->
+	<div id="main-container">
+	
+		<div id="Centre-container">
+		<!-- drop -->
+		<!-- middle left -->
+			<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" >
+		<!-- middle -->
+			<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
+		<!-- top right -->
+			<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="">
 		
 		<!-- fade1 -->
 		<!-- middle left -->
-			<img id="centreImg3" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
+			<img id="centreImg3" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" >
 		<!-- middle -->
-			<img id="centreImg2" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
+			<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" >
 		<!-- top right -->
-			<img id="centreImg1" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" style="left:600px;top:290px;width: 640px;height: 360px;">
-		<!-- </canvas> -->
+			<img id="centreImg1" class="RightMiddle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
+			
+		<!-- overlay -->	
+			<img id="overlay2" class="overlay" src="mask.png" >
+			
+		</div>
 		
-		<!-- <canvas id="layer3" width="1920" height="1080"  -->
-		<!-- style="position: absolute; left: 0; top: 0; z-index: -2;"> -->
-			<!-- <img id="overlay2" class="overlay" src="mask.png" > -->
-		</canvas>
-
-	<!-- </div> -->
+	</div>
 	
 
 	<script id= 'code'>
@@ -63,15 +58,15 @@
 		});
 		
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 10000; //total time between slides 
-		var inDuration = 5000; //the duration for the transition 
-		var outDuration = 5000; //the duration for the wait between transition 
+		var totalDuration = 1000; //total time between slides 
+		var transitDuration = 6000; //the duration for the transition 
+		var waitDuration = 2000; //the duration for the wait between transition 
 		var TransitionState=0;
-		var xLeftPos = -500;
-		var xRightPos = 500;
+		var xLeftPos = -538;// 500
+		var xRightPos = 498;
 		var yTargetPos = 100;
-		var yTargetPos2 = 200;
-		var isSwitchTime = false;
+		var yTargetPos2 = 140;
+		
 		
 		var currentImg=0;
 		var maxImages=15;
@@ -97,10 +92,11 @@
 		var Angle2 = [-15,15];
 		var Angle3 = [-15,15];
 		
+		<!----- Main function reccursively calling itself   --->
 		function FadeTransition()
 		{
 			DropIn();
-			<!-- FadeOut1(); -->
+			DropOut1();
 			NextImage();
 			
 			<!----- change to for loop --->
@@ -112,98 +108,95 @@
 			setTimeout(FadeTransition,totalDuration);
 		}
 		
-		
+		<!----- Transition in for the new images  --->
 		function DropIn()
 		{
 			if (TransitionState == 0)
 			{
-				<!----- change to for loop --->
-				ChangeImg('#centreImg2',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
-				ChangeImg('#centreImg3',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
-				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
-				
-				SetPosition('#centreImg3',xRightPos,0,-35,0);
-				SetPosition('#centreImg2',0,yTargetPos,-10,0);	
-				rainDropTransition('#centreImg1',xLeftPos,yTargetPos2,15,inDuration,0);
+				$('#centreImg3').css('z-index', 4); // trying to set z-index
+				$('#centreImg2').css('z-index', 2); // trying to set z-index 
+				$('#centreImg1').css('z-index', 3); // trying to set  z-index
+				ChangeImg('#centreImg3',imgArray[currentImg]);
+				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,0);
 			}
 			else if (TransitionState == 1)
 			{
-				ChangeImg('#centreImg3',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
-				ChangeImg('#centreImg2',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
-				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
-				
-				SetPosition('#centreImg3',xRightPos,0,-35,0);
-				SetPosition('#centreImg2',xLeftPos,yTargetPos2,15,0);	
-				rainDropTransition('#centreImg1',0,yTargetPos,-10,inDuration,0);
+				$('#centreImg3').css('z-index', 3); // trying to set  z-index
+				$('#centreImg2').css('z-index', 4); // trying to set  z-index
+				$('#centreImg1').css('z-index', 2); // trying to set  z-index
+				ChangeImg('#centreImg2',imgArray[currentImg]);
+				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,0);
 			}
 			else if (TransitionState == 2)
 			{
-				ChangeImg('#centreImg3',imgArray[returnPreviousInt(2,currentImg,maxImages)]);
-				ChangeImg('#centreImg2',imgArray[returnPreviousInt(1,currentImg,maxImages)]);
-				ChangeImg('#centreImg1',imgArray[returnPreviousInt(0,currentImg,maxImages)]);
-				
-				SetPosition('#centreImg3',xLeftPos,yTargetPos2,15,0);
-				SetPosition('#centreImg2',0,yTargetPos,-10,0);	
-				rainDropTransition('#centreImg1',xRightPos,0,-35,inDuration,0);
+				$('#centreImg3').css('z-index', 2); // trying to set  z-index
+				$('#centreImg2').css('z-index', 3); // trying to set  z-index
+				$('#centreImg1').css('z-index', 4); // trying to set  z-index
+				ChangeImg('#centreImg1',imgArray[currentImg]);
+				rainDropTransition('#centreImg1',0,0,-35,totalDuration,0);
 			}
 			
 		}		
 		
-		function FadeOut1()
+		<!----- Setup Transition out for the old images  --->
+		function DropOut1()
 		{
-			var addition=0; 
-			if (isSwitchTime)
-			{
-				addition=50
-				isSwitchTime=false;
-			}
-			isSwitchTime = !isSwitchTime;
-			var tempImage=returnPreviousInt();
-			<!-- FadeTransition1('#centreImg3',xOffset[otherTransition+1],-35,5000,4000); -->
+			var tempImage=returnPreviousInt(1,currentImg,maxImages);
 			
 			if (TransitionState == 0)
 			{
-				ChangeImg('#centreImg6',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
-				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,outDuration,inDuration);
+				ChangeImg('#centreImg6',imgArray[tempImage]);
+				SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,-10,0);
 			}
 			else if (TransitionState == 1)
 			{
-				ChangeImg('#centreImg5',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
-				outTransition('#centreImg5',0,yTargetPos,-10,outDuration,inDuration);
+				ChangeImg('#centreImg5',imgArray[tempImage]);
+				SetPosition('#centreImg5',0,yTargetPos,15,0);
 			}
 			else if (TransitionState == 2)
 			{
-				ChangeImg('#centreImg4',imgArray[returnPreviousInt(3,currentImg,maxImages)]);
-				outTransition('#centreImg4',xRightPos,0,-35,outDuration,inDuration);
+				ChangeImg('#centreImg4',imgArray[tempImage]);
+				SetPosition('#centreImg4',xRightPos,15,-35,0);
+			}
+			<!-----setTimeout(DropOut2,4000); Call this transition causes lagg on XD233 --->
+		}
+		
+		<!----- Transition out for the old images ,causes lagg on XD233 --->
+		function DropOut2()
+		{
+			if (TransitionState == 1)
+			{
+				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,0);
+			}
+			else if (TransitionState == 2)
+			{
+				outTransition('#centreImg5',0,yTargetPos,-10,3000,0);
+			}
+			else if (TransitionState == 0)
+			{
+				outTransition('#centreImg4',xRightPos,0,-35,3000,0);
 			}
 		}
 		
-		function FadeOut2()
-		{
-			rainDropTransition('#centreImg1',20,20,1000,10);
-			rainDropTransition('#centreImg2',500,-15,1000,1000);
-			rainDropTransition('#centreImg3',1000,-40,1000,2000);
-		}
 		
-		function PreviousButton()
+		function returnPreviousInt()
 		{
-			var previousImg_i = currentImg;
-			if (currentImg == 0)
-				currentImg = maxImages-1;
-			else
-				currentImg = Math.max(currentImg-1, 0);
-		
-			ChangeContainer('#main-container',imgArray[previousImg_i]);
-			ChangeContainer('#Right-container',imgArray[currentImg]);
-			
+			if (currentImg-3<0)
+			{
+			<!-- when the new number will be less than 0 -->
+				return maxImages + (currentImg-3);
+			}
+			else 
+			{
+				return currentImg-3;
+			}
 		}
-
 		
 		//the next image in the list 
 		function NextImage()
 		{
 			var previousImg_i = currentImg;
-			if (currentImg+1== maxImages)
+			if (currentImg +1== maxImages)
 				currentImg = 0;	
 			else 
 				currentImg = Math.min(currentImg+1, maxImages);
@@ -217,51 +210,6 @@
 			 
 					img.src = url;
 				};  
-			}
-		}
-		
-		//the function to call each transition 
-		function slideTransition()
-		{
-			if (CurrentTransition==1)
-			{
-				<!-- console.log(currentImg+" and transition 1"); -->
-				ChangeImg('#centreImg1',imgArray[currentImg]);
-				ChangeImg('#centreImg2',imgArray[currentImg+1]);
-				ChangeImg('#centreImg3',imgArray[currentImg+2]);
-				slideTransitionFromLeft('#Left-container','#Centre-container',transitDuration,waitDuration);
-				$('#Right-container').attr('disabled', true);
-			}
-			else if  (CurrentTransition==2)
-			{
-				<!-- console.log(currentImg+" and transition 2"); -->
-				ChangeImg('#rightImg1',imgArray[currentImg]);
-				ChangeImg('#rightImg2',imgArray[currentImg+1]);
-				ChangeImg('#rightImg3',imgArray[currentImg+2]);
-				slideTransitionFromLeft('#Centre-container','#Right-container',transitDuration,waitDuration);
-				$('#Left-container').attr('disabled', true);
-			}
-			else if  (CurrentTransition==3)
-			{
-				<!-- console.log(currentImg+" and transition 3"); -->
-				ChangeImg('#leftImg1',imgArray[currentImg]);
-				ChangeImg('#leftImg2',imgArray[currentImg+1]);
-				ChangeImg('#leftImg3',imgArray[currentImg+2]);
-				slideTransitionFromLeft('#Right-container','#Left-container',transitDuration,waitDuration);
-				$('#Centre-container').attr('disabled', true);
-			}
-			
-			setTimeout(NextButton, totalDuration);
-			
-			CurrentTransition++;
-			if (CurrentTransition>3)
-			{
-				console.log(" Done and reseting ");
-				CurrentTransition=1;
-				if (currentImg ==0)
-				{
-
-				}
 			}
 		}
 		

@@ -63,14 +63,14 @@ function SetOpacity(ImageName,SetOpacity,time,delayTime)
 
 function rainDropTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
 {
-	$(ImageName).transition({y:-500},1);
-	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',delay: delayTime},time,"ease");
+	$(ImageName).transition({y:-350,scale: 0.45},1);
+	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: 1,delay: delayTime},time,"ease");
 }
 
 function outTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
 {
-	$(ImageName).transition({x: xOffset,y:yTarget,rotate:''+Rotation+'deg'},1);
-	$(ImageName).transition({y:700, delay: delayTime},time,"ease");
+	$(ImageName).transition({x: xOffset,y:yTarget,rotate:''+Rotation+'deg',scale: 1},1);
+	$(ImageName).transition({y:500, delay: delayTime,scale: 0.1},time,"ease");
 }
 
 function FadeTransition1(ImageName,xOffset,Rotation,time,delayTime)
@@ -81,7 +81,7 @@ function FadeTransition1(ImageName,xOffset,Rotation,time,delayTime)
 
 function SetPosition(ImageName,xOffset,yTarget,Rotation,delayTime)
 {
-	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',delay: delayTime},80,"ease");
+	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: 1,delay: delayTime},5);
 }
 
 function returnPreviousInt(index,currentImg,maxImages)
@@ -94,6 +94,7 @@ function returnPreviousInt(index,currentImg,maxImages)
 	}
 	else 
 	{
+		console.log(currentImg-index+" is now ");
 		return currentImg-index;
 	}
 }

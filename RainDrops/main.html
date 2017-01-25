@@ -43,20 +43,6 @@
 
 	<script id= 'code'>
 	{
-		//the start up function 
-		$(function (){
-			console.log("initializing");
-
-			// preloading the images 
-			for(i = 0; i < imgArray.length; i++){
-				var url = imgArray[i],
-					img = new Image(960, 540);
-		 
-				img.src = url;
-			};  
-			setTimeout(FadeTransition, 1000);
-		});
-		
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
 		var totalDuration = 1000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
@@ -70,27 +56,42 @@
 		
 		var currentImg=0;
 		var maxImages=15;
-		var imgArray = 
-			[	imgPath+"01.jpg",
-				imgPath+"02.jpg",
-				imgPath+"03.jpg",
-				imgPath+"04.jpg",
-				imgPath+"05.jpg",
-				imgPath+"06.jpg",
-				imgPath+"07.jpg",
-				imgPath+"08.jpg",
-				imgPath+"09.jpg",
-				imgPath+"10.jpg",
-				imgPath+"11.jpg",
-				imgPath+"12.jpg",
-				imgPath+"13.jpg",
-				imgPath+"14.jpg",
-				imgPath+"15.jpg"
-			];
+		var imgArray = [imgPath+"01.jpg"];
 		var xOffset = [-50,50];
 		var Angle1 = [-15,15];
 		var Angle2 = [-15,15];
 		var Angle3 = [-15,15];
+		
+		//the start up function 
+		$(function (){
+			console.log("initializing");
+			
+			for(i = 2; i < maxImages+1; i++)
+			{
+				var putImage="";
+				if (i<10 )
+				{// if its less than 10 we put 0 before 
+					putImage=imgPath+"0"+i+".jpg";
+				}
+				else 
+				{
+					putImage=imgPath+i+".jpg";
+				}
+				console.log("pushing "+putImage);
+				imgArray.push(putImage);
+			}
+			
+			// preloading the images 
+			for(i = 0; i < imgArray.length; i++){
+				var url = imgArray[i],
+					img = new Image(960, 540);
+				
+				img.src = url;
+			};  
+			setTimeout(FadeTransition, 1000);
+			
+			
+		});
 		
 		<!----- Main function reccursively calling itself   --->
 		function FadeTransition()
@@ -211,6 +212,11 @@
 					img.src = url;
 				};  
 			}
+		}
+		
+		function cacheImage()
+		{
+		
 		}
 		
 	}

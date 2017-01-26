@@ -5,6 +5,7 @@ var loadedImages=false;
 
 function SetImageArray(MaxImages)
 {
+	console.log("Image set");
 	arraySet=true;
 	for(i = 2; i < maxImages+1; i++)
 	{// adding the numbers to the 
@@ -49,16 +50,16 @@ function PreLoadImages(MaxImage)
 		FailedToLoad();
 		loadedImages=false;
 	});
-	
+		
 	
 	var putImage="";
-		if ( i<10 )
+		if ( (MaxImage/2)<10 )
 		{// if its less than 10 we put 0 before 
-			putImage="0"+MaxImage+".jpg";
+			putImage="0"+(MaxImage/2)+".jpg";
 		}
 		else 
 		{
-			putImage=MaxImage+".jpg";
+			putImage=(MaxImage/2)+".jpg";
 		}
 		
 	image.src = imgPath+ putImage;

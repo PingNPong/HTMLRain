@@ -71,7 +71,6 @@
 			setTimeout(Update, 1000);
 			
 			Connected = loadedImages ; 
-			console.log("Images connected ?"+Connected);
 		});
 		
 		<!----- Main function reccursively calling itself   --->
@@ -105,7 +104,6 @@
 			}
 			else 
 			{
-				console.log("exiting fade transition"+Connected);
 				RefreshCheck();
 			}
 			
@@ -210,12 +208,10 @@
 				if (loadedImages)
 				{
 					Connected = true; 
-					console.log("Next Images loaded");
 				}
 				else 
 				{
 					Connected = false; 
-					console.log("Next NOT loaded");
 				}
 			}
 		}
@@ -226,12 +222,10 @@
 			if (Connected)
 			{
 				setTimeout(Update,1000);
-				console.log("CHECK Images loaded");
 			}
 			else 
 			{
 				setTimeout(RefreshCheck, UpdateInterval);
-				console.log("CHECK NOT loaded");
 			}
 		}
 		

@@ -106,7 +106,7 @@
 			else 
 			{
 				console.log("exiting fade transition"+Connected);
-				setTimeout(Update,1000);
+				RefreshCheck();
 			}
 			
 		}
@@ -223,19 +223,30 @@
 		function RefreshCheck()
 		{
 			PreLoadImages(maxImages);
-			if (loadedImages)
+			if (Connected)
 			{
-				Connected = true; 
 				setTimeout(Update,1000);
 				console.log("CHECK Images loaded");
 			}
 			else 
 			{
-				Connected = false; 
 				setTimeout(RefreshCheck, UpdateInterval);
 				console.log("CHECK NOT loaded");
 			}
 		}
+		
+		function ImageLoaded()
+		{
+			console.log("Image loaded called");
+			Connected=true;
+		}
+		
+		function FailedToLoad()
+		{
+			console.log("FailedToLoad called");
+			Connected=false;
+		}
+		
 		
 	}
 	</script>

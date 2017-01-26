@@ -9,7 +9,7 @@ function SetImageArray(MaxImages)
 	for(i = 2; i < maxImages+1; i++)
 	{// adding the numbers to the 
 		var putImage="";
-		if (i<10 )
+		if ( i<10 )
 		{// if its less than 10 we put 0 before 
 			putImage=imgPath+"0"+i+".jpg";
 		}
@@ -25,28 +25,43 @@ function PreLoadImages(MaxImage)
 {
 	var image = new Image();
 
-	image.onload = function() {
-		// image exists and is loaded
-		console.log("Sucess in loading "+imgArray[0]);
-		if (!arraySet)
-		{
-			SetImageArray(MaxImage)
-		}
-		LoadImages(MaxImage);
-		loadedImages=true;
+	loadedImages=true;
+	if (!arraySet)
+	{
+		SetImageArray(MaxImage)
 	}
 	
-	image.onerror = function() {
+	image.addEventListener('load', function() {
+		// image exists and is loaded
+		console.log("Sucess in loading "+image.src);
+		ImageLoaded();
+		LoadImages(MaxImage);
+	});
+	
+	image.addEventListener('error', function() {
 		// image did not load
 
 		var err = new Image();
 		err.src = '/error.png';
-
-		console.log("Failure in loading "+imgArray[0]);
+			
+		console.log("Failure in loading "+image.src);
+		
+		FailedToLoad();
 		loadedImages=false;
-	}
+	});
 	
-	image.src=imgArray[0];
+	
+	var putImage="";
+		if ( i<10 )
+		{// if its less than 10 we put 0 before 
+			putImage="0"+MaxImage+".jpg";
+		}
+		else 
+		{
+			putImage=MaxImage+".jpg";
+		}
+		
+	image.src = imgPath+ putImage;
 }
 
 function LoadImages(MaxImage)

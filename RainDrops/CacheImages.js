@@ -1,10 +1,10 @@
 var imgPath  = "http://192.168.2.239/RoyalityFree/";
 var imgArray = [imgPath+"01.jpg"];
 var arraySet=false;
+var loadedImages=false;
 
 function SetImageArray(MaxImages)
 {
-	console.log("ImageArray set");
 	arraySet=true;
 	for(i = 2; i < maxImages+1; i++)
 	{// adding the numbers to the 
@@ -33,7 +33,9 @@ function PreLoadImages(MaxImage)
 			SetImageArray(MaxImage)
 		}
 		LoadImages(MaxImage);
+		loadedImages=true;
 	}
+	
 	image.onerror = function() {
 		// image did not load
 
@@ -41,7 +43,7 @@ function PreLoadImages(MaxImage)
 		err.src = '/error.png';
 
 		console.log("Failure in loading "+imgArray[0]);
-		
+		loadedImages=false;
 	}
 	
 	image.src=imgArray[0];
@@ -50,7 +52,6 @@ function PreLoadImages(MaxImage)
 function LoadImages(MaxImage)
 {
 	// preloading the images 
-	console.log("pre loading "+imgArray[0]);
 	for(i = 0; i < imgArray.length; i++){
 		var url = imgArray[i],
 			img = new Image(960, 540);

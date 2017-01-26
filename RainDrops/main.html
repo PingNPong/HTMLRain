@@ -48,6 +48,7 @@
 		var totalDuration = 2000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 3000; //the duration for the wait between transition 
+		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		var xLeftPos = -538;// 500
 		var xRightPos = 498;
@@ -57,11 +58,8 @@
 		
 		var currentImg=0;
 		var maxImages=12;
-		var imgArray = [imgPath+"01.jpg"];
 		var xOffset = [-50,50];
-		var Angle1 = [-15,15];
-		var Angle2 = [-15,15];
-		var Angle3 = [-15,15];
+		var Connected = false; 
 		
 		//the start up function 
 		$(function (){
@@ -70,35 +68,25 @@
 			<!-- SetImageArray(maxImages); -->
 			PreLoadImages(maxImages);
 			
-			<!-- ImageFound=CheckImage('#centreImg1',imgArray[0]); -->
+			setTimeout(Update, 1000);
 			
-			<!-- for(i = 2; i < maxImages+1; i++) -->
-			<!-- {// adding the numbers to the  -->
-				<!-- var putImage=""; -->
-				<!-- if (i<10 ) -->
-				<!-- {// if its less than 10 we put 0 before  -->
-					<!-- putImage=imgPath+"0"+i+".jpg"; -->
-				<!-- } -->
-				<!-- else  -->
-				<!-- { -->
-					<!-- putImage=imgPath+i+".jpg"; -->
-				<!-- } -->
-				<!-- imgArray.push(putImage); -->
-			<!-- } -->
-			
-			<!-- // preloading the images  -->
-			<!-- for(i = 0; i < imgArray.length; i++){ -->
-				<!-- var url = imgArray[i], -->
-					<!-- img = new Image(960, 540); -->
-				
-				<!-- img.src = url; -->
-			<!-- };   -->
-			setTimeout(FadeTransition, 1000);
-			
-			
+			Connected = loadedImages ; 
+			console.log("Images connected ?"+Connected);
 		});
 		
 		<!----- Main function reccursively calling itself   --->
+		function Update()
+		{
+			if (Connected)
+			{
+				FadeTransition();
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
+		
 		function FadeTransition()
 		{
 			DropIn();
@@ -111,7 +99,16 @@
 			else 
 				TransitionState = Math.min(TransitionState+1, 2);
 			
-			setTimeout(FadeTransition,totalDuration);
+			if (Connected)
+			{
+				setTimeout(FadeTransition,totalDuration);
+			}
+			else 
+			{
+				console.log("exiting fade transition"+Connected);
+				setTimeout(Update,1000);
+			}
+			
 		}
 		
 		<!----- Transition in for the new images  --->
@@ -184,7 +181,6 @@
 			}
 		}
 		
-		
 		function returnPreviousInt()
 		{
 			if (currentImg-3<0)
@@ -211,24 +207,33 @@
 			if (currentImg==0)
 			{// if the current image has been reset 
 				PreLoadImages(maxImages);
-				<!-- ImageFound=CheckImage('#centreImg1',imgArray[0]); -->
-				<!-- if (!ImageFound) -->
-				<!-- { -->
-					<!-- console.log("image not found"); -->
-				<!-- } -->
-				<!-- else  -->
-				<!-- { -->
-					<!-- console.log("image found"); -->
-				<!-- } -->
-			
-				
-				<!-- // preloading the images  -->
-				<!-- for(i = 0; i < imgArray.length; i++){ -->
-					<!-- var url = imgArray[i], -->
-						<!-- img = new Image(960, 540); -->
-			 
-					<!-- img.src = url; -->
-				<!-- };   -->
+				if (loadedImages)
+				{
+					Connected = true; 
+					console.log("Next Images loaded");
+				}
+				else 
+				{
+					Connected = false; 
+					console.log("Next NOT loaded");
+				}
+			}
+		}
+		
+		function RefreshCheck()
+		{
+			PreLoadImages(maxImages);
+			if (loadedImages)
+			{
+				Connected = true; 
+				setTimeout(Update,1000);
+				console.log("CHECK Images loaded");
+			}
+			else 
+			{
+				Connected = false; 
+				setTimeout(RefreshCheck, UpdateInterval);
+				console.log("CHECK NOT loaded");
 			}
 		}
 		

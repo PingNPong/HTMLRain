@@ -45,7 +45,7 @@
 	<script id= 'code'>
 	{
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 5000; //total time between slides 
+		var totalDuration = 3000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 3000; //the duration for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
@@ -88,8 +88,8 @@
 		
 		function FadeTransition()
 		{
+			ChangeOut();
 			DropIn();
-			DropOut1();
 			NextImage();
 			
 			<!----- change to for loop --->
@@ -121,30 +121,30 @@
 				$('#centreImg3').css('z-index', 4); // trying to set z-index
 				$('#centreImg2').css('z-index', 2); // trying to set z-index 
 				$('#centreImg1').css('z-index', 3); // trying to set  z-index
-				ChangeImg('#centreImg3',imgArray[currentImg]);
 				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,0);
+				ChangeImg('#centreImg3',imgArray[currentImg]);
 			}
 			else if (TransitionState == 1)
 			{
 				$('#centreImg3').css('z-index', 3); // trying to set  z-index
 				$('#centreImg2').css('z-index', 4); // trying to set  z-index
 				$('#centreImg1').css('z-index', 2); // trying to set  z-index
-				ChangeImg('#centreImg2',imgArray[currentImg]);
 				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,0);
+				ChangeImg('#centreImg2',imgArray[currentImg]);
 			}
 			else if (TransitionState == 2)
 			{
 				$('#centreImg3').css('z-index', 2); // trying to set  z-index
 				$('#centreImg2').css('z-index', 3); // trying to set  z-index
 				$('#centreImg1').css('z-index', 4); // trying to set  z-index
-				ChangeImg('#centreImg1',imgArray[currentImg]);
 				rainDropTransition('#centreImg1',0,0,-35,totalDuration,0);
+				ChangeImg('#centreImg1',imgArray[currentImg]);
 			}
 			
 		}		
 		
 		<!----- Setup Transition out for the old images  --->
-		function DropOut1()
+		function ChangeOut()
 		{
 			var tempImage=returnPreviousInt(1,currentImg,maxImages);
 			
@@ -163,25 +163,7 @@
 				ChangeImg('#centreImg4',imgArray[tempImage]);
 				SetPosition('#centreImg4',xRightPos,15,-35,0);
 			}
-			<!-----setTimeout(DropOut2,4000); Call this transition causes lagg on XD233 --->
 		}
-		
-		<!----- Transition out for the old images ,causes lagg on XD233 --->
-		<!-- function DropOut2() -->
-		<!-- { -->
-			<!-- if (TransitionState == 1) -->
-			<!-- { -->
-				<!-- outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,0); -->
-			<!-- } -->
-			<!-- else if (TransitionState == 2) -->
-			<!-- { -->
-				<!-- outTransition('#centreImg5',0,yTargetPos,-10,3000,0); -->
-			<!-- } -->
-			<!-- else if (TransitionState == 0) -->
-			<!-- { -->
-				<!-- outTransition('#centreImg4',xRightPos,0,-35,3000,0); -->
-			<!-- } -->
-		<!-- } -->
 		
 		function returnPreviousInt()
 		{

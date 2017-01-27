@@ -45,7 +45,7 @@
 	<script id= 'code'>
 	{
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
-		var totalDuration = 2000; //total time between slides 
+		var totalDuration = 5000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 3000; //the duration for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
@@ -94,7 +94,11 @@
 			
 			<!----- change to for loop --->
 			if (TransitionState == 2)
+			{
 				TransitionState = 0;	
+				<!-- PreLoadImages(maxImages); -->
+				LoadSetImages(maxImages,currentImg,3,Math.random())
+			}
 			else 
 				TransitionState = Math.min(TransitionState+1, 2);
 			
@@ -163,21 +167,21 @@
 		}
 		
 		<!----- Transition out for the old images ,causes lagg on XD233 --->
-		function DropOut2()
-		{
-			if (TransitionState == 1)
-			{
-				outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,0);
-			}
-			else if (TransitionState == 2)
-			{
-				outTransition('#centreImg5',0,yTargetPos,-10,3000,0);
-			}
-			else if (TransitionState == 0)
-			{
-				outTransition('#centreImg4',xRightPos,0,-35,3000,0);
-			}
-		}
+		<!-- function DropOut2() -->
+		<!-- { -->
+			<!-- if (TransitionState == 1) -->
+			<!-- { -->
+				<!-- outTransition('#centreImg6',xLeftPos,yTargetPos2,15,3000,0); -->
+			<!-- } -->
+			<!-- else if (TransitionState == 2) -->
+			<!-- { -->
+				<!-- outTransition('#centreImg5',0,yTargetPos,-10,3000,0); -->
+			<!-- } -->
+			<!-- else if (TransitionState == 0) -->
+			<!-- { -->
+				<!-- outTransition('#centreImg4',xRightPos,0,-35,3000,0); -->
+			<!-- } -->
+		<!-- } -->
 		
 		function returnPreviousInt()
 		{

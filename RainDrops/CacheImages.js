@@ -22,6 +22,62 @@ function SetImageArray(MaxImages)
 	}
 }
 
+function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
+{
+	console.log("LoadSetImages");
+	var image = new Image();
+	//setting image location 
+	var EndAmount=StartIndex+Amount
+	var imageLocation= (EndAmount)+".jpg";
+	if ( (EndAmount)<10 )
+	{// if its less than 10 we put 0 before 
+		imageLocation="0"+(EndAmount)+".jpg";
+	}
+	else 
+	{
+		imageLocation=(EndAmount)+".jpg";
+	}
+	
+	loadedImages=true;
+	if (!arraySet)
+	{
+		SetImageArray(MaxImage)
+	}
+	
+	image.addEventListener('load', function() {
+		// image exists and is loaded
+		console.log("Sucess set loading "+image.src);
+		ImageLoaded();
+		SetImages(StartIndex,Amount,ExtraAddOn);
+	});
+	
+	image.addEventListener('error', function() {
+		// image did not load
+
+		var err = new Image();
+		err.src = '/error.png';
+			
+		console.log("Failure set loading "+image.src);
+		
+		FailedToLoad();
+		loadedImages=false;
+	});
+	
+	image.src =imgPath+imageLocation;
+}
+
+function SetImages(StartIndex,Amount,ExtraAddOn)
+{
+	for(i = StartIndex; i < StartIndex+Amount; i++){
+		imgArray[i]=imgArray[i]+"?lastmod"+ExtraAddOn;
+		console.log(" image name is now "+imgArray[i]);
+		var url = imgArray[i],
+			img = new Image(960, 540);
+ 
+		img.src = url;
+	};  
+}
+
 function PreLoadImages(MaxImage)
 {
 	var image = new Image();
@@ -51,23 +107,27 @@ function PreLoadImages(MaxImage)
 		loadedImages=false;
 	});
 		
-	
 	var putImage="";
-		if ( (MaxImage/2)<10 )
-		{// if its less than 10 we put 0 before 
-			putImage="0"+(MaxImage/2)+".jpg";
-		}
-		else 
-		{
-			putImage=(MaxImage/2)+".jpg";
-		}
+	if ( (MaxImage/2)<10 )
+	{// if its less than 10 we put 0 before 
+		putImage="0"+(MaxImage/2)+".jpg";
+	}
+	else 
+	{
+		putImage=(MaxImage/2)+".jpg";
+	}
+			
 		
 	image.src = imgPath+ putImage;
 }
 
+// old 
 function LoadImages(MaxImage)
 {
+	new Date();
+	//var CurrentTime= Date.getTime()
 	// preloading the images 
+	console.log(" img length "+imgArray.length);
 	for(i = 0; i < imgArray.length; i++){
 		var url = imgArray[i],
 			img = new Image(960, 540);

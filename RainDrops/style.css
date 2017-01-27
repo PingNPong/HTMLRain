@@ -6,7 +6,6 @@
 
 #overlay2{
     z-index:5;
-	-webkit-backface-visibility: hidden;
 }
 
 #main1Style  img{
@@ -79,7 +78,6 @@
 	position:absolute;
 	background:purple;
 	z-index:1;
-	-webkit-backface-visibility: hidden;
 }
 
 #Right-container {

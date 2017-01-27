@@ -1,5 +1,6 @@
 var imgPath  = "http://192.168.2.239/RoyalityFree/";
 var imgArray = [imgPath+"01.jpg"];
+var defaultArray = [imgPath+"01.jpg"];
 var arraySet=false;
 var loadedImages=false;
 
@@ -19,6 +20,7 @@ function SetImageArray(MaxImages)
 			putImage=imgPath+i+".jpg";
 		}
 		imgArray.push(putImage);
+		defaultArray.push(putImage);
 	}
 }
 
@@ -69,8 +71,8 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 function SetImages(StartIndex,Amount,ExtraAddOn)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++){
-		imgArray[i]=imgArray[i]+"?lastmod"+ExtraAddOn;
-		console.log(" image name is now "+imgArray[i]);
+		imgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
+		console.log("loading "+imgArray[i]);
 		var url = imgArray[i],
 			img = new Image(960, 540);
  
@@ -125,9 +127,7 @@ function PreLoadImages(MaxImage)
 function LoadImages(MaxImage)
 {
 	new Date();
-	//var CurrentTime= Date.getTime()
 	// preloading the images 
-	console.log(" img length "+imgArray.length);
 	for(i = 0; i < imgArray.length; i++){
 		var url = imgArray[i],
 			img = new Image(960, 540);

@@ -72,7 +72,6 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++){
 		imgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
-		console.log("loading "+imgArray[i]);
 		var url = imgArray[i],
 			img = new Image(960, 540);
  

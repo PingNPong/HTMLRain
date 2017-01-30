@@ -47,11 +47,11 @@
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
 		var totalDuration = 3000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
-		var waitDuration = 3000; //the duration for the wait between transition 
+		var waitDuration = 500; //the duration for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
-		var xLeftPos = -538;// 500
-		var xRightPos = 498;
+		var xLeftPos = -540;// 500
+		var xRightPos = 500;
 		var yTargetPos = 100;
 		var yTargetPos2 = 140;
 		
@@ -69,9 +69,9 @@
 			PreLoadImages(maxImages);
 			
 			<!-- intial setup -->
-			SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,-10,0);
-			SetPosition('#centreImg5',0,yTargetPos,15,0);
-			SetPosition('#centreImg4',xRightPos,15,-35,0);
+			SetValues('#centreImg6',xLeftPos,yTargetPos2-10,-10,1,0);
+			SetValues('#centreImg5',0,yTargetPos,15,1,0);
+			SetValues('#centreImg4',xRightPos,10,-35,1,0);
 			
 			setTimeout(Update, 1000);
 			
@@ -94,10 +94,35 @@
 		function FadeTransition()
 		{
 			ChangeOut();
-			DropIn();
-			NextImage();
 			
-			<!----- change to for loop --->
+			
+		}
+		
+		<!----- Transition in for the new images  --->
+		function DropIn()
+		{
+			if (TransitionState == 0)
+			{
+
+				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,500);
+				ChangeImg('#centreImg3',imgArray[currentImg]);
+			}
+			else if (TransitionState == 1)
+			{
+
+				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,500);
+				ChangeImg('#centreImg2',imgArray[currentImg]);
+			}
+			else if (TransitionState == 2)
+			{
+				
+				rainDropTransition('#centreImg1',0,0,-35,totalDuration,500);
+				ChangeImg('#centreImg1',imgArray[currentImg]);
+			}
+			
+			<!----- from main --->
+			NextImage();
+
 			if (TransitionState == 2)
 			{
 				TransitionState = 0;	
@@ -116,36 +141,6 @@
 				RefreshCheck();
 			}
 			
-		}
-		
-		<!----- Transition in for the new images  --->
-		function DropIn()
-		{
-			if (TransitionState == 0)
-			{
-				$('#centreImg3').css('z-index', 4); 
-				$('#centreImg2').css('z-index', 2); 
-				$('#centreImg1').css('z-index', 3); 
-				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,500);
-				ChangeImg('#centreImg3',imgArray[currentImg]);
-			}
-			else if (TransitionState == 1)
-			{
-				$('#centreImg3').css('z-index', 3);
-				$('#centreImg2').css('z-index', 4); 
-				$('#centreImg1').css('z-index', 2); 
-				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,500);
-				ChangeImg('#centreImg2',imgArray[currentImg]);
-			}
-			else if (TransitionState == 2)
-			{
-				$('#centreImg3').css('z-index', 2); 
-				$('#centreImg2').css('z-index', 3); 
-				$('#centreImg1').css('z-index', 4); 
-				rainDropTransition('#centreImg1',0,0,-35,totalDuration,500);
-				ChangeImg('#centreImg1',imgArray[currentImg]);
-			}
-			
 		}		
 		
 		<!----- Setup Transition out for the old images  --->
@@ -155,19 +150,36 @@
 			
 			if (TransitionState == 0)
 			{
+				SetValues('#centreImg3',0,-300,-10,0.35,0);
+				
+				$('#centreImg3').css('z-index', 4); 
+				$('#centreImg2').css('z-index', 2); 
+				$('#centreImg1').css('z-index', 3); 
 				ChangeImg('#centreImg6',imgArray[tempImage]);
 				<!-- SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,-10,0); -->
 			}
 			else if (TransitionState == 1)
 			{
+				SetValues('#centreImg2',0,-300,15,0.35,0);
+			
+				$('#centreImg3').css('z-index', 3);
+				$('#centreImg2').css('z-index', 4); 
+				$('#centreImg1').css('z-index', 2); 
 				ChangeImg('#centreImg5',imgArray[tempImage]);
 				<!-- SetPosition('#centreImg5',0,yTargetPos,15,0); -->
 			}
 			else if (TransitionState == 2)
 			{
+				SetValues('#centreImg1',-70,-350,0,0.3,0);
+				
+				$('#centreImg3').css('z-index', 2); 
+				$('#centreImg2').css('z-index', 3); 
+				$('#centreImg1').css('z-index', 4); 
 				ChangeImg('#centreImg4',imgArray[tempImage]);
 				<!-- SetPosition('#centreImg4',xRightPos,15,-35,0); -->
 			}
+			
+			setTimeout(DropIn,waitDuration);
 		}
 		
 		function returnPreviousInt()

@@ -121,7 +121,7 @@
 				$('#centreImg3').css('z-index', 4); // trying to set z-index
 				$('#centreImg2').css('z-index', 2); // trying to set z-index 
 				$('#centreImg1').css('z-index', 3); // trying to set  z-index
-				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,0);
+				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,100);
 				ChangeImg('#centreImg3',imgArray[currentImg]);
 			}
 			else if (TransitionState == 1)
@@ -129,7 +129,7 @@
 				$('#centreImg3').css('z-index', 3); // trying to set  z-index
 				$('#centreImg2').css('z-index', 4); // trying to set  z-index
 				$('#centreImg1').css('z-index', 2); // trying to set  z-index
-				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,0);
+				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,100);
 				ChangeImg('#centreImg2',imgArray[currentImg]);
 			}
 			else if (TransitionState == 2)
@@ -137,7 +137,7 @@
 				$('#centreImg3').css('z-index', 2); // trying to set  z-index
 				$('#centreImg2').css('z-index', 3); // trying to set  z-index
 				$('#centreImg1').css('z-index', 4); // trying to set  z-index
-				rainDropTransition('#centreImg1',0,0,-35,totalDuration,0);
+				rainDropTransition('#centreImg1',0,0,-35,totalDuration,100);
 				ChangeImg('#centreImg1',imgArray[currentImg]);
 			}
 			

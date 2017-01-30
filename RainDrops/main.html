@@ -190,7 +190,7 @@
 
 			if (currentImg==0)
 			{// if the current image has been reset 
-				<!-- PreLoadImages(maxImages); -->
+				PreLoadImages(maxImages);
 				if (loadedImages)
 				{
 					Connected = true; 
@@ -204,7 +204,7 @@
 		
 		function RefreshCheck()
 		{
-			PreLoadImages(maxImages,Math.random());
+			PreLoadImages(maxImages);
 			if (Connected)
 			{
 				setTimeout(Update,1000);

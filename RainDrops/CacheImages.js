@@ -72,6 +72,7 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++){
 		imgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
+		console.log("loading "+imgArray[i]);
 		var url = imgArray[i],
 			img = new Image(960, 540);
  
@@ -79,7 +80,7 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 	};  
 }
 
-function PreLoadImages(MaxImage,ExtraAddOn)
+function PreLoadImages(MaxImage)
 {
 	var image = new Image();
 
@@ -93,7 +94,7 @@ function PreLoadImages(MaxImage,ExtraAddOn)
 		// image exists and is loaded
 		console.log("Sucess in loading "+image.src);
 		ImageLoaded();
-		LoadImages(MaxImage,ExtraAddOn);
+		LoadImages(MaxImage);
 	});
 	
 	image.addEventListener('error', function() {
@@ -123,12 +124,11 @@ function PreLoadImages(MaxImage,ExtraAddOn)
 }
 
 // old 
-function LoadImages(MaxImage,ExtraAddOn)
+function LoadImages(MaxImage)
 {
 	new Date();
 	// preloading the images 
 	for(i = 0; i < imgArray.length; i++){
-		imgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
 		var url = imgArray[i],
 			img = new Image(960, 540);
  

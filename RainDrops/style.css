@@ -56,6 +56,22 @@
 	height: 500px;
 }
 
+#main1Style  img{
+    position:relative;
+	left:50px;
+	top:50px;
+  	width: 900px;
+	height: 500px;
+}
+
+#main2Style  img{
+    position:relative;
+	left:1000px;
+	top:100px;
+  	width: 900px;
+	height: 500px;
+}
+
 #centreImg6  img{
 	-webkit-backface-visibility: hidden;
 }

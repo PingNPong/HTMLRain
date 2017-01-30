@@ -16,28 +16,25 @@
 <body>
 	
 	<div id="main-container">
+
+	<!-- drop -->
+	<!-- middle left -->
+		<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" >
+	<!-- middle -->
+		<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
+	<!-- top right -->
+		<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="">
 	
-		<div id="Centre-container">
-		<!-- drop -->
-		<!-- middle left -->
-			<img id="centreImg6" class="Middle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" >
-		<!-- middle -->
-			<img id="centreImg5" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
-		<!-- top right -->
-			<img id="centreImg4" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="">
+	<!-- fade1 -->
+	<!-- middle left -->
+		<img id="centreImg3" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" >
+	<!-- middle -->
+		<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" >
+	<!-- top right -->
+		<img id="centreImg1" class="RightMiddle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
 		
-		<!-- fade1 -->
-		<!-- middle left -->
-			<img id="centreImg3" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" >
-		<!-- middle -->
-			<img id="centreImg2" class="Middle" src="http://192.168.2.239/RoyalityFree/05.jpg" alt="" >
-		<!-- top right -->
-			<img id="centreImg1" class="RightMiddle" src="http://192.168.2.239/RoyalityFree/06.jpg" alt="" >
-			
-		<!-- overlay -->	
-			<img id="overlay2" class="overlay" src="mask.png" >
-			
-		</div>
+	<!-- overlay -->	
+		<img id="overlay2" class="overlay" src="mask.png" >
 		
 	</div>
 	
@@ -89,7 +86,6 @@
 		function FadeTransition()
 		{
 			ChangeOut();
-			DropIn();
 			NextImage();
 			
 			<!----- change to for loop --->
@@ -119,16 +115,16 @@
 			if (TransitionState == 0)
 			{
 				$('#centreImg3').css('z-index', 4); // trying to set z-index
-				$('#centreImg2').css('z-index', 2); // trying to set z-index 
-				$('#centreImg1').css('z-index', 3); // trying to set  z-index
+				$('#centreImg2').css('z-index', 3); // trying to set z-index 
+				$('#centreImg1').css('z-index', 2); // trying to set  z-index
 				rainDropTransition('#centreImg3',0,yTargetPos2,-10,totalDuration,100);
 				ChangeImg('#centreImg3',imgArray[currentImg]);
 			}
 			else if (TransitionState == 1)
 			{
-				$('#centreImg3').css('z-index', 3); // trying to set  z-index
+				$('#centreImg3').css('z-index', 2); // trying to set  z-index
 				$('#centreImg2').css('z-index', 4); // trying to set  z-index
-				$('#centreImg1').css('z-index', 2); // trying to set  z-index
+				$('#centreImg1').css('z-index', 3); // trying to set  z-index
 				rainDropTransition('#centreImg2',0,yTargetPos,15,totalDuration,100);
 				ChangeImg('#centreImg2',imgArray[currentImg]);
 			}
@@ -150,19 +146,27 @@
 			
 			if (TransitionState == 0)
 			{
+				console.log(" state 1 ");
 				ChangeImg('#centreImg6',imgArray[tempImage]);
-				SetPosition('#centreImg6',xLeftPos,yTargetPos2-8,-10,0);
+				setParameters('#centreImg6',xLeftPos,yTargetPos2-8,-10,1,0);
+				setParameters('#centreImg2',0,-350,15,0.45,0);
 			}
 			else if (TransitionState == 1)
 			{
+				console.log(" state 2 ");
 				ChangeImg('#centreImg5',imgArray[tempImage]);
-				SetPosition('#centreImg5',0,yTargetPos,15,0);
+				setParameters('#centreImg5',0,yTargetPos,15,1,0);
+				setParameters('#centreImg1',0,-450,-35,0.4,0);
 			}
 			else if (TransitionState == 2)
 			{
+				console.log(" state 3 ");
 				ChangeImg('#centreImg4',imgArray[tempImage]);
-				SetPosition('#centreImg4',xRightPos,15,-35,0);
+				setParameters('#centreImg4',xRightPos,15,-35,1,0);
+				setParameters('#centreImg3',0,-350,-10,0.45,0);
 			}
+			
+			setTimeout(DropIn,100);<!---- move in new image after we set it out------->
 		}
 		
 		function returnPreviousInt()

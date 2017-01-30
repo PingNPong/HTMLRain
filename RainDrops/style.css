@@ -1,9 +1,3 @@
-#rectangle{
-    width:200px;
-    height:100px;
-    background:blue;
-}
-
 #overlay2{
     z-index:5;
 }
@@ -56,31 +50,18 @@
 	height: 500px;
 }
 
-#main1Style  img{
-    position:relative;
-	left:50px;
-	top:50px;
-  	width: 900px;
-	height: 500px;
-}
-
-#main2Style  img{
-    position:relative;
-	left:1000px;
-	top:100px;
-  	width: 900px;
-	height: 500px;
-}
-
 #centreImg6  img{
+	z-index:-1;
 	-webkit-backface-visibility: hidden;
 }
 
 #centreImg5  img{
+	z-index:0;
 	-webkit-backface-visibility: hidden;
 }
 
 #centreImg4  img{
+	z-index:1;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -103,44 +84,12 @@
 
 /* containers  ---------------------*/
 #main-container {
+	-webkit-backface-visibility: hidden;
+	z-index:-2;
 	width: 1920px;
 	height: 1080px;
 	position:absolute;
 	background-color:#9400D3;
-}
-/* 1 ---------------------*/
-#Left-container {
-	width: 1920px;
-	height: 1080px;
-	top:-100;
-	right:1920;
-	position:absolute;
-	background:orange;
-}
-/* 2 ---------------------*/
-#Centre-container {
-	width: 1920px;
-	height: 1080px;
-	top:0;
-	right:0;
-	position:absolute;
-	background:purple;
-}
-
-#Right-container {
-	width: 1920px;
-	height: 1080px;
-	top:0;
-	right:0;
-	position:absolute;
-	background:blue;
-}
-
-#vid-container {
-	width: 1280px;
-	height: 720px;
-	position:absolute;
-	bottom: 100px;
 }
 
 /* Positioning  */ 
@@ -184,7 +133,6 @@
 	top:280px;
   	width: 640px;
 	height: 360px;
-	z-index:3;
 }
 
 .Middle {
@@ -193,7 +141,6 @@
 	top:290px;
   	width: 640px;
 	height: 360px;
-	z-index:2;
 }
 
 .RightMiddle {
@@ -202,14 +149,12 @@
 	top:300px;
   	width: 640px;
 	height: 360px;
-	z-index:1;
 }
 
 .overlay{
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index:4;
 }
 
 .photo{

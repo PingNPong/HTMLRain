@@ -1,6 +1,8 @@
 // all external functions will be stored here 
 var displayConsole = false; 
 
+//===== Changing Images =======
+
 // change the continer background 
 function ChangeContainer(containerName,pictureName) {
 		$(containerName).css('background', 'url('+pictureName+')');
@@ -21,6 +23,8 @@ function ChangeImg(imageName,pictureName) {
 	}
 	
 }
+
+//===== Video functions =======
 
 function ChangeVideo(vidName,VideoName)
 {
@@ -43,6 +47,8 @@ function playPauseBool(toPlay) {
         myVideo.pause();
 }
 
+//===== Unused transitions atm =======
+
 // sliding function to animate a container left to right 
 function slideTransitionFromLeft(LeftName, CentreName,time,delayTime)
 {
@@ -56,6 +62,22 @@ function slideTransitionFromLeft(LeftName, CentreName,time,delayTime)
 	$(CentreName).transition({x: -10,delay: delayTime},time,"linear");
 }	
 
+//setting the out transition of the items NOT used 
+function outTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
+{
+	$(ImageName).transition({x: xOffset,y:yTarget,rotate:''+Rotation+'deg',scale: 1},1);
+	$(ImageName).transition({y:500, delay: delayTime,scale: 0.1},time,"ease");
+}
+
+//setting the in transition of the items NOT used 
+function FadeTransition1(ImageName,xOffset,Rotation,time,delayTime)
+{
+	$(ImageName).transition({x: xOffset,y:0, rotate:''+Rotation+'deg',opacity: 100},10,"ease");
+	$(ImageName).transition({ opacity: 0,delay: delayTime },time,"ease");
+}
+
+//===== Used transitions  =======
+
 function SetOpacity(ImageName,SetOpacity,time,delayTime)
 {
 	$(ImageName).transition({x: -10, opacity: SetOpacity, delay: delayTime},time,"ease");
@@ -66,18 +88,7 @@ function rainDropTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
 	$(ImageName).transition({delay: delayTime,x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: 1},time,"ease");
 }
 
-function outTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
-{
-	$(ImageName).transition({x: xOffset,y:yTarget,rotate:''+Rotation+'deg',scale: 1},1);
-	$(ImageName).transition({y:500, delay: delayTime,scale: 0.1},time,"ease");
-}
-
-function FadeTransition1(ImageName,xOffset,Rotation,time,delayTime)
-{
-	$(ImageName).transition({x: xOffset,y:0, rotate:''+Rotation+'deg',opacity: 100},10,"ease");
-	$(ImageName).transition({ opacity: 0,delay: delayTime },time,"ease");
-}
-
+//setting the position, rotations and scales quickly
 function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 {
 	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: SettingScale,delay: delayTime},5);
@@ -86,8 +97,7 @@ function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 function returnPreviousInt(index,currentImg,maxImages)
 {
 	if ((currentImg-index)<0)
-	{
-	//when the new number will be less than 0 -->
+	{//when the new number will be less than 0 -->
 		console.log(currentImg-index+" is now "+(maxImages + (currentImg-index)));
 		return maxImages + (currentImg-index);
 	}

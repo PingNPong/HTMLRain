@@ -6,7 +6,6 @@ var loadedImages=false;
 
 function SetImageArray(MaxImages)
 {
-	console.log("Image set");
 	arraySet=true;
 	for(i = 2; i < maxImages+1; i++)
 	{// adding the numbers to the 
@@ -26,7 +25,6 @@ function SetImageArray(MaxImages)
 
 function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 {
-	console.log("LoadSetImages");
 	var image = new Image();
 	//setting image location 
 	var EndAmount=StartIndex+Amount
@@ -72,7 +70,6 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++){
 		imgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
-		console.log("loading "+imgArray[i]);
 		var url = imgArray[i],
 			img = new Image(960, 540);
  

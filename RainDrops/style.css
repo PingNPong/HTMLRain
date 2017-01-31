@@ -1,54 +1,32 @@
-#rectangle{
-    width:200px;
-    height:100px;
-    background:blue;
-}
-
-#overlay2{
+#overlayContainer{
     z-index:5;
 	-webkit-backface-visibility: hidden;
 }
 
-#main1Style  img{
-    position:relative;
-	left:50px;
-	top:50px;
-  	width: 900px;
-	height: 500px;
-}
-
-#main2Style  img{
-    position:relative;
-	left:1000px;
-	top:100px;
-  	width: 900px;
-	height: 500px;
-}
-
-#centreImg6  img{
+#centreLeft  img{
 	-webkit-backface-visibility: hidden;
 }
 
-#centreImg5  img{
+#centreMiddle  img{
 	-webkit-backface-visibility: hidden;
 }
 
-#centreImg4  img{
+#centreRight img{
 	-webkit-backface-visibility: hidden;
 }
 
 
-#centreImg1  img{
+#leftTopMiddle  img{
 	z-index:4;
 	-webkit-backface-visibility: hidden;
 }
 
-#centreImg2  img{
+#middleTopMiddle  img{
 	z-index:3;
 	-webkit-backface-visibility: hidden;
 }
 
-#centreImg3  img{
+#rightTopMiddle  img{
 	z-index:2;
 	-webkit-backface-visibility: hidden;
 }
@@ -59,43 +37,17 @@
 	width: 1920px;
 	height: 1080px;
 	position:absolute;
-	background-color:#9400D3;
+	background-color:#000000;
 }
-/* 1 ---------------------*/
-#Left-container {
-	width: 1920px;
-	height: 1080px;
-	top:-100;
-	right:1920;
-	position:absolute;
-	background:orange;
-}
-/* 2 ---------------------*/
+
 #Centre-container {
 	width: 1920px;
 	height: 1080px;
 	top:0;
 	right:0;
 	position:absolute;
-	background:purple;
+	background:white; 
 }
-
-#Right-container {
-	width: 1920px;
-	height: 1080px;
-	top:0;
-	right:0;
-	position:absolute;
-	background:blue;
-}
-
-#vid-container {
-	width: 1280px;
-	height: 720px;
-	position:absolute;
-	bottom: 100px;
-}
-
 /* Positioning  */ 
 
 .topLeft {
@@ -158,18 +110,9 @@
 	z-index:1;
 }
 
-.overlay{
+.overlayClass{
   position: absolute;
   bottom: 0;
   right: 0;
   z-index:4;
-}
-
-.photo{
-    height:50px;
-    width:250px;
-	background-color: #4CAF50;
-    color: white;
-	font-size: 20px;
-    margin: 4px 2px;
 }

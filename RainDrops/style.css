@@ -1,8 +1,4 @@
-#overlayContainer{
-    z-index:5;
-	-webkit-backface-visibility: hidden;
-}
-
+/* content ------------------*/
 #centreLeft  img{
 	-webkit-backface-visibility: hidden;
 }
@@ -33,6 +29,11 @@
 
 
 /* containers  ---------------------*/
+#overlayContainer{
+    z-index:5;
+	-webkit-backface-visibility: hidden;
+}
+
 #main-container {
 	width: 1920px;
 	height: 1080px;
@@ -47,8 +48,10 @@
 	right:0;
 	position:absolute;
 	background:white; 
+	
 }
-/* Positioning  */ 
+
+/* Positioning classes ------------ */ 
 
 .topLeft {
     position: absolute;

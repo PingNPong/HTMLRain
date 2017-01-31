@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	
+	<!----- body area ----->
 	<div id="main-container">
 		<div id="Centre-container">
 		<!-- Back images  -->
@@ -30,27 +30,26 @@
 		<!-- overlay -->	
 			<img id="overlayContainer" class="overlayClass" src="mask.png" >
 		</div>
-		
+		<!----- end body area ----->
 	</div>
 	
 
 	<script id= 'code'>
-	{
+	{/// begin code area  
 		var imgPath  = "http://192.168.2.239/RoyalityFree/";
 		var totalDuration = 3000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
 		var waitDuration = 500; //the duration for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
+		
 		var xLeftPos = -540;// 500
 		var xRightPos = 500;
 		var yTargetPos = 100;
 		var yTargetPos2 = 140;
-		
-		
+		var xOffset = [-50,50];
 		var currentImg=0;
 		var maxImages=12;
-		var xOffset = [-50,50];
 		var Connected = false; 
 		
 		//the start up function 
@@ -68,20 +67,6 @@
 			
 			Connected = loadedImages ; 
 		});
-		
-		<!----- Main function reccursively calling itself   --->
-		function Update()
-		{
-			if (Connected)
-			{
-				TransitionOut();
-			}
-			else 
-			{
-				RefreshCheck();
-			}
-		}
-		
 		
 		<!----- Transition for dropping in from the transition state --->
 		function DropIn()
@@ -127,7 +112,7 @@
 		<!----- Setup the images for the transition out --->
 		function TransitionOut()
 		{
-			var tempImage=returnPreviousInt(1,currentImg,maxImages);
+			var tempImage=returnPreviousInt(3,currentImg,maxImages);
 			
 			if (TransitionState == 0)
 			{
@@ -160,19 +145,6 @@
 			setTimeout(DropIn,waitDuration);
 		}
 		
-		function returnPreviousInt()
-		{
-			if (currentImg-3<0)
-			{
-			<!-- when the new number will be less than 0 -->
-				return maxImages + (currentImg-3);
-			}
-			else 
-			{
-				return currentImg-3;
-			}
-		}
-		
 		//the next image in the list 
 		function NextImage()
 		{
@@ -196,6 +168,20 @@
 			}
 		}
 		
+		<!----- Main function reccursively calling itself  ---->
+		function Update()
+		{
+			if (Connected)
+			{
+				TransitionOut();
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
+		
+		//the check which will 
 		function RefreshCheck()
 		{
 			PreLoadImages(maxImages,Math.random());
@@ -209,6 +195,7 @@
 			}
 		}
 		
+		//loaded image functions 
 		function ImageLoaded()
 		{
 			console.log("Image loaded called");
@@ -222,7 +209,7 @@
 		}
 		
 		
-	}
+	}/// end code area
 	</script>
 </body>
 

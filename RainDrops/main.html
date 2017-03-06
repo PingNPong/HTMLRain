@@ -52,14 +52,14 @@
 		var yTargetPos2 = 140;
 		var xOffset = [-50,50];
 		var currentImg=0;
-		var maxImages=12;
+		var maxDynamicImages=12;
 		var Connected = false; 
 		
 		//the start up function 
 		$(function (){
 			var ImageFound=false;
 			console.log("initializing");
-			PreLoadImages(maxImages);
+			PreLoadImages(maxDynamicImages);
 			
 			<!-- intial setup -->
 			SetValues('#centreLeft',xLeftPos,yTargetPos2-10,-10,1,0);
@@ -102,7 +102,7 @@
 			if (TransitionState == 2)
 			{
 				TransitionState = 0;	
-				LoadSetImages(maxImages,currentImg,3,Math.random())
+				LoadSetImages(maxDynamicImages,currentImg,3,Math.random())
 			}
 			else 
 				TransitionState = Math.min(TransitionState+1, 2);
@@ -121,11 +121,11 @@
 		<!----- Setup the images for the transition out --->
 		function TransitionOut()
 		{
-			var tempImage=returnPreviousInt(3,currentImg,maxImages);
+			var tempImage=returnPreviousInt(3,currentImg,maxDynamicImages);
 			
 			if (TransitionState == 0)
 			{
-				SetValues('#leftTopMiddle',0,-300,-10,0.35,0);
+				SetValues('#leftTopMiddle',0,-300,-10,0.35,0);//set the front value  
 				SetValues('#BackDropLeft',xLeftPos,-300,-10,0.35,0);//set shadow values 
 				// set z index of the shadows
 				$('#BackDropLeft').css('z-index', 4); 
@@ -141,7 +141,7 @@
 			}
 			else if (TransitionState == 1)
 			{
-				SetValues('#middleTopMiddle',0,-300,15,0.35,0);
+				SetValues('#middleTopMiddle',0,-300,15,0.35,0);//set the front value 
 				SetValues('#BackDropMid',0,-300,15,0.35,0);//set shadow values 
 				// set z index of the shadows
 				$('#BackDropLeft').css('z-index', 3); 
@@ -158,7 +158,7 @@
 			}
 			else if (TransitionState == 2)
 			{
-				SetValues('#rightTopMiddle',-70,-350,0,0.3,0);
+				SetValues('#rightTopMiddle',-70,-350,0,0.3,0);//set the front value 
 				SetValues('#BackDropRight',xRightPos-40,-330,0,0.2,0);//set shadow values 
 				// set z index of the shadows
 				$('#BackDropLeft').css('z-index', 2); 
@@ -181,10 +181,10 @@
 		{
 			var ImageFound=false;
 			var previousImg_i = currentImg;
-			if (currentImg +1== maxImages)
+			if (currentImg +1== maxDynamicImages)
 				currentImg = 0;	
 			else 
-				currentImg = Math.min(currentImg+1, maxImages);
+				currentImg = Math.min(currentImg+1, maxDynamicImages);
 
 			if (currentImg==0)
 			{// if the current image has been reset 
@@ -215,7 +215,7 @@
 		//the check which will 
 		function RefreshCheck()
 		{
-			PreLoadImages(maxImages,Math.random());
+			PreLoadImages(maxDynamicImages,Math.random());
 			if (Connected)
 			{
 				setTimeout(Update,1000);

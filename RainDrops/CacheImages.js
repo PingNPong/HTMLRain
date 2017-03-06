@@ -1,13 +1,13 @@
-var imgPath  = "http://192.168.2.239/RoyalityFree/";
-var imgArray = [imgPath+"01.jpg"];
-var defaultArray = [imgPath+"01.jpg"];
+var imgPath  = "http://192.168.2.239/PhotoBooth/";
+var imgArray = [imgPath+"00.jpg"];
+var defaultArray = [imgPath+"00.jpg"];
 var arraySet=false;
 var loadedImages=false;
 
 function SetImageArray(MaxImages)
-{
+{// pre setting the array based on the max number of images 
 	arraySet=true;
-	for(i = 2; i < maxImages+1; i++)
+	for(i = 1; i < maxImages; i++)
 	{// adding the numbers to the 
 		var putImage="";
 		if ( i<10 )
@@ -18,17 +18,19 @@ function SetImageArray(MaxImages)
 		{
 			putImage=imgPath+i+".jpg";
 		}
+		console.log(putImage+" =put image ");
 		imgArray.push(putImage);
 		defaultArray.push(putImage);
 	}
 }
-
+/* Cache Images with shifted items expected */
 function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 {
 	var image = new Image();
 	//setting image location 
-	var EndAmount=StartIndex+Amount
+	var EndAmount=StartIndex+Amount-1;
 	var imageLocation= (EndAmount)+".jpg";
+
 	if ( (EndAmount)<10 )
 	{// if its less than 10 we put 0 before 
 		imageLocation="0"+(EndAmount)+".jpg";
@@ -65,7 +67,7 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 	
 	image.src =imgPath+imageLocation;
 }
-
+/* Cache Images with standard item location expected */
 function SetImages(StartIndex,Amount,ExtraAddOn)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++){

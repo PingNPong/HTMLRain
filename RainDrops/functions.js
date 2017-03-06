@@ -98,12 +98,12 @@ function returnPreviousInt(index,currentImg,maxImages)
 {
 	if ((currentImg-index)<0)
 	{//when the new number will be less than 0 -->
-		console.log(currentImg-index+" is now "+(maxImages + (currentImg-index)));
+		//console.log(currentImg-index+" is now "+(maxImages + (currentImg-index)));
 		return maxImages + (currentImg-index);
 	}
 	else 
 	{
-		console.log(currentImg-index+" is now ");
+		//console.log(currentImg-index+" is now ");
 		return currentImg-index;
 	}
 }

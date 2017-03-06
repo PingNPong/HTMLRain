@@ -1,3 +1,32 @@
+.shadow {
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+/* containers  ---------------------*/
+#overlayContainer{
+    z-index:5;
+	-webkit-backface-visibility: hidden;
+}
+
+#main-container {
+	width: 1920px;
+	height: 1080px;
+	position:absolute;
+	background-color:#000000;
+}
+
+#Centre-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background:white; 
+	/* background-image: url("01.jpg"); */
+}
+
 /* content ------------------*/
 #centreLeft  img{
 	-webkit-backface-visibility: hidden;
@@ -25,30 +54,6 @@
 #rightTopMiddle  img{
 	z-index:2;
 	-webkit-backface-visibility: hidden;
-}
-
-
-/* containers  ---------------------*/
-#overlayContainer{
-    z-index:5;
-	-webkit-backface-visibility: hidden;
-}
-
-#main-container {
-	width: 1920px;
-	height: 1080px;
-	position:absolute;
-	background-color:#000000;
-}
-
-#Centre-container {
-	width: 1920px;
-	height: 1080px;
-	top:0;
-	right:0;
-	position:absolute;
-	background:white; 
-	
 }
 
 /* Positioning classes ------------ */ 
@@ -87,6 +92,7 @@
 
 
 .LeftMiddle {
+	-webkit-box-shadow: 5px 5px 25px 5px black;
     position:absolute;
 	left:60px;
 	top:280px;
@@ -96,6 +102,7 @@
 }
 
 .Middle {
+	-webkit-box-shadow: 5px 5px 25px 5px black;
     position:absolute;
 	left:600px;
 	top:290px;
@@ -105,6 +112,7 @@
 }
 
 .RightMiddle {
+	-webkit-box-shadow: 5px 5px 25px 5px black;
     position:absolute;
 	left:1100px;
 	top:300px;

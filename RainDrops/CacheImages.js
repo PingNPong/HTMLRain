@@ -1,16 +1,14 @@
-var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery 
-var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
-
 var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 
-var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Static Image Gallery
+var StaticImgPath  = "PhotoBoothStatic/";// Static Image Gallery
 var StaicImgArray = [StaticImgPath+"00.jpg"];
+
+var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery 
+var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
 
 var arraySet=false;
 var loadedImages=false;
-var TwoDynamicsPics=false;// variable to indicate if the current state is on 2 
-
 // test
 function SetImageArray(MaxImage)
 {// pre setting the array based on the max number of images 

@@ -1,6 +1,8 @@
 var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery 
-var imgArray = [imgPath+"00.jpg"];
-var defaultArray = [imgPath+"00.jpg"];
+var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
+
+var defaultArray = [imgPath+"00.jpg"];// image array copy for downloading
+var imgArray=[] ;
 
 var StaticImgPath  = "PhotoBoothStatic/";// Static Image Gallery
 var StaicImgArray = [StaticImgPath+"00.jpg"];
@@ -12,6 +14,7 @@ var TwoDynamicsPics=false;// variable to indicate if the current state is on 2
 // test
 function SetImageArray(MaxImage)
 {// pre setting the array based on the max number of images 
+	var usingDynamic=false;// are we taking from the dynamic array, if not then we take from static 
 	arraySet=true;
 	for(i = 1; i < MaxImage; i++)
 	{// adding the numbers to the 
@@ -25,7 +28,7 @@ function SetImageArray(MaxImage)
 			putImage=imgPath+i+".jpg";
 		}
 		//console.log(putImage+" =put image ");
-		imgArray.push(putImage);
+		DynamicImgArray.push(putImage);
 		defaultArray.push(putImage);
 	}
 	// setting the static image array 
@@ -34,9 +37,29 @@ function SetImageArray(MaxImage)
 		var putImage="";
 		putImage=StaticImgPath+"0"+i+".jpg";
 		
-		console.log(putImage+" =put image ");
+		//console.log(putImage+" =put image ");
 		StaicImgArray.push(putImage);
 	}
+	
+	// merging the 2 arrays together 
+	for (i=0; i< MaxImage ; i++)
+	{
+		var putImage="";
+		
+		imgArray.push(DynamicImgArray[i]);
+		//console.log(i+" dynamic i="+DynamicImgArray[i]);
+		if (i<10)
+		{
+			imgArray.push(StaicImgArray[i]);
+			//console.log(i+" static i="+StaicImgArray[i]);
+		}
+
+	}
+	
+	// for (i=0; i< imgArray.length ; i++)
+	// {
+		//console.log(i+" img array i="+imgArray[i]);
+	// }
 }
 
 /* Cache Images with shifted items expected */
@@ -80,19 +103,19 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 		FailedToLoad();
 		loadedImages=false;
 	});
-	TwoDynamicsPics=!TwoDynamicsPics;
 	image.src =imgPath+imageLocation;
 }
-/* OLD Cache Images with standard item location expected */
+/* Cache Images with standard item location expected */
 function SetImages(StartIndex,Amount,ExtraAddOn)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++){
-		imgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
-		var url = imgArray[i],
+		DynamicImgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
+		var url = DynamicImgArray[i],
 			img = new Image(960, 540);
  
 		img.src = url;
 	};  
+	//console.log("setting the images "+DynamicImgArray[i]);
 }
 
 // called at the initalize function and checking loop 
@@ -158,8 +181,8 @@ function LoadImages(MaxImage)
 {
 	new Date();
 	// preloading the images 
-	for(i = 0; i < imgArray.length; i++){
-		var url = imgArray[i],
+	for(i = 0; i < DynamicImgArray.length; i++){
+		var url = DynamicImgArray[i],
 			img = new Image(960, 540);
  
 		img.src = url;

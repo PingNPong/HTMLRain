@@ -77,21 +77,21 @@
 			if (TransitionState == 0)
 			{
 				rainDropTransition('#leftTopMiddle',0,yTargetPos2,-10,totalDuration,500);//Regular outside transition
-				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
+				ChangeImg('#leftTopMiddle',DynamicImgArray[currentImg]);//Change the front image to current
 
 				rainDropTransition('#BackDropLeft',xLeftPos+15,yTargetPos2+5,-10,totalDuration,500);
 			}
 			else if (TransitionState == 1)
 			{
 				rainDropTransition('#middleTopMiddle',0,yTargetPos,15,totalDuration,500);//Regular outside transition
-				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
+				ChangeImg('#middleTopMiddle',DynamicImgArray[currentImg]);//Change the front image to current
 			
 				rainDropTransition('#BackDropMid',10,yTargetPos+20,15,totalDuration,500);
 			}
 			else if (TransitionState == 2)
 			{	
 				rainDropTransition('#rightTopMiddle',0,0,-35,totalDuration,500);//Regular outside transition
-				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
+				ChangeImg('#rightTopMiddle',DynamicImgArray[currentImg]);//Change the front image to current
 				
 				rainDropTransition('#BackDropRight',xRightPos+20,20,-35,totalDuration,500);
 			}
@@ -137,7 +137,7 @@
 				$('#middleTopMiddle').css('z-index', 2); 
 				$('#rightTopMiddle').css('z-index', 3); 
 				
-				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
+				ChangeImg('#centreLeft',DynamicImgArray[tempImage]);//Change the back image to the previous
 			}
 			else if (TransitionState == 1)
 			{
@@ -154,7 +154,7 @@
 				$('#rightTopMiddle').css('z-index', 2); 
 				<!-- $('#leftTopMiddle').shadowColor="transparent"; -->
 				
-				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous
+				ChangeImg('#centreMiddle',DynamicImgArray[tempImage]);//Change the back image to the previous
 			}
 			else if (TransitionState == 2)
 			{
@@ -170,7 +170,7 @@
 				$('#rightTopMiddle').css('z-index', 4); 
 				<!-- $('#leftTopMiddle').shadowColor="black"; -->
 				
-				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous
+				ChangeImg('#centreRight',DynamicImgArray[tempImage]);//Change the back image to the previous
 			}
 			
 			setTimeout(DropIn,waitDuration);

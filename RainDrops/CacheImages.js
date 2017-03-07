@@ -1,11 +1,12 @@
 var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 
-var StaticImgPath  = "PhotoBoothStatic/";// Static Image Gallery
-var StaicImgArray = [StaticImgPath+"00.jpg"];
+var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Static Image Gallery PhotoBoothStatic/
+var StaicImgArray = [StaticImgPath+"00Static.jpg"];
 
-var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery 
+var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery  Static/
 var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
+var dynamicdefaultArray = [imgPath+"00.jpg"];// image array copy for downloading
 
 var arraySet=false;
 var loadedImages=false;
@@ -27,13 +28,13 @@ function SetImageArray(MaxImage)
 		}
 		//console.log(putImage+" =put image ");
 		DynamicImgArray.push(putImage);
-		
+		dynamicdefaultArray.push(putImage);
 	}
 	// setting the static image array 
 	for(i = 1; i < 10; i++)
 	{// adding the numbers to the 
 		var putImage="";
-		putImage=StaticImgPath+"0"+i+".jpg";
+		putImage=StaticImgPath+"0"+i+"Static.jpg";
 		
 		//console.log(putImage+" =put image ");
 		StaicImgArray.push(putImage);
@@ -99,7 +100,7 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 		loadedImages=false;
 	});
 	//imgPath+imageLocation
-	image.src =defaultArray[StartIndex];
+	image.src =imgArray[StartIndex];
 }
 /* Cache Images with standard item location expected */
 function SetImages(StartIndex,Amount,ExtraAddOn)
@@ -114,24 +115,28 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 		}
 		else 
 		{//when the new number will be larger than the max = 22 -->
-			console.log(i-22+" reset the index");
+			//console.log(i-22+" reset the index");
 			settingIndex = i-22;
 		}
 		
-		if (settingIndex<20 && settingIndex%2==1)
-		{// if its a static image (less than 20 and odd )
-			imgArray[settingIndex]=defaultArray[settingIndex];// setting name of loading image 
-			//console.log("odd = "+imgArray[settingIndex]);
-		}
-		else
-		{// if its a dynamic image (even)
+		// if (settingIndex<20 && settingIndex%2==1)
+		// {// if its a static image (less than 20 and odd )
+			// imgArray[settingIndex]=defaultArray[settingIndex];// setting name of loading image 
+			// //console.log("odd = "+imgArray[settingIndex]);
+		// }
+		// else
+		//{// if its a dynamic image (even)
 			imgArray[settingIndex]=defaultArray[settingIndex]+"?lastmod"+ExtraAddOn;// setting name of loading image 
-		}
+		//}
 		
 		var url = imgArray[settingIndex],
 			img = new Image(960, 540);
- 
 		img.src = url;
+ 
+		// DynamicImgArray[i]=dynamicdefaultArray[i]+"?lastmod"+ExtraAddOn;// setting name of loading image 
+ 		// var nurl = DynamicImgArray[i],
+			// img = new Image(960, 540);
+		//img.src = nurl;
 	};  
 	//console.log("setting the images "+DynamicImgArray[i]);
 }

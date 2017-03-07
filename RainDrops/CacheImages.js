@@ -4,7 +4,7 @@ var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array
 var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 
-var StaticImgPath  = "PhotoBoothStatic/";// Static Image Gallery
+var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Static Image Gallery
 var StaicImgArray = [StaticImgPath+"00.jpg"];
 
 var arraySet=false;
@@ -65,16 +65,16 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 	var image = new Image();
 	//setting image location 
 	var EndAmount=StartIndex+Amount-1;
-	var imageLocation= (EndAmount)+".jpg";
+	// var imageLocation= (EndAmount)+".jpg";
 
-	if ( (EndAmount)<10 )
-	{// if its less than 10 we put 0 before 
-		imageLocation="0"+(EndAmount)+".jpg";
-	}
-	else 
-	{
-		imageLocation=(EndAmount)+".jpg";
-	}
+	// if ( (EndAmount)<10 )
+	// {// if its less than 10 we put 0 before 
+		// imageLocation="0"+(EndAmount)+".jpg";
+	// }
+	// else 
+	// {
+		// imageLocation=(EndAmount)+".jpg";
+	// }
 	
 	loadedImages=true;
 	if (!arraySet)
@@ -100,7 +100,8 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 		FailedToLoad();
 		loadedImages=false;
 	});
-	image.src =imgPath+imageLocation;
+	//imgPath+imageLocation
+	image.src =defaultArray[StartIndex];
 }
 /* Cache Images with standard item location expected */
 function SetImages(StartIndex,Amount,ExtraAddOn)
@@ -113,15 +114,22 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 			//console.log(currentImg-index+" is now "+(maxImages + (currentImg-index)));
 			settingIndex= i;
 		}
-		
 		else 
 		{//when the new number will be larger than the max = 22 -->
-			console.log(22-i+" reset the index");
-			settingIndex = 22-i;
+			console.log(i-22+" reset the index");
+			settingIndex = i-22;
 		}
-
 		
-		imgArray[settingIndex]=defaultArray[settingIndex]+"?lastmod"+ExtraAddOn;
+		if (settingIndex<20 && settingIndex%2==1)
+		{// if its a static image (less than 20 and odd )
+			imgArray[settingIndex]=defaultArray[settingIndex];// setting name of loading image 
+			//console.log("odd = "+imgArray[settingIndex]);
+		}
+		else
+		{// if its a dynamic image (even)
+			imgArray[settingIndex]=defaultArray[settingIndex]+"?lastmod"+ExtraAddOn;// setting name of loading image 
+		}
+		
 		var url = imgArray[settingIndex],
 			img = new Image(960, 540);
  

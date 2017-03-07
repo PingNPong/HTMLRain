@@ -56,17 +56,17 @@
 	-webkit-backface-visibility: hidden;
 }
 
-#BackDropLeft img{
+#ShadowLeft img{
 	z-index:3;
 	-webkit-backface-visibility: hidden;
 }
 
-#BackDropMid img{
+#ShadowMid img{
 	z-index:2;
 	-webkit-backface-visibility: hidden;
 }
 
-#BackDropRight img{
+#ShadowRight img{
 	z-index:1;
 	-webkit-backface-visibility: hidden;
 }

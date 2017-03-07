@@ -1,7 +1,7 @@
 var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery 
 var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
 
-var defaultArray = [imgPath+"00.jpg"];// image array copy for downloading
+var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 
 var StaticImgPath  = "PhotoBoothStatic/";// Static Image Gallery
@@ -29,7 +29,7 @@ function SetImageArray(MaxImage)
 		}
 		//console.log(putImage+" =put image ");
 		DynamicImgArray.push(putImage);
-		defaultArray.push(putImage);
+		
 	}
 	// setting the static image array 
 	for(i = 1; i < 10; i++)
@@ -47,19 +47,16 @@ function SetImageArray(MaxImage)
 		var putImage="";
 		
 		imgArray.push(DynamicImgArray[i]);
+		defaultArray.push(DynamicImgArray[i]);
 		//console.log(i+" dynamic i="+DynamicImgArray[i]);
 		if (i<10)
 		{
 			imgArray.push(StaicImgArray[i]);
+			defaultArray.push(StaicImgArray[i]);
 			//console.log(i+" static i="+StaicImgArray[i]);
 		}
 
 	}
-	
-	// for (i=0; i< imgArray.length ; i++)
-	// {
-		//console.log(i+" img array i="+imgArray[i]);
-	// }
 }
 
 /* Cache Images with shifted items expected */
@@ -108,9 +105,24 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 /* Cache Images with standard item location expected */
 function SetImages(StartIndex,Amount,ExtraAddOn)
 {
-	for(i = StartIndex; i < StartIndex+Amount; i++){
-		DynamicImgArray[i]=defaultArray[i]+"?lastmod"+ExtraAddOn;
-		var url = DynamicImgArray[i],
+	for(i = StartIndex; i < StartIndex+Amount; i++)
+	{
+		var settingIndex=0;
+		if ((i)<22)
+		{//when the new number will be fine
+			//console.log(currentImg-index+" is now "+(maxImages + (currentImg-index)));
+			settingIndex= i;
+		}
+		
+		else 
+		{//when the new number will be larger than the max = 22 -->
+			console.log(22-i+" reset the index");
+			settingIndex = 22-i;
+		}
+
+		
+		imgArray[settingIndex]=defaultArray[settingIndex]+"?lastmod"+ExtraAddOn;
+		var url = imgArray[settingIndex],
 			img = new Image(960, 540);
  
 		img.src = url;

@@ -22,9 +22,9 @@
 			<img id="centreMiddle" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
 			<img id="centreRight" class="Middle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="">
 		<!-- Shadow  -->
-			<img id="BackDropLeft" class="Middle" src="DropShadow.png" >
-			<img id="BackDropMid" class="Middle" src="DropShadow.png" >
-			<img id="BackDropRight" class="Middle" src="DropShadow.png" >
+			<img id="ShadowLeft" class="Middle" src="DropShadow.png" >
+			<img id="ShadowMid" class="Middle" src="DropShadow.png" >
+			<img id="ShadowRight" class="Middle" src="DropShadow.png" >
 		
 		<!-- Front images -->
 			<img id="leftTopMiddle" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/04.jpg" alt="" >
@@ -77,23 +77,23 @@
 			if (TransitionState == 0)
 			{
 				rainDropTransition('#leftTopMiddle',0,yTargetPos2,-10,totalDuration,500);//Regular outside transition
-				ChangeImg('#leftTopMiddle',DynamicImgArray[currentImg]);//Change the front image to current
+				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
 
-				rainDropTransition('#BackDropLeft',xLeftPos+15,yTargetPos2+5,-10,totalDuration,500);
+				rainDropTransition('#ShadowLeft',xLeftPos+20,yTargetPos2+5,-10,totalDuration,500);
 			}
 			else if (TransitionState == 1)
 			{
 				rainDropTransition('#middleTopMiddle',0,yTargetPos,15,totalDuration,500);//Regular outside transition
-				ChangeImg('#middleTopMiddle',DynamicImgArray[currentImg]);//Change the front image to current
+				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
 			
-				rainDropTransition('#BackDropMid',10,yTargetPos+20,15,totalDuration,500);
+				rainDropTransition('#ShadowMid',10,yTargetPos+20,15,totalDuration,500);
 			}
 			else if (TransitionState == 2)
 			{	
 				rainDropTransition('#rightTopMiddle',0,0,-35,totalDuration,500);//Regular outside transition
-				ChangeImg('#rightTopMiddle',DynamicImgArray[currentImg]);//Change the front image to current
+				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
 				
-				rainDropTransition('#BackDropRight',xRightPos+20,20,-35,totalDuration,500);
+				rainDropTransition('#ShadowRight',xRightPos+23,15,-35,totalDuration,500);
 			}
 			
 			<!----- from main --->
@@ -121,32 +121,32 @@
 		<!----- Setup the images for the transition out --->
 		function TransitionOut()
 		{
-			var tempImage=returnPreviousInt(3,currentImg,maxDynamicImages);
+			var tempImage=returnPreviousInt(3,currentImg,22);// 22 because there are 22 images 
 			
 			if (TransitionState == 0)
 			{
 				SetValues('#leftTopMiddle',0,-300,-10,0.35,0);//set the front value  
-				SetValues('#BackDropLeft',xLeftPos,-300,-10,0.35,0);//set shadow values 
+				SetValues('#ShadowLeft',xLeftPos,-300,-10,0.35,0);//set shadow values 
 				// set z index of the shadows
-				$('#BackDropLeft').css('z-index', 4); 
-				$('#BackDropMid').css('z-index', 2); 
-				$('#BackDropRight').css('z-index', 3); 
+				$('#ShadowLeft').css('z-index', 4); 
+				$('#ShadowMid').css('z-index', 2); 
+				$('#ShadowRight').css('z-index', 3); 
 				
 				//set z index of pictures
 				$('#leftTopMiddle').css('z-index', 4); 
 				$('#middleTopMiddle').css('z-index', 2); 
 				$('#rightTopMiddle').css('z-index', 3); 
 				
-				ChangeImg('#centreLeft',DynamicImgArray[tempImage]);//Change the back image to the previous
+				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
 			}
 			else if (TransitionState == 1)
 			{
 				SetValues('#middleTopMiddle',0,-300,15,0.35,0);//set the front value 
-				SetValues('#BackDropMid',0,-300,15,0.35,0);//set shadow values 
+				SetValues('#ShadowMid',0,-300,15,0.35,0);//set shadow values 
 				// set z index of the shadows
-				$('#BackDropLeft').css('z-index', 3); 
-				$('#BackDropMid').css('z-index', 4); 
-				$('#BackDropRight').css('z-index', 2); 
+				$('#ShadowLeft').css('z-index', 3); 
+				$('#ShadowMid').css('z-index', 4); 
+				$('#ShadowRight').css('z-index', 2); 
 				
 				//set z index of pictures
 				$('#leftTopMiddle').css('z-index', 3);
@@ -154,23 +154,23 @@
 				$('#rightTopMiddle').css('z-index', 2); 
 				<!-- $('#leftTopMiddle').shadowColor="transparent"; -->
 				
-				ChangeImg('#centreMiddle',DynamicImgArray[tempImage]);//Change the back image to the previous
+				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous
 			}
 			else if (TransitionState == 2)
 			{
 				SetValues('#rightTopMiddle',-70,-350,0,0.3,0);//set the front value 
-				SetValues('#BackDropRight',xRightPos-40,-330,0,0.2,0);//set shadow values 
+				SetValues('#ShadowRight',xRightPos-40,-330,0,0.2,0);//set shadow values 
 				// set z index of the shadows
-				$('#BackDropLeft').css('z-index', 2); 
-				$('#BackDropMid').css('z-index', 3); 
-				$('#BackDropRight').css('z-index', 4); 
+				$('#ShadowLeft').css('z-index', 2); 
+				$('#ShadowMid').css('z-index', 3); 
+				$('#ShadowRight').css('z-index', 4); 
 				
 				$('#leftTopMiddle').css('z-index', 2); 
 				$('#middleTopMiddle').css('z-index', 3); 
 				$('#rightTopMiddle').css('z-index', 4); 
 				<!-- $('#leftTopMiddle').shadowColor="black"; -->
 				
-				ChangeImg('#centreRight',DynamicImgArray[tempImage]);//Change the back image to the previous
+				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous
 			}
 			
 			setTimeout(DropIn,waitDuration);

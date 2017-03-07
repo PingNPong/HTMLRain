@@ -55,6 +55,9 @@
 		var maxDynamicImages=12;
 		var maxImages=22;
 		var Connected = false; 
+		var PrePos1 = 0;
+		var PrePos2 = 0;
+		var PrePos3 = 0;
 		
 		//the start up function 
 		$(function (){
@@ -75,26 +78,30 @@
 		<!----- Transition for dropping in from the transition state --->
 		function DropIn()
 		{
+			var randomAngle=RandomNumber(0,60,30);
 			if (TransitionState == 0)
-			{
-				rainDropTransition('#leftTopMiddle',0,yTargetPos2,-10,totalDuration,500);//Regular outside transition
+			{// -10 15 -35
+				PrePos1=randomAngle;
+				rainDropTransition('#leftTopMiddle',0,yTargetPos2,randomAngle,totalDuration,500);//Regular outside transition
 				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
 
-				rainDropTransition('#ShadowLeft',xLeftPos+20,yTargetPos2+5,-10,totalDuration,500);
+				rainDropTransition('#ShadowLeft',xLeftPos+20,yTargetPos2+5,randomAngle,totalDuration,500);
 			}
 			else if (TransitionState == 1)
 			{
-				rainDropTransition('#middleTopMiddle',0,yTargetPos,15,totalDuration,500);//Regular outside transition
+				PrePos2=randomAngle;
+				rainDropTransition('#middleTopMiddle',0,yTargetPos,randomAngle,totalDuration,500);//Regular outside transition
 				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
 			
-				rainDropTransition('#ShadowMid',10,yTargetPos+20,15,totalDuration,500);
+				rainDropTransition('#ShadowMid',10,yTargetPos+20,randomAngle,totalDuration,500);
 			}
 			else if (TransitionState == 2)
 			{	
-				rainDropTransition('#rightTopMiddle',0,0,-35,totalDuration,500);//Regular outside transition
+				PrePos3=randomAngle;
+				rainDropTransition('#rightTopMiddle',0,0,randomAngle,totalDuration,500);//Regular outside transition
 				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
 				
-				rainDropTransition('#ShadowRight',xRightPos+23,15,-35,totalDuration,500);
+				rainDropTransition('#ShadowRight',xRightPos+23,15,randomAngle,totalDuration,500);
 			}
 			
 			<!----- from main --->
@@ -103,10 +110,13 @@
 			if (TransitionState == 2)
 			{
 				TransitionState = 0;	
-				LoadSetImages(maxDynamicImages,currentImg,3,Math.random())
+				LoadSetImages(maxDynamicImages,currentImg,3,Math.random());
 			}
 			else 
+			{
 				TransitionState = Math.min(TransitionState+1, 2);
+			}
+				
 			
 			if (Connected)
 			{
@@ -122,12 +132,13 @@
 		<!----- Setup the images for the transition out --->
 		function TransitionOut()
 		{
+			var randomAngle=RandomNumber(0,60,30);
 			var tempImage=returnPreviousInt(3,currentImg,maxImages);// 22 because there are 22 images 
 			
 			if (TransitionState == 0)
 			{
-				SetValues('#leftTopMiddle',0,-300,-10,0.35,0);//set the front value  
-				SetValues('#ShadowLeft',xLeftPos,-300,-10,0.35,0);//set shadow values 
+				SetValues('#leftTopMiddle',0,-300,randomAngle,0.35,0);//set the front value  
+				SetValues('#ShadowLeft',xLeftPos,-300,randomAngle,0.35,0);//set shadow values 
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 4); 
 				$('#ShadowMid').css('z-index', 2); 
@@ -139,11 +150,12 @@
 				$('#rightTopMiddle').css('z-index', 3); 
 				
 				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
+				SetValues('#centreLeft',xLeftPos,yTargetPos2-10,PrePos1,1,0);
 			}
 			else if (TransitionState == 1)
 			{
-				SetValues('#middleTopMiddle',0,-300,15,0.35,0);//set the front value 
-				SetValues('#ShadowMid',0,-300,15,0.35,0);//set shadow values 
+				SetValues('#middleTopMiddle',0,-300,randomAngle,0.35,0);//set the front value 
+				SetValues('#ShadowMid',0,-300,randomAngle,0.35,0);//set shadow values 
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 3); 
 				$('#ShadowMid').css('z-index', 4); 
@@ -156,11 +168,12 @@
 				<!-- $('#leftTopMiddle').shadowColor="transparent"; -->
 				
 				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous
+				SetValues('#centreMiddle',0,yTargetPos,PrePos2,1,0);
 			}
 			else if (TransitionState == 2)
 			{
-				SetValues('#rightTopMiddle',-70,-350,0,0.3,0);//set the front value 
-				SetValues('#ShadowRight',xRightPos-40,-330,0,0.2,0);//set shadow values 
+				SetValues('#rightTopMiddle',-70,-350,randomAngle,0.3,0);//set the front value 
+				SetValues('#ShadowRight',xRightPos-40,-330,randomAngle,0.2,0);//set shadow values 
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 2); 
 				$('#ShadowMid').css('z-index', 3); 
@@ -172,6 +185,7 @@
 				<!-- $('#leftTopMiddle').shadowColor="black"; -->
 				
 				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous
+				SetValues('#centreRight',xRightPos,10,PrePos3,1,0);
 			}
 			
 			setTimeout(DropIn,waitDuration);

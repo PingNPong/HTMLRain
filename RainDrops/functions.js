@@ -107,3 +107,10 @@ function returnPreviousInt(index,currentImg,maxImages)
 		return currentImg-index;
 	}
 }
+
+function RandomNumber(minInt,maxInt,minusInt)
+{
+	var returnNumber = 0;
+	returnNumber=Math.random()* maxInt + minInt;
+	return (returnNumber-minusInt);
+}

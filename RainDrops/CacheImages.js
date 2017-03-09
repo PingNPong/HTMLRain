@@ -1,3 +1,4 @@
+// a script dealing with storing images before 
 var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 

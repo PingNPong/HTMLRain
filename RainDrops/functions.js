@@ -1,4 +1,5 @@
 // all external functions will be stored here 
+// functions can relate to element changing and 
 var displayConsole = false; 
 
 //===== Changing Images =======
@@ -83,15 +84,20 @@ function SetOpacity(ImageName,SetOpacity,time,delayTime)
 	$(ImageName).transition({x: -10, opacity: SetOpacity, delay: delayTime},time,"ease");
 }
 
-function rainDropTransition(ImageName,xOffset,yTarget,Rotation,time,delayTime)
+function rainDropTransition(ImageName,yTarget,Rotation,time,delayTime)
 {
-	$(ImageName).transition({delay: delayTime,x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: 1},time,"ease");
+	$(ImageName).transition({delay: delayTime,y:yTarget, rotate:''+Rotation+'deg',scale: 1},time,"ease");
 }
 
 //setting the position, rotations and scales quickly
 function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 {
 	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: SettingScale,delay: delayTime},5);
+}
+
+function SetValuesNoX(ImageName,yTarget,Rotation,SettingScale,delayTime)
+{
+	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg',scale: SettingScale,delay: delayTime},5);
 }
 
 function returnPreviousInt(index,currentImg,maxImages)

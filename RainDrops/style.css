@@ -13,6 +13,8 @@
 #main-container {
 	width: 1920px;
 	height: 1080px;
+	top:0;
+	right:0;
 	position:absolute;
 	background-color:#000000;
 }
@@ -71,6 +73,23 @@
 	-webkit-backface-visibility: hidden;
 }
 
+#ShadowBackLeft img{
+	z-index:1;
+	-webkit-backface-visibility: hidden;
+}
+
+#ShadowBack img{
+	z-index:1;
+	-webkit-backface-visibility: hidden;
+}
+
+#ShadowBackRight img{
+	z-index:1;
+	-webkit-backface-visibility: hidden;
+}
+
+
+
 /* Positioning classes ------------ */ 
 
 .LeftMiddle {
@@ -83,14 +102,13 @@
 	/* -webkit-box-shadow: 5px 5px 20px 5px black; */
 }
 
-.LeftMiddleNoShadow {
+.LeftShadow {
     position:absolute;
-	left:60px;
-	top:280px;
-  	width: 640px;
-	height: 360px;
+	left:40px;
+	top:260px;
+  	width: 680px;
+	height: 400px;
 	z-index:3;
-	-webkit-box-shadow: none;
 }
 
 .Middle {
@@ -122,14 +140,13 @@
 	/* -webkit-box-shadow: 5px 5px 20px 5px black; */
 }
 
-.RightMiddleNoShadow {
+.RightShadow {
     position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:1020px;
+	top:280px;
+  	width: 680px;
+	height: 400px;
 	z-index:1;
-	-webkit-box-shadow: none;
 }
 
 .overlayClass{

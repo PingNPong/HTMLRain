@@ -84,9 +84,9 @@ function SetOpacity(ImageName,SetOpacity,time,delayTime)
 	$(ImageName).transition({x: -10, opacity: SetOpacity, delay: delayTime},time,"ease");
 }
 
-function rainDropTransition(ImageName,yTarget,Rotation,time,delayTime)
+function rainDropTransition(ImageName,yTarget,Rotation,time)
 {
-	$(ImageName).transition({delay: delayTime,y:yTarget, rotate:''+Rotation+'deg',scale: 1},time,"ease");
+	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg'},time,"ease");
 }
 
 //setting the position, rotations and scales quickly
@@ -95,9 +95,15 @@ function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg',scale: SettingScale,delay: delayTime},5);
 }
 
-function SetValuesNoX(ImageName,yTarget,Rotation,SettingScale,delayTime)
+//setting the position, rotations and scales quickly
+function SetValuesX(ImageName,xOffset,yTarget,Rotation)
 {
-	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg',scale: SettingScale,delay: delayTime},5);
+	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg'},20);
+}
+
+function SetValuesMin(ImageName,yTarget,Rotation)
+{
+	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg'},20);
 }
 
 function returnPreviousInt(index,currentImg,maxImages)

@@ -17,6 +17,9 @@
 	right:0;
 	position:absolute;
 	background-color:#000000;
+	
+	/* z-index:-1; */
+	/* -webkit-backface-visibility: hidden; */
 }
 
 #Centre-container {
@@ -27,6 +30,9 @@
 	position:absolute;
 	background:white; 
 	/* background-image: url("01.jpg"); */
+	
+	/* z-index:0; */
+	/* -webkit-backface-visibility: hidden; */
 }
 
 /* content ------------------*/

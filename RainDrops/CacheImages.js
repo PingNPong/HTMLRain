@@ -2,10 +2,12 @@
 var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 
-var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Static Image Gallery PhotoBoothStatic/
+var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Insert simulated static image path here
+// Static Image Gallery PhotoBoothStatic/
 var StaicImgArray = [StaticImgPath+"00Static.jpg"];
 
-var imgPath  = "http://192.168.2.239/PhotoBooth/";// Dynamic Image Gallery  Static/
+var imgPath  = "http://192.168.2.239/PhotoBooth/";// Insert simulated image path here, use for default PhotoBoothStatic/
+// Dynamic Image Gallery  Static/
 var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
 var dynamicdefaultArray = [imgPath+"00.jpg"];// image array copy for downloading
 
@@ -66,15 +68,6 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 	//setting image location 
 	var EndAmount=StartIndex+Amount-1;
 	// var imageLocation= (EndAmount)+".jpg";
-
-	// if ( (EndAmount)<10 )
-	// {// if its less than 10 we put 0 before 
-		// imageLocation="0"+(EndAmount)+".jpg";
-	// }
-	// else 
-	// {
-		// imageLocation=(EndAmount)+".jpg";
-	// }
 	
 	loadedImages=true;
 	if (!arraySet)
@@ -120,24 +113,13 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 			settingIndex = i-22;
 		}
 		
-		// if (settingIndex<20 && settingIndex%2==1)
-		// {// if its a static image (less than 20 and odd )
-			// imgArray[settingIndex]=defaultArray[settingIndex];// setting name of loading image 
-			// //console.log("odd = "+imgArray[settingIndex]);
-		// }
-		// else
-		//{// if its a dynamic image (even)
-			imgArray[settingIndex]=defaultArray[settingIndex]+"?lastmod"+ExtraAddOn;// setting name of loading image 
-		//}
-		
+
+		imgArray[settingIndex]=defaultArray[settingIndex]+"?lastmod"+ExtraAddOn;// setting name of loading image 
+
 		var url = imgArray[settingIndex],
 			img = new Image(960, 540);
 		img.src = url;
  
-		// DynamicImgArray[i]=dynamicdefaultArray[i]+"?lastmod"+ExtraAddOn;// setting name of loading image 
- 		// var nurl = DynamicImgArray[i],
-			// img = new Image(960, 540);
-		//img.src = nurl;
 	};  
 	//console.log("setting the images "+DynamicImgArray[i]);
 }
@@ -212,18 +194,4 @@ function LoadImages(MaxImage)
 		img.src = url;
 	};  
 }
-
-// $('#leftTopMiddle').removeClass('LeftMiddle'); 
-// $('#middleTopMiddle').removeClass('Middle'); 
-// $('#rightTopMiddle').removeClass('RightMiddle'); 
-// $('#leftTopMiddle').addClass('LeftMiddleNoShadow'); 
-// $('#middleTopMiddle').addClass('MiddleNoShadow'); 
-// $('#rightTopMiddle').addClass('RightMiddleNoShadow'); 
-
-// $('#leftTopMiddle').removeClass('LeftMiddleNoShadow'); 
-// $('#middleTopMiddle').removeClass('MiddleNoShadow'); 
-// $('#rightTopMiddle').removeClass('RightMiddleNoShadow'); 
-// $('#leftTopMiddle').addClass('LeftMiddle'); 
-// $('#middleTopMiddle').addClass('Middle'); 
-// $('#rightTopMiddle').addClass('RightMiddle'); 
 

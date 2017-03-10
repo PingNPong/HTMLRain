@@ -98,12 +98,12 @@ function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 //setting the position, rotations and scales quickly
 function SetValuesX(ImageName,xOffset,yTarget,Rotation)
 {
-	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg'},20);
+	$(ImageName).transition({x: xOffset,y:yTarget, rotate:''+Rotation+'deg'},3);
 }
 
 function SetValuesMin(ImageName,yTarget,Rotation)
 {
-	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg'},20);
+	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg'},3);
 }
 
 function returnPreviousInt(index,currentImg,maxImages)

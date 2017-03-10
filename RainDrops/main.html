@@ -45,10 +45,10 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 3500; //total time between slides 
+		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
-		var waitDurationP1 = 100; //for the wait between the setting of transitions 
-		var waitDurationP2 = 2000; //for the wait between transition 
+		var waitDurationP1 = 50; //for the wait between the setting of transitions 
+		var waitDurationP2 = 50; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -154,28 +154,50 @@
 			
 			if (TransitionState == 0)
 			{	
-				
-				//SetValues('#ShadowBackLeft',xLeftPos,yTargetPos2-10,PrePos1,1,0);
+				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
 				SetValuesMin('#leftTopMiddle',-500,randomAngle);//set the front value  300 0.35
 				SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values 
-				//SetValuesMin('#centreLeft',yTargetPos2-10,PrePos1);// set the back picture value 
+				
+				// set z index of the shadows
+				$('#ShadowLeft').css('z-index', 4); 
+				$('#ShadowMid').css('z-index', 2); 
+				$('#ShadowRight').css('z-index', 3); 
+				
+				//set z index of pictures
+				$('#leftTopMiddle').css('z-index', 4); 
+				$('#middleTopMiddle').css('z-index', 2); 
+				$('#rightTopMiddle').css('z-index', 3); 
 			}
 			else if (TransitionState == 1)
 			{				
-				
-				//SetValues('#ShadowBack',0,yTargetPos,PrePos2,1,0);
+				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous	
 				SetValuesMin('#middleTopMiddle',-600,randomAngle);//set the front value 
 				SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values 
-				//SetValuesMin('#centreMiddle',yTargetPos,PrePos2);// set the back picture value 
-
+						
+				// set z index of the shadows
+				$('#ShadowLeft').css('z-index', 3); 
+				$('#ShadowMid').css('z-index', 4); 
+				$('#ShadowRight').css('z-index', 2); 
+				//set z index of pictures
+				$('#leftTopMiddle').css('z-index', 3);
+				$('#middleTopMiddle').css('z-index', 4); 
+				$('#rightTopMiddle').css('z-index', 2); 
 			}
 			else if (TransitionState == 2)
-			{			
+			{	
+				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous			
 				
-				//SetValues('#ShadowBackRight',xRightPos,10,PrePos3,1,0);
 				SetValuesX('#rightTopMiddle',-70,-700,randomAngle);//set the front value 450 0.3
 				SetValuesMin('#ShadowRight',-700,randomAngle);//set front shadow values 0.2
-				//SetValuesMin('#centreRight',10,PrePos3);// set the back picture value 
+
+				// set z index of the shadows
+				$('#ShadowLeft').css('z-index', 2); 
+				$('#ShadowMid').css('z-index', 3); 
+				$('#ShadowRight').css('z-index', 4); 
+				
+				$('#leftTopMiddle').css('z-index', 2); 
+				$('#middleTopMiddle').css('z-index', 3); 
+				$('#rightTopMiddle').css('z-index', 4); 
 			}
 			
 			setTimeout(TransitionOutp2,waitDurationP1);
@@ -189,44 +211,19 @@
 			
 			if (TransitionState == 0)
 			{
-				
-				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
-				// set z index of the shadows
-				$('#ShadowLeft').css('z-index', 4); 
-				$('#ShadowMid').css('z-index', 2); 
-				$('#ShadowRight').css('z-index', 3); 
-				
-				//set z index of pictures
-				$('#leftTopMiddle').css('z-index', 4); 
-				$('#middleTopMiddle').css('z-index', 2); 
-				$('#rightTopMiddle').css('z-index', 3); 
-				
+				SetValuesMin('#centreLeft',yTargetPos2-10,PrePos1);// set the back picture value 
+				SetValues('#ShadowBackLeft',xLeftPos,yTargetPos2-10,PrePos1,1,0);
 			}
 			else if (TransitionState == 1)
 			{				
-
-				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous			
-				// set z index of the shadows
-				$('#ShadowLeft').css('z-index', 3); 
-				$('#ShadowMid').css('z-index', 4); 
-				$('#ShadowRight').css('z-index', 2); 
-				//set z index of pictures
-				$('#leftTopMiddle').css('z-index', 3);
-				$('#middleTopMiddle').css('z-index', 4); 
-				$('#rightTopMiddle').css('z-index', 2); 
+				SetValuesMin('#centreMiddle',yTargetPos,PrePos2);// set the back picture value 
+				SetValues('#ShadowBack',0,yTargetPos,PrePos2,1,0);
 				
 			}
 			else if (TransitionState == 2)
 			{
-				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous
-				// set z index of the shadows
-				$('#ShadowLeft').css('z-index', 2); 
-				$('#ShadowMid').css('z-index', 3); 
-				$('#ShadowRight').css('z-index', 4); 
-				
-				$('#leftTopMiddle').css('z-index', 2); 
-				$('#middleTopMiddle').css('z-index', 3); 
-				$('#rightTopMiddle').css('z-index', 4); 
+				SetValuesMin('#centreRight',10,PrePos3);// set the back picture value 
+				SetValues('#ShadowBackRight',xRightPos,10,PrePos3,1,0);
 			}
 			
 			setTimeout(DropIn,waitDurationP2);
@@ -297,7 +294,7 @@
 		
 		
 	}/// end code area
-	/// help me I'm... just a quote from pentagon wars, watch it thats this project 
+	/// help me I'm... just a quote from pentagon wars
 	</script>
 </body>
 </html>

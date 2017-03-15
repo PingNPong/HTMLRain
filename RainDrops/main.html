@@ -73,12 +73,12 @@
 			
 			<!-- intial setup -->
 			
-			SetValuesMin('#ShadowBackLeft',yTargetPos2-10,-10);
-			SetValuesMin('#ShadowBack',yTargetPos,15);
+			SetValuesMin('#ShadowBackLeft',0,-10);//yTargetPos2-10
+			SetValuesMin('#ShadowBack',0,15);//yTargetPos
 			SetValuesX('#ShadowBackRight',70,10,-35);
 			
-			SetValuesMin('#centreLeft',yTargetPos2-10,-10);
-			SetValuesMin('#centreMiddle',yTargetPos,15);
+			SetValuesMin('#centreLeft',0,-10);//yTargetPos2-10
+			SetValuesMin('#centreMiddle',0,15);//yTargetPos
 			SetValuesMin('#centreRight',10,-35);
 			
 			$('#centreLeft').css('z-index', 2); 
@@ -198,8 +198,8 @@
 				//setImageVisible('ShadowBackRight',false);
 				
 				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous			
-				SetValuesX('#rightTopMiddle',-70,-700,randomAngle);//set the front value 450 0.3
-				SetValuesMin('#ShadowRight',-700,randomAngle);//set front shadow values 0.2
+				SetValuesMin('#rightTopMiddle',-700,randomAngle);//set the front value 450 0.3
+				SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2
 
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 2); 

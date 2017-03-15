@@ -119,9 +119,8 @@ function SetValuesMin(ImageName,yTarget,Rotation)
 
 function SetValuesNT(ImageName,yTarget,Rotation)
 {
-	//document.getElementById(ImageName).style.top=yTarget; 
 	var rotate = 'rotate(' + Rotation + 'deg)';
-    $("#"+ImageName).css({ 
+    $(ImageName).css({ 
         '-webkit-transform': rotate
 	});
 }

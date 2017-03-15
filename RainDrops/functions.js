@@ -48,6 +48,11 @@ function playPauseBool(toPlay) {
         myVideo.pause();
 }
 
+function setImageVisible(id, visible) {
+    var img = document.getElementById(id);
+    img.style.visibility = (visible ? 'visible' : 'hidden');
+}
+
 //===== Unused transitions atm =======
 
 // sliding function to animate a container left to right 
@@ -89,6 +94,12 @@ function rainDropTransition(ImageName,yTarget,Rotation,time)
 	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg'},time,"ease");
 }
 
+function rainDropTransitionX(ImageName,XTarget,yTarget,Rotation,time)
+{
+	$(ImageName).transition({X:XTarget,y:yTarget, rotate:''+Rotation+'deg'},time,"ease");
+}
+
+
 //setting the position, rotations and scales quickly
 function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 {
@@ -103,7 +114,16 @@ function SetValuesX(ImageName,xOffset,yTarget,Rotation)
 
 function SetValuesMin(ImageName,yTarget,Rotation)
 {
-	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg'},3);
+	$(ImageName).transition({y:yTarget, rotate:''+Rotation+'deg',duration:10});// ({y:yTarget, rotate:''+Rotation+'deg'},1)
+}
+
+function SetValuesNT(ImageName,yTarget,Rotation)
+{
+	//document.getElementById(ImageName).style.top=yTarget; 
+	var rotate = 'rotate(' + Rotation + 'deg)';
+    $("#"+ImageName).css({ 
+        '-webkit-transform': rotate
+	});
 }
 
 function returnPreviousInt(index,currentImg,maxImages)

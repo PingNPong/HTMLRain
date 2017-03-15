@@ -6,7 +6,8 @@ var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Insert simulate
 // Static Image Gallery PhotoBoothStatic/
 var StaicImgArray = [StaticImgPath+"00Static.jpg"];
 
-var imgPath  = "http://192.168.2.239/PhotoBooth/";// Insert simulated image path here, use for default PhotoBoothStatic/
+var imgPath  = "http://192.168.2.239/PhotoBooth/";
+//"http://192.168.2.239/PhotoBooth/";// Insert simulated image path here, use for default PhotoBoothStatic/
 // Dynamic Image Gallery  Static/
 var DynamicImgArray = [imgPath+"00.jpg"];// Dynamic Image array  
 var dynamicdefaultArray = [imgPath+"00.jpg"];// image array copy for downloading

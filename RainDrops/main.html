@@ -18,14 +18,14 @@
 	<div id="main-container">
 		<div id="Centre-container">
 		<!-- Shadow  -->
-			<img id="ShadowBackLeft" class="MiddleShadow" src="DropShadow.png" >
-			<img id="ShadowBack" class="MiddleShadow" src="DropShadow.png" >
-			<img id="ShadowBackRight" class="MiddleShadow" src="DropShadow.png" >
+			<img id="ShadowBackLeft" class="LeftBackShadow" src="DropShadow.png" >
+			<img id="ShadowBack" class="MiddleBackShadow" src="DropShadow.png" >
+			<img id="ShadowBackRight" class="RightBackShadow" src="DropShadow.png" >
 		
 		<!-- Back images  -->
-			<img id="centreLeft" class="LeftMiddle" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" >
-			<img id="centreMiddle" class="Middle" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
-			<img id="centreRight" class="RightMiddle" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="">
+			<img id="centreLeft" class="LeftBack" src="http://192.168.2.239/RoyalityFree/01.jpg" alt="" >
+			<img id="centreMiddle" class="MiddleBack" src="http://192.168.2.239/RoyalityFree/02.jpg" alt="" >
+			<img id="centreRight" class="RightBack" src="http://192.168.2.239/RoyalityFree/03.jpg" alt="">
 		<!-- Shadow  -->
 			<img id="ShadowLeft" class="LeftShadow" src="DropShadow.png" >
 			<img id="ShadowMid" class="MiddleShadow" src="DropShadow.png" >
@@ -47,7 +47,7 @@
 	{/// begin code area  
 		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 6000; //the duration for the transition 
-		var waitDurationP1 = 5; //for the wait between the setting of transitions 
+		var waitDurationP1 = 10; //for the wait between the setting of transitions 
 		var waitDurationP2 = 5; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
@@ -73,9 +73,9 @@
 			
 			<!-- intial setup -->
 			
-			SetValues('#ShadowBackLeft',xLeftPos,yTargetPos2-10,-10,1,0);
-			SetValues('#ShadowBack',0,yTargetPos,15,1,0);
-			SetValues('#ShadowBackRight',xRightPos,10,-35,1,0);
+			SetValuesMin('#ShadowBackLeft',yTargetPos2-10,-10);
+			SetValuesMin('#ShadowBack',yTargetPos,15);
+			SetValuesX('#ShadowBackRight',70,10,-35);
 			
 			SetValuesMin('#centreLeft',yTargetPos2-10,-10);
 			SetValuesMin('#centreMiddle',yTargetPos,15);
@@ -84,18 +84,21 @@
 			$('#centreLeft').css('z-index', 2); 
 			$('#centreMiddle').css('z-index', 2); 
 			$('#centreRight').css('z-index', 2); 
-				
+			
+			$('#ShadowBackLeft').css('z-index', 0); 
+			$('#ShadowBack').css('z-index', 0); 
+			$('#ShadowBackRight').css('z-index', 0); 
 			
 			setTimeout(Update, 1000);
 			
 			Connected = loadedImages ; 
 		});
 		
-		<!----- Transition for dropping in from the transition state --->
+		<!----- Transition for dropping in from the transition state-draw 3--->
 		function DropIn()
 		{
 			var tempImage=returnPreviousInt(3,currentImg,maxImages);// 22 because there are 22 images
-			var randomAngle=RandomNumber(0,60,30);
+			var randomAngle=RandomNumber(0,50,25);
 			if (TransitionState == 0)
 			{// -10 15 -35
 				PrePos1=randomAngle;
@@ -146,14 +149,17 @@
 			
 		}		
 		
-		<!----- Setup the images for the transition out 1st part --->
+		<!----- Setup the images for the transition out 1st part-draw 1 --->
 		function TransitionOut()
 		{
-			var randomAngle=RandomNumber(0,60,30);
+			var randomAngle=RandomNumber(0,50,25);
 			var tempImage=returnPreviousInt(3,currentImg,maxImages);// 22 because there are 22 images 
 			
 			if (TransitionState == 0)
 			{	
+				//setImageVisible('centreLeft',false);
+				//setImageVisible('ShadowBackLeft',false);
+				
 				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
 				SetValuesMin('#leftTopMiddle',-500,randomAngle);//set the front value  300 0.35
 				SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values 
@@ -169,7 +175,10 @@
 				$('#rightTopMiddle').css('z-index', 3); 
 			}
 			else if (TransitionState == 1)
-			{				
+			{	
+				//setImageVisible('centreMiddle',false);
+				//setImageVisible('ShadowMid',false);		
+				
 				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous	
 				SetValuesMin('#middleTopMiddle',-600,randomAngle);//set the front value 
 				SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values 
@@ -185,8 +194,10 @@
 			}
 			else if (TransitionState == 2)
 			{	
-				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous			
+				//setImageVisible('centreRight',false);
+				//setImageVisible('ShadowBackRight',false);
 				
+				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous			
 				SetValuesX('#rightTopMiddle',-70,-700,randomAngle);//set the front value 450 0.3
 				SetValuesMin('#ShadowRight',-700,randomAngle);//set front shadow values 0.2
 
@@ -203,27 +214,34 @@
 			setTimeout(TransitionOutp2,waitDurationP1);
 		}
 		
-		<!----- Setup the images for the transition out 2nd part --->
+		<!----- Setup the images for the transition out 2nd part-draw 2 --->
 		function TransitionOutp2()
 		{
-			var randomAngle=RandomNumber(0,60,30);
 			var tempImage=returnPreviousInt(3,currentImg,maxImages);// 22 because there are 22 images 
 			
 			if (TransitionState == 0)
 			{
-				SetValuesMin('#centreLeft',yTargetPos2-10,PrePos1);// set the back picture value 
-				SetValues('#ShadowBackLeft',xLeftPos,yTargetPos2-10,PrePos1,1,0);
+				SetValuesNT('centreLeft',yTargetPos2-1200,PrePos1);// set the back picture value 
+				SetValuesNT('ShadowBackLeft',yTargetPos2-1200,PrePos1);
+					
+				//setImageVisible('centreLeft',true);
+				//setImageVisible('ShadowBackLeft',true);
 			}
 			else if (TransitionState == 1)
 			{				
-				SetValuesMin('#centreMiddle',yTargetPos,PrePos2);// set the back picture value 
-				SetValues('#ShadowBack',0,yTargetPos,PrePos2,1,0);
+				SetValuesNT('centreMiddle',yTargetPos-190,PrePos2);// set the back picture value 
+				SetValuesNT('ShadowBack',yTargetPos-190,PrePos2);
 				
+				//setImageVisible('centreMiddle',true);
+				//setImageVisible('ShadowMid',true);		
 			}
 			else if (TransitionState == 2)
 			{
-				SetValuesMin('#centreRight',10,PrePos3);// set the back picture value 
-				SetValues('#ShadowBackRight',xRightPos,10,PrePos3,1,0);
+				SetValuesNT('centreRight',10,PrePos3);// set the back picture value 
+				SetValuesNT('ShadowBackRight',10,PrePos3);
+				
+				//setImageVisible('centreRight',true);
+				//setImageVisible('ShadowBackRight',true);
 			}
 			
 			setTimeout(DropIn,waitDurationP2);

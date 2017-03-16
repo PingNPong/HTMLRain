@@ -75,7 +75,7 @@
 			
 			SetValuesMin('#ShadowBackLeft',0,-10);//yTargetPos2-10
 			SetValuesMin('#ShadowBack',0,15);//yTargetPos
-			SetValuesX('#ShadowBackRight',70,10,-35);
+			SetValuesX('#ShadowBackRight',0,10,-35);
 			
 			SetValuesMin('#centreLeft',0,-10);//yTargetPos2-10
 			SetValuesMin('#centreMiddle',0,15);//yTargetPos
@@ -157,8 +157,6 @@
 			
 			if (TransitionState == 0)
 			{	
-				//setImageVisible('centreLeft',false);
-				//setImageVisible('ShadowBackLeft',false);
 				
 				ChangeImg('#centreLeft',imgArray[tempImage]);//Change the back image to the previous
 				SetValuesMin('#leftTopMiddle',-500,randomAngle);//set the front value  300 0.35
@@ -178,9 +176,7 @@
 				$('#rightTopMiddle').css('z-index', 3); 
 			}
 			else if (TransitionState == 1)
-			{	
-				//setImageVisible('centreMiddle',false);
-				//setImageVisible('ShadowMid',false);		
+			{		
 				
 				ChangeImg('#centreMiddle',imgArray[tempImage]);//Change the back image to the previous	
 				SetValuesMin('#middleTopMiddle',-600,randomAngle);//set the front value 
@@ -200,8 +196,6 @@
 			}
 			else if (TransitionState == 2)
 			{	
-				//setImageVisible('centreRight',false);
-				//setImageVisible('ShadowBackRight',false);
 				
 				ChangeImg('#centreRight',imgArray[tempImage]);//Change the back image to the previous			
 				SetValuesMin('#rightTopMiddle',-700,randomAngle);//set the front value 450 0.3
@@ -231,20 +225,17 @@
 			if (TransitionState == 0)
 			{
 
-					
 				//setImageVisible('centreLeft',true);
 				//setImageVisible('ShadowBackLeft',true);
 			}
 			else if (TransitionState == 1)
 			{				
 
-				
 				//setImageVisible('centreMiddle',true);
 				//setImageVisible('ShadowMid',true);		
 			}
 			else if (TransitionState == 2)
 			{
-
 				//setImageVisible('centreRight',true);
 				//setImageVisible('ShadowBackRight',true);
 			}

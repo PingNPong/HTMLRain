@@ -164,6 +164,9 @@
 				SetValuesMin('#leftTopMiddle',-500,randomAngle);//set the front value  300 0.35
 				SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values 
 				
+				SetValuesNT('centreLeft',420,PrePos1);// set the back picture value 
+				SetValuesNT('ShadowBackLeft',400,PrePos1);
+				
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 4); 
 				$('#ShadowMid').css('z-index', 2); 
@@ -183,6 +186,9 @@
 				SetValuesMin('#middleTopMiddle',-600,randomAngle);//set the front value 
 				SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values 
 						
+				SetValuesNT('centreMiddle',390,PrePos2);// set the back picture value 
+				SetValuesNT('ShadowBack',370,PrePos2);
+				
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 3); 
 				$('#ShadowMid').css('z-index', 4); 
@@ -201,6 +207,9 @@
 				SetValuesMin('#rightTopMiddle',-700,randomAngle);//set the front value 450 0.3
 				SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2
 
+				SetValuesNT('centreRight',290,PrePos3);// set the back picture value 
+				SetValuesNT('ShadowBackRight',280,PrePos3);
+				
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 2); 
 				$('#ShadowMid').css('z-index', 3); 
@@ -221,25 +230,21 @@
 			
 			if (TransitionState == 0)
 			{
-				SetValuesNT('centreLeft',yTargetPos2-1200,PrePos1);// set the back picture value 
-				SetValuesNT('ShadowBackLeft',yTargetPos2-1200,PrePos1);
+
 					
 				//setImageVisible('centreLeft',true);
 				//setImageVisible('ShadowBackLeft',true);
 			}
 			else if (TransitionState == 1)
 			{				
-				SetValuesNT('centreMiddle',yTargetPos-190,PrePos2);// set the back picture value 
-				SetValuesNT('ShadowBack',yTargetPos-190,PrePos2);
+
 				
 				//setImageVisible('centreMiddle',true);
 				//setImageVisible('ShadowMid',true);		
 			}
 			else if (TransitionState == 2)
 			{
-				SetValuesNT('centreRight',10,PrePos3);// set the back picture value 
-				SetValuesNT('ShadowBackRight',10,PrePos3);
-				
+
 				//setImageVisible('centreRight',true);
 				//setImageVisible('ShadowBackRight',true);
 			}

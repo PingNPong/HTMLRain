@@ -47,8 +47,7 @@
 #centreRight img{
 	-webkit-backface-visibility: hidden;
 }
-
-
+/*----Middle Content ------*/
 #leftTopMiddle  img{
 	z-index:4;
 	-webkit-backface-visibility: hidden;
@@ -63,7 +62,15 @@
 	z-index:2;
 	-webkit-backface-visibility: hidden;
 }
+/*----Back Content ------*/
+#backLeft  img{
+	-webkit-backface-visibility: hidden;
+}
+#backMiddle  img{
+	-webkit-backface-visibility: hidden;
+}
 
+/* Shadow ------------------*/
 #ShadowLeft img{
 	z-index:3;
 	-webkit-backface-visibility: hidden;
@@ -78,26 +85,34 @@
 	z-index:1;
 	-webkit-backface-visibility: hidden;
 }
+/*----Middle Content ------*/
+#ShadowCentreLeft img{
+	z-index:1;
+	-webkit-backface-visibility: hidden;
+}
 
+#ShadowCentreMiddle img{
+	z-index:1;
+	-webkit-backface-visibility: hidden;
+}
+
+#ShadowCentreRight img{
+	z-index:1;
+	-webkit-backface-visibility: hidden;
+}
+/*----Back Content ------*/
 #ShadowBackLeft img{
-	z-index:1;
+	z-index:0;
 	-webkit-backface-visibility: hidden;
 }
-
-#ShadowBack img{
-	z-index:1;
-	-webkit-backface-visibility: hidden;
-}
-
-#ShadowBackRight img{
-	z-index:1;
+#ShadowBackMiddle img{
+	z-index:0;
 	-webkit-backface-visibility: hidden;
 }
 
 
 
 /* Positioning classes ------------ */ 
-
 .LeftMiddle {
     position:absolute;
 	left:60px;
@@ -117,7 +132,7 @@
 	z-index:3;
 }
 
-.LeftBack {
+.LeftCentre {
     position:absolute;
 	left:60px;
 	top:420px;
@@ -128,6 +143,25 @@
 }
 
 .LeftBackShadow {
+    position:absolute;
+	left:40px;
+	top:400px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+}
+
+.LeftBack {
+    position:absolute;
+	left:60px;
+	top:420px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	/* -webkit-box-shadow: 5px 5px 20px 5px black; */
+}
+
+.LeftCentreShadow {
     position:absolute;
 	left:40px;
 	top:400px;
@@ -150,6 +184,25 @@
     position:absolute;
 	left:580px;
 	top:270px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+}
+
+.MiddleCentre {
+    position:absolute;
+	left:600px;
+	top:390px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	/* -webkit-box-shadow: 5px 5px 20px 5px black; */
+}
+
+.MiddleCentreShadow {
+    position:absolute;
+	left:580px;
+	top:370px;
   	width: 680px;
 	height: 400px;
 	z-index:2;
@@ -193,7 +246,7 @@
 	z-index:1;
 }
 
-.RightBack {
+.RightCentre {
     position:absolute;
 	left:1100px;
 	top:300px;
@@ -203,7 +256,7 @@
 	/* -webkit-box-shadow: 5px 5px 20px 5px black; */
 }
 
-.RightBackShadow {
+.RightCentreShadow {
     position:absolute;
 	left:1090px;
 	top:280px;
@@ -216,5 +269,5 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index:4;
+  z-index:5;
 }

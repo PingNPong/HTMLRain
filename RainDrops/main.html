@@ -21,9 +21,12 @@
 		<!-- Back Shadow  -->
 			<img id="ShadowBackLeft" class="LeftCentreShadow" src="DropShadow.png" >
 			<img id="ShadowBackMiddle" class="MiddleCentreShadow" src="DropShadow.png" >
+			<img id="ShadowBackRight" class="RightCentreShadow" src="DropShadow.png" >
 		<!-- Back images  -->
 			<img id="backLeft" class="LeftBack" src="http://192.168.2.239/RoyalityFreeSet1/01.jpg" alt="" >
 			<img id="backMiddle" class="MiddleBack" src="http://192.168.2.239/RoyalityFreeSet1/02.jpg" alt="" >
+			<img id="backRight" class="RightBack" src="http://192.168.2.239/RoyalityFreeSet1/03.jpg" alt="" >
+		
 		<!-- Centre Shadow  -->
 			<img id="ShadowCentreLeft" class="LeftCentreShadow" src="DropShadow.png" >
 			<img id="ShadowCentreMiddle" class="MiddleCentreShadow" src="DropShadow.png" >
@@ -93,9 +96,11 @@
 			<!-----Back Layer Setup---->
 			SetValuesMin('#backLeft',0,15);//yTargetPos2-10
 			SetValuesMin('#backMiddle',0,-35);//yTargetPos2-10
+			SetValuesMin('#backRight',0,-10);//yTargetPos2-10
 			
 			SetValuesMin('#ShadowBackLeft',0,15);//yTargetPos2-10
 			SetValuesMin('#ShadowBackMiddle',0,-35);//yTargetPos2-10
+			SetValuesMin('#ShadowBackRight',0,10);//yTargetPos2-10
 			
 			<!-- Middle z-layer Setup >
 			$('#centreLeft').css('z-index', 2); 
@@ -109,9 +114,11 @@
 			<!-----Back z-layer Setup --->
 			$('#backLeft').css('z-index', 1); 
 			$('#backMiddle').css('z-index', 1); 
+			$('#backRight').css('z-index', 1); 
 			
 			$('#ShadowBackLeft').css('z-index', 0); 
 			$('#ShadowBackMiddle').css('z-index', 0); 
+			$('#ShadowBackRight').css('z-index', 0); 
 			
 			setTimeout(Update, 1000);
 			
@@ -124,10 +131,8 @@
 			var randomAngle=RandomNumber(0,50,25);
 			if (TransitionState == 0)
 			{// -10 15 -35
-				//console.log("Pre FarBackPos1="+FarBackPos1+" PrePos1="+PrePos1+" randomAngle="+randomAngle);
 				FarBackPos1=PrePos1;
 				PrePos1=randomAngle;
-				//console.log("Post FarBackPos1="+FarBackPos1+" PrePos1="+PrePos1+" randomAngle="+randomAngle);
 				rainDropTransition('#leftTopMiddle',yTargetPos2,randomAngle,totalDuration);//Regular outside transition
 				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
 
@@ -144,9 +149,8 @@
 			}
 			else if (TransitionState == 2)
 			{	
-				console.log("Drop in "+PrePos3+"=PrePos3 =="+randomAngle);
+				FarBackPos3=PrePos3;
 				PrePos3=randomAngle;
-
 				rainDropTransition('#rightTopMiddle',0,randomAngle,totalDuration);//Regular outside transition
 				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
 				
@@ -236,10 +240,13 @@
 				ChangeImg('#centreRight',imgArray[PrevImage]);//Change the Centre image to the previous			
 				SetValuesMin('#rightTopMiddle',-700,randomAngle);//set the front value 450 0.3
 				SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2
-				
-				console.log("transition Prepos="+PrePos3);
+
 				SetValuesNT('centreRight',290,PrePos3);// set the Centre picture value 
 				SetValuesNT('ShadowCentreRight',280,PrePos3);
+				//Back Images 
+				ChangeImg('#backRight',imgArray[FarBackImage]);//Change the Centre image to the previous
+				SetValuesNT('backRight',390,FarBackPos2);// set the Centre picture value 
+				SetValuesNT('ShadowBackRight',370,FarBackPos2);
 				
 				// set z index of the shadows
 				$('#ShadowLeft').css('z-index', 3); 

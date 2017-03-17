@@ -1,5 +1,7 @@
 // all external functions will be stored here 
-// functions can relate to element changing and 
+// functions can relate to element changing and returning of values 
+// NVYVE
+// Philip Ong   March 17,2017
 var displayConsole = false; 
 
 //===== Changing Images =======
@@ -147,4 +149,30 @@ function RandomNumber(minInt,maxInt,minusInt)
 	var returnNumber = 0;
 	returnNumber=Math.random()* maxInt + minInt;
 	return (returnNumber-minusInt);
+}
+
+function ReturnArrayPosition(EnterNumber)
+{
+	var returningImage; 
+	if (CurrentAngleSet==0)
+	{
+		returningImage=angleArray[CurrentAngleSet*3+EnterNumber];
+	}	
+	else 
+	{
+		var ReturningIndex=CurrentAngleSet*3+EnterNumber;
+		if (3+EnterNumber<6)
+		{
+			console.log("EN="+EnterNumber+" Less than 7 ="+ReturningIndex+" = "+angleArray[ReturningIndex]);
+			returningImage=angleArray[ReturningIndex];
+		}
+		else 
+		{
+			ReturningIndex=ReturningIndex-6;
+			console.log("EN="+EnterNumber+" More than 7 ="+ReturningIndex+" = "+angleArray[ReturningIndex]);
+			returningImage=angleArray[ReturningIndex];
+		}
+	}	
+	
+	return returningImage;
 }

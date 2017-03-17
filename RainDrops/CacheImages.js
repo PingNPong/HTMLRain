@@ -1,4 +1,6 @@
-// a script dealing with storing images before 
+// a script dealing with storing images before loading them 
+// NVYVE
+// Philip Ong   March 17,2017
 var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 

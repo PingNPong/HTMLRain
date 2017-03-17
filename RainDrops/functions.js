@@ -99,7 +99,6 @@ function rainDropTransitionX(ImageName,XTarget,yTarget,Rotation,time)
 	$(ImageName).transition({X:XTarget,y:yTarget, rotate:''+Rotation+'deg'},time,"ease");
 }
 
-
 //setting the position, rotations and scales quickly
 function SetValues(ImageName,xOffset,yTarget,Rotation,SettingScale,delayTime)
 {
@@ -126,6 +125,8 @@ function SetValuesNT(ImageName,yTarget,Rotation)
         '-webkit-transform': rotate
 	});
 }
+
+// === return functions ====
 
 function returnPreviousInt(index,currentImg,maxImages)
 {

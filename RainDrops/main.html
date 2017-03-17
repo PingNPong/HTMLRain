@@ -19,27 +19,27 @@
 		<div id="Centre-container">
 		
 		<!-- Back Shadow  -->
-			<img id="ShadowBackLeft" class="LeftCentreShadow" src="DropShadow.png" >
-			<img id="ShadowBackMiddle" class="MiddleCentreShadow" src="DropShadow.png" >
-			<img id="ShadowBackRight" class="RightCentreShadow" src="DropShadow.png" >
+			<!-- <img id="ShadowBackLeft" class="LeftCentreShadow" src="DropShadow.png" > -->
+			<!-- <img id="ShadowBackMiddle" class="MiddleCentreShadow" src="DropShadow.png" > -->
+			<!-- <img id="ShadowBackRight" class="RightCentreShadow" src="DropShadow.png" > -->
 		<!-- Back images  -->
 			<img id="backLeft" class="LeftBack" src="http://192.168.2.239/RoyalityFreeSet1/01.jpg" alt="" >
 			<img id="backMiddle" class="MiddleBack" src="http://192.168.2.239/RoyalityFreeSet1/02.jpg" alt="" >
 			<img id="backRight" class="RightBack" src="http://192.168.2.239/RoyalityFreeSet1/03.jpg" alt="" >
 		
 		<!-- Centre Shadow  -->
-			<img id="ShadowCentreLeft" class="LeftCentreShadow" src="DropShadow.png" >
-			<img id="ShadowCentreMiddle" class="MiddleCentreShadow" src="DropShadow.png" >
-			<img id="ShadowCentreRight" class="RightCentreShadow" src="DropShadow.png" >
+			<!-- <img id="ShadowCentreLeft" class="LeftCentreShadow" src="DropShadow.png" > -->
+			<!-- <img id="ShadowCentreMiddle" class="MiddleCentreShadow" src="DropShadow.png" > -->
+			<!-- <img id="ShadowCentreRight" class="RightCentreShadow" src="DropShadow.png" > -->
 		<!-- Centre images  -->
 			<img id="centreLeft" class="LeftCentre" src="http://192.168.2.239/PhotoBooth/01.jpg" alt="" >
 			<img id="centreMiddle" class="MiddleCentre" src="http://192.168.2.239/PhotoBooth/02.jpg" alt="" >
 			<img id="centreRight" class="RightCentre" src="http://192.168.2.239/PhotoBooth/03.jpg" alt="">
 			
 		<!-- FrontShadow  -->
-			<img id="ShadowLeft" class="LeftShadow" src="DropShadow.png" >
-			<img id="ShadowMid" class="MiddleShadow" src="DropShadow.png" >
-			<img id="ShadowRight" class="RightShadow" src="DropShadow.png" >
+			<!-- <img id="ShadowLeft" class="LeftShadow" src="DropShadow.png" > -->
+			<!-- <img id="ShadowMid" class="MiddleShadow" src="DropShadow.png" > -->
+			<!-- <img id="ShadowRight" class="RightShadow" src="DropShadow.png" > -->
 		<!-- Front images -->
 			<img id="leftTopMiddle" class="LeftMiddle" src="http://192.168.2.239/PhotoBooth/04.jpg" alt="" >
 			<img id="middleTopMiddle" class="Middle" src="http://192.168.2.239/PhotoBooth/05.jpg" alt="" >
@@ -57,7 +57,7 @@
 		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 3000; //the duration for the transition 
 		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDurationP2 = 5; //for the wait between transition 
+		var waitDurationP2 = 500; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -65,7 +65,6 @@
 		var xRightPos = 500;
 		var yTargetPos = 100;
 		var yTargetPos2 = 140;
-		var xOffset = [-50,50];
 		var currentImg=0;
 		var maxDynamicImages=12;
 		var maxImages=22;
@@ -77,6 +76,9 @@
 		var FarBackPos2 = 0;
 		var FarBackPos3 = 0;
 		
+		var angleArray = [-10,20,-35,10,-20,35];
+		var CurrentSet= 0;
+		
 		//the start up function 
 		$(function (){
 			var ImageFound=false;
@@ -85,31 +87,31 @@
 			
 			<!-- intial setup -->
 			<!-- Middle layer Setup >
-			SetValuesMin('#ShadowCentreLeft',0,-10);//yTargetPos2-10
-			SetValuesMin('#ShadowCentreMiddle',0,15);//yTargetPos
-			SetValuesX('#ShadowCentreRight',0,10,-35);
+			<!-- SetValuesMin('#ShadowCentreLeft',0,-10);//yTargetPos2-10 -->
+			<!-- SetValuesMin('#ShadowCentreMiddle',0,15);//yTargetPos -->
+			<!-- SetValuesX('#ShadowCentreRight',0,10,-35); -->
 			
 			SetValuesMin('#centreLeft',0,-10);//yTargetPos2-10
-			SetValuesMin('#centreMiddle',0,15);//yTargetPos
+			SetValuesMin('#centreMiddle',0,20);//yTargetPos
 			SetValuesMin('#centreRight',10,-35);
 			
 			<!-----Back Layer Setup---->
-			SetValuesMin('#backLeft',0,15);//yTargetPos2-10
+			SetValuesMin('#backLeft',0,20);//yTargetPos2-10
 			SetValuesMin('#backMiddle',0,-35);//yTargetPos2-10
 			SetValuesMin('#backRight',0,-10);//yTargetPos2-10
 			
-			SetValuesMin('#ShadowBackLeft',0,15);//yTargetPos2-10
-			SetValuesMin('#ShadowBackMiddle',0,-35);//yTargetPos2-10
-			SetValuesMin('#ShadowBackRight',0,10);//yTargetPos2-10
+			<!-- SetValuesMin('#ShadowBackLeft',0,15);//yTargetPos2-10 -->
+			<!-- SetValuesMin('#ShadowBackMiddle',0,-35);//yTargetPos2-10 -->
+			<!-- SetValuesMin('#ShadowBackRight',0,10);//yTargetPos2-10 -->
 			
 			<!-- Middle z-layer Setup >
 			$('#centreLeft').css('z-index', 2); 
 			$('#centreMiddle').css('z-index', 2); 
 			$('#centreRight').css('z-index', 2); 
 			
-			$('#ShadowCentreLeft').css('z-index', 1); 
-			$('#ShadowCentreMiddle').css('z-index', 1); 
-			$('#ShadowCentreRight').css('z-index', 1); 
+			<!-- $('#ShadowCentreLeft').css('z-index', 1);  -->
+			<!-- $('#ShadowCentreMiddle').css('z-index', 1);  -->
+			<!-- $('#ShadowCentreRight').css('z-index', 1);  -->
 			
 			<!-----Back z-layer Setup --->
 			$('#backLeft').css('z-index', 1); 
@@ -133,28 +135,28 @@
 			{// -10 15 -35
 				FarBackPos1=PrePos1;
 				PrePos1=randomAngle;
+				setImageVisible('leftTopMiddle',true);
 				rainDropTransition('#leftTopMiddle',yTargetPos2,randomAngle,totalDuration);//Regular outside transition
-				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
 
-				rainDropTransition('#ShadowLeft',yTargetPos2,randomAngle,totalDuration);
+				<!-- rainDropTransition('#ShadowLeft',yTargetPos2,randomAngle,totalDuration); -->
 			}
 			else if (TransitionState == 1)
 			{
 				FarBackPos2=PrePos2;
 				PrePos2=randomAngle;
+				setImageVisible('middleTopMiddle',true);
 				rainDropTransition('#middleTopMiddle',yTargetPos,randomAngle,totalDuration);//Regular outside transition
-				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
 			
-				rainDropTransition('#ShadowMid',yTargetPos,randomAngle,totalDuration);
+				<!-- rainDropTransition('#ShadowMid',yTargetPos,randomAngle,totalDuration); -->
 			}
 			else if (TransitionState == 2)
 			{	
 				FarBackPos3=PrePos3;
 				PrePos3=randomAngle;
+				setImageVisible('rightTopMiddle',true);
 				rainDropTransition('#rightTopMiddle',0,randomAngle,totalDuration);//Regular outside transition
-				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
 				
-				rainDropTransition('#ShadowRight',10,randomAngle,totalDuration);
+				<!-- rainDropTransition('#ShadowRight',10,randomAngle,totalDuration); -->
 			}
 			
 			<!----- from main --->
@@ -191,21 +193,26 @@
 			
 			if (TransitionState == 0)
 			{	
-				SetValuesMin('#leftTopMiddle',-500,randomAngle);//set the front value  300 0.35
-				SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values 
-				//Centre
-				ChangeImg('#centreLeft',imgArray[PrevImage]);//Change the Centre image to the previous
-				SetValuesNT('centreLeft',420,PrePos1);// set the Centre picture value 
-				SetValuesNT('ShadowCentreLeft',400,PrePos1);
-				//Back Images 
 				ChangeImg('#backLeft',imgArray[FarBackImage]);//Change the Centre image to the previous
+				ChangeImg('#centreLeft',imgArray[PrevImage]);//Change the Centre image to the previous
+				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
+				
+				setImageVisible('leftTopMiddle',false);
+				SetValuesMin('#leftTopMiddle',-500,randomAngle);//set the front value  300 0.35
+				<!-- SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values  -->
+				//Centre
+
+				SetValuesNT('centreLeft',420,PrePos1);// set the Centre picture value 
+				<!-- SetValuesNT('ShadowCentreLeft',400,PrePos1); -->
+				//Back Images 
+				
 				SetValuesNT('backLeft',420,FarBackPos1);// set the Centre picture value 
-				SetValuesNT('ShadowBackLeft',400,FarBackPos1);
+				<!-- SetValuesNT('ShadowBackLeft',400,FarBackPos1); -->
 				
 				// set z index of the shadows
-				$('#ShadowLeft').css('z-index', 5); 
-				$('#ShadowMid').css('z-index', 3); 
-				$('#ShadowRight').css('z-index', 4); 
+				<!-- $('#ShadowLeft').css('z-index', 5);  -->
+				<!-- $('#ShadowMid').css('z-index', 3);  -->
+				<!-- $('#ShadowRight').css('z-index', 4);  -->
 				
 				//set z index of pictures
 				$('#leftTopMiddle').css('z-index', 5); 
@@ -214,21 +221,25 @@
 			}
 			else if (TransitionState == 1)
 			{		
+				ChangeImg('#backMiddle',imgArray[FarBackImage]);//Change the Centre image to the previous
+				ChangeImg('#centreMiddle',imgArray[PrevImage]);//Change the Centre image to the previous
+				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
 				
-				ChangeImg('#centreMiddle',imgArray[PrevImage]);//Change the Centre image to the previous	
+				setImageVisible('middleTopMiddle',false);
+					
 				SetValuesMin('#middleTopMiddle',-600,randomAngle);//set the front value 
-				SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values 
+				<!-- SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values  -->
 						
 				SetValuesNT('centreMiddle',390,PrePos2);// set the Centre picture value 
-				SetValuesNT('ShadowCentreMiddle',370,PrePos2);
+				<!-- SetValuesNT('ShadowCentreMiddle',370,PrePos2); -->
 				//Back Images 
-				ChangeImg('#backMiddle',imgArray[FarBackImage]);//Change the Centre image to the previous
+				
 				SetValuesNT('backMiddle',390,FarBackPos2);// set the Centre picture value 
-				SetValuesNT('ShadowBackMiddle',370,FarBackPos2);
+				<!-- SetValuesNT('ShadowBackMiddle',370,FarBackPos2); -->
 				// set z index of the shadows
-				$('#ShadowLeft').css('z-index', 4); 
-				$('#ShadowMid').css('z-index', 5); 
-				$('#ShadowRight').css('z-index', 3); 
+				<!-- $('#ShadowLeft').css('z-index', 4);  -->
+				<!-- $('#ShadowMid').css('z-index', 5);  -->
+				<!-- $('#ShadowRight').css('z-index', 3);  -->
 				//set z index of pictures
 				$('#leftTopMiddle').css('z-index', 4);
 				$('#middleTopMiddle').css('z-index', 5); 
@@ -236,46 +247,30 @@
 			}
 			else if (TransitionState == 2)
 			{	
+				ChangeImg('#backRight',imgArray[FarBackImage]);//Change the Centre image to the previous
+				ChangeImg('#centreRight',imgArray[PrevImage]);//Change the Centre image to the previous	
+				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
 				
-				ChangeImg('#centreRight',imgArray[PrevImage]);//Change the Centre image to the previous			
+				setImageVisible('rightTopMiddle',false);
+					
 				SetValuesMin('#rightTopMiddle',-700,randomAngle);//set the front value 450 0.3
-				SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2
+				<!-- SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2 -->
 
 				SetValuesNT('centreRight',290,PrePos3);// set the Centre picture value 
-				SetValuesNT('ShadowCentreRight',280,PrePos3);
+				<!-- SetValuesNT('ShadowCentreRight',280,PrePos3); -->
 				//Back Images 
-				ChangeImg('#backRight',imgArray[FarBackImage]);//Change the Centre image to the previous
+				
 				SetValuesNT('backRight',390,FarBackPos2);// set the Centre picture value 
-				SetValuesNT('ShadowBackRight',370,FarBackPos2);
+				<!-- SetValuesNT('ShadowBackRight',370,FarBackPos2); -->
 				
 				// set z index of the shadows
-				$('#ShadowLeft').css('z-index', 3); 
-				$('#ShadowMid').css('z-index', 4); 
-				$('#ShadowRight').css('z-index', 5); 
+				<!-- $('#ShadowLeft').css('z-index', 3);  -->
+				<!-- $('#ShadowMid').css('z-index', 4);  -->
+				<!-- $('#ShadowRight').css('z-index', 5);  -->
 				
 				$('#leftTopMiddle').css('z-index', 3); 
 				$('#middleTopMiddle').css('z-index', 4); 
 				$('#rightTopMiddle').css('z-index', 5); 
-			}
-			
-			setTimeout(TransitionOutp2,waitDurationP1);
-		}
-		
-		<!----- Setup the images for the transition out 2nd part-draw 2 --->
-		function TransitionOutp2()
-		{
-			
-			if (TransitionState == 0)
-			{
-
-			}
-			else if (TransitionState == 1)
-			{				
-	
-			}
-			else if (TransitionState == 2)
-			{
-
 			}
 			
 			setTimeout(DropIn,waitDurationP2);

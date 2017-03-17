@@ -122,6 +122,12 @@
 			$('#ShadowBackMiddle').css('z-index', 0); 
 			$('#ShadowBackRight').css('z-index', 0); 
 			
+			$('#overlayContainer').css('z-index', 9); 
+			
+			<!-- setImageVisible('backLeft',false); -->
+			<!-- setImageVisible('backMiddle',false); -->
+			<!-- setImageVisible('backRight',false); -->
+			
 			setTimeout(Update, 1000);
 			
 			Connected = loadedImages ; 
@@ -210,14 +216,19 @@
 				<!-- SetValuesNT('ShadowBackLeft',400,FarBackPos1); -->
 				
 				// set z index of the shadows
-				<!-- $('#ShadowLeft').css('z-index', 5);  -->
-				<!-- $('#ShadowMid').css('z-index', 3);  -->
-				<!-- $('#ShadowRight').css('z-index', 4);  -->
+				<!-- $('#ShadowLeft').css('z-index', 8);  -->
+				<!-- $('#ShadowMid').css('z-index', 6);  -->
+				<!-- $('#ShadowRight').css('z-index', 7);  -->
+				
+				//set z index of Centre pictures
+				$('#centreLeft').css('z-index', 5); 
+				$('#centreMiddle').css('z-index', 3); 
+				$('#centreRight').css('z-index', 4); 
 				
 				//set z index of pictures
-				$('#leftTopMiddle').css('z-index', 5); 
-				$('#middleTopMiddle').css('z-index', 3); 
-				$('#rightTopMiddle').css('z-index', 4); 
+				$('#leftTopMiddle').css('z-index', 8); 
+				$('#middleTopMiddle').css('z-index', 6); 
+				$('#rightTopMiddle').css('z-index', 7); 
 			}
 			else if (TransitionState == 1)
 			{		
@@ -237,13 +248,19 @@
 				SetValuesNT('backMiddle',390,FarBackPos2);// set the Centre picture value 
 				<!-- SetValuesNT('ShadowBackMiddle',370,FarBackPos2); -->
 				// set z index of the shadows
-				<!-- $('#ShadowLeft').css('z-index', 4);  -->
-				<!-- $('#ShadowMid').css('z-index', 5);  -->
-				<!-- $('#ShadowRight').css('z-index', 3);  -->
+				<!-- $('#ShadowLeft').css('z-index', 7);  -->
+				<!-- $('#ShadowMid').css('z-index', 8);  -->
+				<!-- $('#ShadowRight').css('z-index', 6);  -->
+				
 				//set z index of pictures
-				$('#leftTopMiddle').css('z-index', 4);
-				$('#middleTopMiddle').css('z-index', 5); 
-				$('#rightTopMiddle').css('z-index', 3); 
+				$('#leftTopMiddle').css('z-index', 7);
+				$('#middleTopMiddle').css('z-index', 8); 
+				$('#rightTopMiddle').css('z-index', 6); 
+				
+				//set z index of Centre pictures
+				$('#centreLeft').css('z-index', 4); 
+				$('#centreMiddle').css('z-index', 5); 
+				$('#centreRight').css('z-index', 3); 
 			}
 			else if (TransitionState == 2)
 			{	
@@ -260,17 +277,22 @@
 				<!-- SetValuesNT('ShadowCentreRight',280,PrePos3); -->
 				//Back Images 
 				
-				SetValuesNT('backRight',390,FarBackPos2);// set the Centre picture value 
+				SetValuesNT('backRight',390,FarBackPos3);// set the Centre picture value 
 				<!-- SetValuesNT('ShadowBackRight',370,FarBackPos2); -->
 				
 				// set z index of the shadows
-				<!-- $('#ShadowLeft').css('z-index', 3);  -->
-				<!-- $('#ShadowMid').css('z-index', 4);  -->
-				<!-- $('#ShadowRight').css('z-index', 5);  -->
+				<!-- $('#ShadowLeft').css('z-index', 6);  -->
+				<!-- $('#ShadowMid').css('z-index', 7);  -->
+				<!-- $('#ShadowRight').css('z-index', 8);  -->
 				
-				$('#leftTopMiddle').css('z-index', 3); 
-				$('#middleTopMiddle').css('z-index', 4); 
-				$('#rightTopMiddle').css('z-index', 5); 
+				$('#leftTopMiddle').css('z-index', 6); 
+				$('#middleTopMiddle').css('z-index', 7); 
+				$('#rightTopMiddle').css('z-index', 8); 
+				
+				//set z index of Centre pictures
+				$('#centreLeft').css('z-index', 3); 
+				$('#centreMiddle').css('z-index', 4); 
+				$('#centreRight').css('z-index', 5);
 			}
 			
 			setTimeout(DropIn,waitDurationP2);

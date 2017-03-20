@@ -163,13 +163,13 @@ function ReturnArrayPosition(EnterNumber)
 		var ReturningIndex=CurrentAngleSet*3+EnterNumber;
 		if (3+EnterNumber<6)
 		{
-			console.log("EN="+EnterNumber+" Less than 7 ="+ReturningIndex+" = "+angleArray[ReturningIndex]);
+			//console.log("EN="+EnterNumber+" Less than 7 ="+ReturningIndex+" = "+angleArray[ReturningIndex]);
 			returningImage=angleArray[ReturningIndex];
 		}
 		else 
 		{
 			ReturningIndex=ReturningIndex-6;
-			console.log("EN="+EnterNumber+" More than 7 ="+ReturningIndex+" = "+angleArray[ReturningIndex]);
+			//console.log("EN="+EnterNumber+" More than 7 ="+ReturningIndex+" = "+angleArray[ReturningIndex]);
 			returningImage=angleArray[ReturningIndex];
 		}
 	}	

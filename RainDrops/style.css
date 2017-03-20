@@ -8,8 +8,8 @@
 
 /* containers  ---------------------*/
 #overlayContainer{
-    z-index:5;
-	-webkit-backface-visibility: hidden;
+    /* z-index:5; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #main-container {
@@ -21,7 +21,6 @@
 	background-color:#000000;
 	
 	/* z-index:-1; */
-	/* -webkit-backface-visibility: hidden; */
 }
 
 #Centre-container {
@@ -34,89 +33,88 @@
 	/* background-image: url("01.jpg"); */
 	
 	/* z-index:0; */
-	/* -webkit-backface-visibility: hidden; */
 }
 
 /* content ------------------*/
 #centreLeft  img{
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #centreMiddle  img{
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #centreRight img{
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 }
 /*----Middle Content ------*/
 #leftTopMiddle  img{
-	z-index:4;
-	-webkit-backface-visibility: hidden;
+	/* z-index:4; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #middleTopMiddle  img{
-	z-index:3;
-	-webkit-backface-visibility: hidden;
+	/* z-index:3; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #rightTopMiddle  img{
-	z-index:2;
-	-webkit-backface-visibility: hidden;
+	/* z-index:2; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 /*----Back Content ------*/
 #backLeft  img{
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 }
 #backMiddle  img{
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 }
 #backRight  img{
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 /* Shadow ------------------*/
 #ShadowLeft img{
-	z-index:3;
-	-webkit-backface-visibility: hidden;
+	/* z-index:3; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #ShadowMid img{
-	z-index:2;
-	-webkit-backface-visibility: hidden;
+	/* z-index:2; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #ShadowRight img{
-	z-index:1;
-	-webkit-backface-visibility: hidden;
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 /*----Middle Content ------*/
 #ShadowCentreLeft img{
-	z-index:1;
-	-webkit-backface-visibility: hidden;
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #ShadowCentreMiddle img{
-	z-index:1;
-	-webkit-backface-visibility: hidden;
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 #ShadowCentreRight img{
-	z-index:1;
-	-webkit-backface-visibility: hidden;
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 /*----Back Content ------*/
 #ShadowBackLeft img{
-	z-index:0;
-	-webkit-backface-visibility: hidden;
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 #ShadowBackMiddle img{
-	z-index:0;
-	-webkit-backface-visibility: hidden;
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 #ShadowBackRight img{
-	z-index:0;
-	-webkit-backface-visibility: hidden;
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
 }
 
 
@@ -129,7 +127,7 @@
   	width: 640px;
 	height: 360px;
 	z-index:3;
-	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=135, Color='#444444'); */
+	/* -webkit-filter: drop-shadow(5px 5px 5px #222); */
 	-webkit-box-shadow: 5px 5px 20px black;
 }
 
@@ -149,8 +147,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:3;
-	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=135, Color='#444444'); */
-	-webkit-box-shadow: 5px 5px 20px black;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .LeftBackShadow {
@@ -169,8 +167,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:2;
-	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=135, Color='#444444'); */
-	-webkit-box-shadow: 5px 5px 20px black;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .LeftCentreShadow {
@@ -189,7 +187,7 @@
   	width: 640px;
 	height: 360px;
 	z-index:2;
-	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=135, Color='#444444'); */
+	/* -webkit-filter: drop-shadow(5px 5px 5px #222); */
 	-webkit-box-shadow: 5px 5px 20px black;
 }
 
@@ -209,8 +207,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:2;
-	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=135, Color='#444444'); */
-	-webkit-box-shadow: 5px 5px 20px black;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .MiddleCentreShadow {
@@ -229,8 +227,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:2;
-	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=135, Color='#444444'); */
-	-webkit-box-shadow: 5px 5px 20px black;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .MiddleBackShadow {
@@ -268,7 +266,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:1;
-	-webkit-box-shadow: 5px 5px 20px black;
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
 }
 
 .RightCentreShadow {
@@ -287,7 +286,7 @@
   	width: 640px;
 	height: 360px;
 	z-index:1;
-	-webkit-box-shadow: 5px 5px 20px black;
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .RightBackShadow {

@@ -126,18 +126,31 @@
 	top:280px;
   	width: 640px;
 	height: 360px;
-	z-index:3;
+	z-index: 3;
 	/* -webkit-filter: drop-shadow(5px 5px 5px #222); */
-	-webkit-box-shadow: 5px 5px 20px black;
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .LeftShadow {
     position:absolute;
-	left:40px;
-	top:260px;
-  	width: 680px;
-	height: 400px;
-	z-index:3;
+	left:60px;
+	top:280px;
+  	width: 640px;
+	height: 360px;
+	z-index: 3;
+	-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.LeftShadow ::after
+{
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
 }
 
 .LeftCentre {
@@ -146,7 +159,7 @@
 	top:420px;
   	width: 640px;
 	height: 360px;
-	z-index:3;
+	z-index: 3;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
@@ -186,18 +199,23 @@
 	top:290px;
   	width: 640px;
 	height: 360px;
-	z-index:2;
-	/* -webkit-filter: drop-shadow(5px 5px 5px #222); */
-	-webkit-box-shadow: 5px 5px 20px black;
+	z-index: 2;
 }
 
 .MiddleShadow {
-    position:absolute;
-	left:580px;
-	top:270px;
-  	width: 680px;
-	height: 400px;
-	z-index:2;
+	position:absolute;
+	left:600px;
+	top:290px;
+  	width: 640px;
+	height: 360px;
+	z-index: 2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+    /* position:absolute; */
+	/* left:580px; */
+	/* top:270px; */
+  	/* width: 680px; */
+	/* height: 400px; */
+	/* z-index:2; */
 }
 
 .MiddleCentre {
@@ -246,17 +264,23 @@
 	top:300px;
   	width: 640px;
 	height: 360px;
-	z-index:1;
-	-webkit-box-shadow: 5px 5px 20px black;
+	z-index: 1;
 }
 
 .RightShadow {
-    position:absolute;
-	left:1020px;
-	top:280px;
-  	width: 680px;
-	height: 400px;
-	z-index:1;
+	position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index: 1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+    /* position:absolute; */
+	/* left:1020px; */
+	/* top:280px; */
+  	/* width: 680px; */
+	/* height: 400px; */
+	/* z-index:1; */
 }
 
 .RightCentre {
@@ -266,8 +290,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:1;
-	/* -webkit-box-shadow: 5px 5px 20px black; */
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .RightCentreShadow {

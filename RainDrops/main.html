@@ -1,4 +1,4 @@
-<!-- // main for a image gallery which will display images from a local file  -->
+<!-- // main for an image gallery which will display images from a local file  -->
 <!-- // new images will transition in from the top, like rain drops  and old ones should transtion out -->
 <!-- NVYVE-->
 <!-- Philip Ong   March 17,2017-->
@@ -144,7 +144,6 @@
 				FarBackPos1=PrePos1;
 				PrePos1=randomAngle;
 				setImageVisible('leftTopMiddle',true);
-				
 				rainDropTransition('#leftTopMiddle',yTargetPos2,ReturnArrayPosition(0),totalDuration);//Regular outside transition
 
 				<!-- rainDropTransition('#ShadowLeft',yTargetPos2,randomAngle,totalDuration); -->
@@ -208,6 +207,9 @@
 			
 			if (TransitionState == 0)
 			{	
+				document.getElementById("leftTopMiddle").className = "LeftMiddle";// turn off shadow 
+				document.getElementById("rightTopMiddle").className = "RightShadow";// turn off shadow
+			
 				ChangeImg('#backLeft',imgArray[FarBackImage]);//Change the Centre image to the previous
 				ChangeImg('#centreLeft',imgArray[PrevImage]);//Change the Centre image to the previous
 				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
@@ -244,6 +246,9 @@
 			}
 			else if (TransitionState == 1)
 			{		
+				document.getElementById("leftTopMiddle").className = "LeftShadow";// turn on shadow
+				document.getElementById("middleTopMiddle").className = "Middle";// turn off shadow
+				
 				ChangeImg('#backMiddle',imgArray[FarBackImage]);//Change the Centre image to the previous
 				ChangeImg('#centreMiddle',imgArray[PrevImage]);//Change the Centre image to the previous
 				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
@@ -278,6 +283,9 @@
 			}
 			else if (TransitionState == 2)
 			{	
+				document.getElementById("middleTopMiddle").className = "MiddleShadow";// turn on shadow
+				document.getElementById("rightTopMiddle").className = "RightMiddle";// turn off shadow
+			
 				ChangeImg('#backRight',imgArray[FarBackImage]);//Change the Centre image to the previous
 				ChangeImg('#centreRight',imgArray[PrevImage]);//Change the Centre image to the previous	
 				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current

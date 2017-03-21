@@ -28,7 +28,6 @@ function ChangeImg(imageName,pictureName) {
 }
 
 //===== Video functions =======
-
 function ChangeVideo(vidName,VideoName)
 {
 	$(vidName).attr('src', VideoName); // trying to set 
@@ -127,6 +126,18 @@ function SetValuesNT(ImageName,yTarget,Rotation)
         '-webkit-transform': rotate
 	});
 }
+
+function SetValuesNT2(ImageName,yTarget,Rotation,time)
+{
+	//var Location = yTarget+'px';
+	//document.getElementById(ImageName).style.top=yTarget + "px"; 
+	var rotate = 'rotate(' + Rotation + 'deg)';
+    $("#"+ImageName).css({ 
+		'-webkit-transition-duration': time,
+        '-webkit-transform': rotate
+	});
+}
+
 
 // === return functions ====
 

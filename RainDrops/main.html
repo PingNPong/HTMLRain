@@ -59,7 +59,7 @@
 		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 3000; //the duration for the transition 
 		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDurationP2 = 800; //for the wait between transition 
+		var waitDurationP2 = 2500; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -87,42 +87,42 @@
 			console.log("initializing");
 			PreLoadImages(maxDynamicImages);
 			
-			<!-- intial setup -->
-			<!-- Middle layer Setup >
-			<!-- SetValuesMin('#ShadowCentreLeft',0,-10);//yTargetPos2-10 -->
-			<!-- SetValuesMin('#ShadowCentreMiddle',0,15);//yTargetPos -->
-			<!-- SetValuesX('#ShadowCentreRight',0,10,-35); -->
+			//intial setup 
+			//Middle layer Setup 
+			//SetValuesMin('#ShadowCentreLeft',0,-10);//yTargetPos2-10 
+			//SetValuesMin('#ShadowCentreMiddle',0,15);//yTargetPos 
+			//SetValuesX('#ShadowCentreRight',0,10,-35); 
 			
 			SetValuesMin('#centreLeft',0,ReturnArrayPosition(0));//yTargetPos2-10
 			SetValuesMin('#centreMiddle',0,ReturnArrayPosition(1));//yTargetPos
 			SetValuesMin('#centreRight',10,ReturnArrayPosition(2));
 			
-			<!-----Back Layer Setup---->
+			//Back Layer Setup
 			SetValuesMin('#backLeft',0,ReturnArrayPosition(3));//yTargetPos2-10
 			SetValuesMin('#backMiddle',0,ReturnArrayPosition(4));//yTargetPos2-10
 			SetValuesMin('#backRight',0,ReturnArrayPosition(5));//yTargetPos2-10
 			
-			<!-- SetValuesMin('#ShadowBackLeft',0,15);//yTargetPos2-10 -->
-			<!-- SetValuesMin('#ShadowBackMiddle',0,-35);//yTargetPos2-10 -->
-			<!-- SetValuesMin('#ShadowBackRight',0,10);//yTargetPos2-10 -->
+			//SetValuesMin('#ShadowBackLeft',0,15);//yTargetPos2-10 
+			//SetValuesMin('#ShadowBackMiddle',0,-35);//yTargetPos2-10 
+			//SetValuesMin('#ShadowBackRight',0,10);//yTargetPos2-10 
 			
-			<!-- Middle z-layer Setup >
+			// Middle z-layer Setup 
 			$('#centreLeft').css('z-index', 2); 
 			$('#centreMiddle').css('z-index', 2); 
 			$('#centreRight').css('z-index', 2); 
 			
-			<!-- $('#ShadowCentreLeft').css('z-index', 1);  -->
-			<!-- $('#ShadowCentreMiddle').css('z-index', 1);  -->
-			<!-- $('#ShadowCentreRight').css('z-index', 1);  -->
+			// $('#ShadowCentreLeft').css('z-index', 1);  
+			// $('#ShadowCentreMiddle').css('z-index', 1);  
+			//$('#ShadowCentreRight').css('z-index', 1); 
 			
-			<!-----Back z-layer Setup --->
+			//Back z-layer Setup
 			$('#backLeft').css('z-index', 1); 
 			$('#backMiddle').css('z-index', 1); 
 			$('#backRight').css('z-index', 1); 
 			
-			<!-- $('#ShadowBackLeft').css('z-index', 0);  -->
-			<!-- $('#ShadowBackMiddle').css('z-index', 0);  -->
-			<!-- $('#ShadowBackRight').css('z-index', 0);  -->
+			//$('#ShadowBackLeft').css('z-index', 0); 
+			//$('#ShadowBackMiddle').css('z-index', 0); 
+			//$('#ShadowBackRight').css('z-index', 0); 
 			
 			$('#overlayContainer').css('z-index', 9); 
 			
@@ -135,7 +135,7 @@
 			Connected = loadedImages ; 
 		});
 		
-		<!----- Transition for dropping in from the transition state-draw 3--->
+		//Transition for dropping in from the transition state-draw 3
 		function DropIn()
 		{
 			var randomAngle=RandomNumber(0,50,25);
@@ -146,7 +146,7 @@
 				setImageVisible('leftTopMiddle',true);
 				rainDropTransition('#leftTopMiddle',yTargetPos2,ReturnArrayPosition(0),totalDuration);//Regular outside transition
 
-				<!-- rainDropTransition('#ShadowLeft',yTargetPos2,randomAngle,totalDuration); -->
+				//rainDropTransition('#ShadowLeft',yTargetPos2,randomAngle,totalDuration); 
 			}
 			else if (TransitionState == 1)
 			{
@@ -156,7 +156,7 @@
 
 				rainDropTransition('#middleTopMiddle',yTargetPos,ReturnArrayPosition(1),totalDuration);//Regular outside transition
 			
-				<!-- rainDropTransition('#ShadowMid',yTargetPos,randomAngle,totalDuration); -->
+				//rainDropTransition('#ShadowMid',yTargetPos,randomAngle,totalDuration); 
 			}
 			else if (TransitionState == 2)
 			{	
@@ -166,10 +166,10 @@
 				setImageVisible('backRight',true);
 				rainDropTransition('#rightTopMiddle',0,ReturnArrayPosition(2),totalDuration);//Regular outside transition
 				
-				<!-- rainDropTransition('#ShadowRight',10,randomAngle,totalDuration); -->
+				//rainDropTransition('#ShadowRight',10,randomAngle,totalDuration); 
 			}
 			
-			<!----- from main --->
+			//from main 
 			NextImage();// only transition to next image after we have the image numbers set 
 
 			if (TransitionState == 2)
@@ -198,7 +198,7 @@
 			
 		}		
 		
-		<!----- Setup the images for the transition out 1st part-draw 1 --->
+		//Setup the images for the transition out 1st part-draw 1 
 		function TransitionOut()
 		{
 			var randomAngle=RandomNumber(0,50,25);
@@ -219,20 +219,20 @@
 				setImageVisible('backLeft',true);
 				
 				SetValuesMin('#leftTopMiddle',-500,ReturnArrayPosition(0));//set the front value  300 0.35
-				<!-- SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values  -->
+				//SetValuesMin('#ShadowLeft',-500,randomAngle);//set front shadow values
 				//Centre
 
 				SetValuesNT('centreLeft',420,ReturnArrayPosition(3));// set the Centre picture value 
-				<!-- SetValuesNT('ShadowCentreLeft',400,PrePos1); -->
+				//SetValuesNT('ShadowCentreLeft',400,PrePos1);
 				//Back Images 
 				
 				SetValuesNT('backLeft',420,ReturnArrayPosition(0));// set the Centre picture value 
-				<!-- SetValuesNT('ShadowBackLeft',400,FarBackPos1); -->
+				//SetValuesNT('ShadowBackLeft',400,FarBackPos1); 
 				
 				// set z index of the shadows
-				<!-- $('#ShadowLeft').css('z-index', 8);  -->
-				<!-- $('#ShadowMid').css('z-index', 6);  -->
-				<!-- $('#ShadowRight').css('z-index', 7);  -->
+				//$('#ShadowLeft').css('z-index', 8);  
+				// $('#ShadowMid').css('z-index', 6);  
+				// $('#ShadowRight').css('z-index', 7);
 				
 				//set z index of Centre pictures
 				$('#centreLeft').css('z-index', 5); 
@@ -258,18 +258,20 @@
 				setImageVisible('backMiddle',true);
 					
 				SetValuesMin('#middleTopMiddle',-600,ReturnArrayPosition(1));//set the front value 
-				<!-- SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values  -->
+				// SetValuesMin('#ShadowMid',-600,randomAngle);//set front shadow values  
 						
 				SetValuesNT('centreMiddle',390,ReturnArrayPosition(4));// set the Centre picture value 
-				<!-- SetValuesNT('ShadowCentreMiddle',370,PrePos2); -->
+				//SetValuesNT('ShadowCentreMiddle',370,PrePos2); 
 				//Back Images 
 				
 				SetValuesNT('backMiddle',390,ReturnArrayPosition(1));// set the Centre picture value 
-				<!-- SetValuesNT('ShadowBackMiddle',370,FarBackPos2); -->
+				// SetValuesNT('ShadowBackMiddle',370,FarBackPos2); 
+				
 				// set z index of the shadows
-				<!-- $('#ShadowLeft').css('z-index', 7);  -->
-				<!-- $('#ShadowMid').css('z-index', 8);  -->
-				<!-- $('#ShadowRight').css('z-index', 6);  -->
+				
+				// $('#ShadowLeft').css('z-index', 7);  
+				// $('#ShadowMid').css('z-index', 8);  
+				// $('#ShadowRight').css('z-index', 6);  
 				
 				//set z index of pictures
 				$('#leftTopMiddle').css('z-index', 7);
@@ -295,19 +297,19 @@
 				setImageVisible('backRight',true);
 					
 				SetValuesMin('#rightTopMiddle',-700,ReturnArrayPosition(2));//set the front value 450 0.3
-				<!-- SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2 -->
+				// SetValuesX('#ShadowRight',70,-700,randomAngle);//set front shadow values 0.2 -->
 
 				SetValuesNT('centreRight',290,ReturnArrayPosition(5));// set the Centre picture value 
-				<!-- SetValuesNT('ShadowCentreRight',280,PrePos3); -->
+				// SetValuesNT('ShadowCentreRight',280,PrePos3); 
 				//Back Images 
 				
 				SetValuesNT('backRight',390,ReturnArrayPosition(2));// set the Centre picture value 
-				<!-- SetValuesNT('ShadowBackRight',370,FarBackPos2); -->
+				//SetValuesNT('ShadowBackRight',370,FarBackPos2);
 				
 				// set z index of the shadows
-				<!-- $('#ShadowLeft').css('z-index', 6);  -->
-				<!-- $('#ShadowMid').css('z-index', 7);  -->
-				<!-- $('#ShadowRight').css('z-index', 8);  -->
+				// $('#ShadowLeft').css('z-index', 6);  
+				//$('#ShadowMid').css('z-index', 7); 
+				//$('#ShadowRight').css('z-index', 8); 
 				
 				$('#leftTopMiddle').css('z-index', 6); 
 				$('#middleTopMiddle').css('z-index', 7); 
@@ -345,7 +347,7 @@
 			}
 		}
 		
-		<!----- Main function reccursively calling itself  ---->
+		// Main function reccursively calling itself  
 		function Update()
 		{
 			if (Connected)

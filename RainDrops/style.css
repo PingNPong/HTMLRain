@@ -128,6 +128,7 @@
 	height: 360px;
 	z-index: 3;
 	Opacity :1;
+	-webkit-transform: translateZ(0);
 }
 
 .LeftShadow {
@@ -137,11 +138,11 @@
   	width: 640px;
 	height: 360px;
 	z-index: 3;
-	
 	/* -webkit-transition-duration: 1s; */
     /* -webkit-transition-timing-function: ease; */
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	Opacity :1;
+	-webkit-transform: translateZ(0);
 	/* transition-property:-webkit-filter; */
 }
 
@@ -166,27 +167,19 @@
 	height: 360px;
 	z-index: 3;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
-.LeftBackShadow {
-    position:absolute;
-	left:40px;
-	top:400px;
-  	width: 680px;
-	height: 400px;
-	z-index:2;
-}
-
-.LeftBack {
-    position:absolute;
+/*No shadow rendering  */
+.LeftCentreNS {
+	    position:absolute;
 	left:60px;
 	top:420px;
   	width: 640px;
 	height: 360px;
-	z-index:2;
-	-webkit-filter: drop-shadow(5px 5px 5px #222);
-	/* -webkit-box-shadow: 5px 5px 20px black; */
+	z-index: 3;
+	-webkit-transform: translateZ(0);
 }
 
 .LeftCentreShadow {
@@ -198,6 +191,39 @@
 	z-index:3;
 }
 
+.LeftBack {
+    position:absolute;
+	left:60px;
+	top:420px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+/*No shadow rendering  */
+.LeftBackNS {
+    position:absolute;
+	left:60px;
+	top:420px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftBackShadow {
+    position:absolute;
+	left:40px;
+	top:400px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+}
+
+
 .Middle {
     position:absolute;
 	left:600px;
@@ -205,6 +231,7 @@
   	width: 640px;
 	height: 360px;
 	z-index: 2;
+	-webkit-transform: translateZ(0);
 }
 
 .MiddleShadow {
@@ -218,6 +245,7 @@
 	/* -webkit-transition-duration: 2s; */
 	/* -webkit-transition-timing-function: ease-out; */
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	
     /* position:absolute; */
 	/* left:580px; */
 	/* top:270px; */
@@ -234,7 +262,19 @@
 	height: 360px;
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+/*No shadow rendering  */
+.MiddleCentreNS {
+    position:absolute;
+	left:600px;
+	top:390px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-transform: translateZ(0);
 }
 
 .MiddleCentreShadow {
@@ -254,7 +294,19 @@
 	height: 360px;
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+/*No shadow rendering  */
+.MiddleBackNS {
+    position:absolute;
+	left:600px;
+	top:390px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-transform: translateZ(0);
 }
 
 .MiddleBackShadow {
@@ -273,6 +325,7 @@
   	width: 640px;
 	height: 360px;
 	z-index: 1;
+	-webkit-transform: translateZ(0);
 }
 
 .RightShadow {
@@ -301,8 +354,20 @@
 	height: 360px;
 	z-index:1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
+
+.RightCentreNS {
+    position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index:1;
+	-webkit-transform: translateZ(0);
+}
+
 
 .RightCentreShadow {
     position:absolute;
@@ -320,7 +385,19 @@
   	width: 640px;
 	height: 360px;
 	z-index:1;
-	/* -webkit-box-shadow: 5px 5px 20px black; */
+	-webkit-transform: translateZ(0);
+	-webkit-box-shadow: 5px 5px 20px black;
+}
+
+
+.RightBackNS {
+    position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index:1;
+	-webkit-transform: translateZ(0);
 }
 
 .RightBackShadow {

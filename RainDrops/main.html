@@ -59,7 +59,7 @@
 		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 3000; //the duration for the transition 
 		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDurationP2 = 2500; //for the wait between transition 
+		var waitDuration = 3000; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -207,8 +207,11 @@
 			
 			if (TransitionState == 0)
 			{	
+				// main area Turn off shadow 
 				document.getElementById("leftTopMiddle").className = "LeftMiddle";// turn off shadow 
 				document.getElementById("rightTopMiddle").className = "RightShadow";// turn off shadow
+				document.getElementById("backLeft").className = "LeftBack";// turn off Back shadow 
+				document.getElementById("backRight").className = "RightBackNS";// turn on Back shadow 
 			
 				ChangeImg('#backLeft',imgArray[FarBackImage]);//Change the Centre image to the previous
 				ChangeImg('#centreLeft',imgArray[PrevImage]);//Change the Centre image to the previous
@@ -248,6 +251,8 @@
 			{		
 				document.getElementById("leftTopMiddle").className = "LeftShadow";// turn on shadow
 				document.getElementById("middleTopMiddle").className = "Middle";// turn off shadow
+				document.getElementById("backLeft").className = "LeftBackNS";// turn off Back shadow 
+				document.getElementById("backMiddle").className = "MiddleBack";// turn On Back shadow 
 				
 				ChangeImg('#backMiddle',imgArray[FarBackImage]);//Change the Centre image to the previous
 				ChangeImg('#centreMiddle',imgArray[PrevImage]);//Change the Centre image to the previous
@@ -287,6 +292,8 @@
 			{	
 				document.getElementById("middleTopMiddle").className = "MiddleShadow";// turn on shadow
 				document.getElementById("rightTopMiddle").className = "RightMiddle";// turn off shadow
+				document.getElementById("backMiddle").className = "MiddleBackNS";// turn off Back shadow 
+				document.getElementById("backRight").className = "RightBack";// turn On Back shadow 
 			
 				ChangeImg('#backRight',imgArray[FarBackImage]);//Change the Centre image to the previous
 				ChangeImg('#centreRight',imgArray[PrevImage]);//Change the Centre image to the previous	
@@ -321,7 +328,7 @@
 				$('#centreRight').css('z-index', 5);
 			}
 			
-			setTimeout(DropIn,waitDurationP2);
+			setTimeout(DropIn,waitDuration);
 		}
 		
 		//the next image in the list 

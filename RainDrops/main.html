@@ -59,7 +59,7 @@
 		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 3000; //the duration for the transition 
 		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDuration = 2000; //for the wait between transition 
+		var waitDuration = 4000; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -78,7 +78,7 @@
 		var FarBackPos2 = 0;
 		var FarBackPos3 = 0;
 		
-		var angleArray = [-10,20,-30,10,-20,20];
+		var angleArray = [-10,20,-20,18,-15,20];
 		var CurrentAngleSet= 0;
 		
 		//the start up function 
@@ -213,7 +213,7 @@
 			{	
 				// main area Turn off shadow 
 				document.getElementById("leftTopMiddle").className = "LeftMiddle";// turn off shadow 
-				document.getElementById("rightTopMiddle").className = "RightShadow";// turn off shadow
+				document.getElementById("rightTopMiddle").className = "RightShadow";// turn on shadow
 				document.getElementById("backLeft").className = "LeftBack";// turn off Back shadow 
 				document.getElementById("backRight").className = "RightBackNS";// turn on Back shadow 
 			

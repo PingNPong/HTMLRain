@@ -149,10 +149,10 @@
 .LeftShadowPos
 {
 	position:absolute;
-	left:80px;
-	top:290px;
-  	width: 630px;
-	height: 360px;
+	left:28px;
+	top:248px;
+  	width: 680px;
+	height: 400px;
 	z-index: 3;
 }
 
@@ -267,8 +267,8 @@
 .MiddleShadowPos
 {
 	position:absolute;
-	left:570px;
-	top:260px;
+	left:568px;
+	top:256px;
   	width: 680px;
 	height: 400px;
 	z-index:2;
@@ -290,7 +290,7 @@
 .MiddleCentreNS {
     position:absolute;
 	left:600px;
-	top:390px;
+	top:380px;
   	width: 640px;
 	height: 360px;
 	z-index:2;
@@ -315,7 +315,6 @@
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
-	-webkit-box-shadow: 5px 5px 20px black;
 }
 
 /*No shadow rendering  */
@@ -355,14 +354,15 @@
   	width: 640px;
 	height: 360px;
 	z-index: 1;
-	-webkit-box-shadow: 5px 5px 20px black;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
 }
 
 .RightShadowPos
 {
 	position:absolute;
-	left:1008px;
-	top:265px;
+	left:997px;
+	top:260px;
   	width: 680px;
 	height: 400px;
 	z-index:1;
@@ -377,7 +377,7 @@
 	z-index:1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
-	-webkit-box-shadow: 5px 5px 20px black;
+	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
 .RightCentreNS {

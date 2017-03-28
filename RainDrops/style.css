@@ -143,15 +143,24 @@
 	-webkit-transform: translateZ(0);
 }
 
-.LeftShadowPos
+.LeftShadowPos1
 {
 	position:absolute;
-	left:28px;
-	top:246px;
+	left:26px;
+	top:249px;
   	width: 680px;
 	height: 400px;
 	z-index: 3;
-	Opacity :0.8;
+}
+
+.LeftShadowPos2
+{
+	position:absolute;
+	left:32px;
+	top:243px;
+  	width: 680px;
+	height: 400px;
+	z-index: 3;
 }
 
 .LeftShadowPosTrans
@@ -276,15 +285,24 @@
 	/* height: 400px; */
 	/* z-index:2; */
 }
-.MiddleShadowPos
+.MiddleShadowPos1
 {
 	position:absolute;
-	left:566px;
-	top:256px;
+	left:573px;
+	top:252px;
   	width: 680px;
 	height: 400px;
 	z-index:2;
-	Opacity :0.8;
+}
+
+.MiddleShadowPos2
+{
+	position:absolute;
+	left:565px;
+	top:262px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
 }
 
 .MiddleShadowPosTrans
@@ -385,15 +403,24 @@
 	-webkit-transform: translateZ(0);
 }
 
-.RightShadowPos
+.RightShadowPos1
 {
 	position:absolute;
-	left:997px;
-	top:257px;
+	left:992px;
+	top:260px;
   	width: 680px;
 	height: 400px;
 	z-index:1;
-	Opacity :0.8;
+}
+
+.RightShadowPos2
+{
+	position:absolute;
+	left:1002px;
+	top:255px;
+  	width: 680px;
+	height: 400px;
+	z-index:1;
 }
 
 .RightShadowPosTrans

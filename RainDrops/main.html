@@ -25,27 +25,27 @@
 			<!-- <img id="ShadowBackMiddle" class="MiddleCentreShadow" src="DropShadow.png" > -->
 			<!-- <img id="ShadowBackRight" class="RightCentreShadow" src="DropShadow.png" > -->
 		<!-- Back images  -->
-			<img id="backLeft" class="LeftBack" src="http://192.168.2.239/RoyalityFreeSet1/01.jpg" alt="" >
-			<img id="backMiddle" class="MiddleBack" src="http://192.168.2.239/RoyalityFreeSet1/02.jpg" alt="" >
-			<img id="backRight" class="RightBack" src="http://192.168.2.239/RoyalityFreeSet1/03.jpg" alt="" >
+			<img id="backLeft" class="LeftBack" src="http://192.168.2.209/RoyalityFreeSet1/01.jpg" alt="" >
+			<img id="backMiddle" class="MiddleBack" src="http://192.168.2.209/RoyalityFreeSet1/02.jpg" alt="" >
+			<img id="backRight" class="RightBack" src="http://192.168.2.209/RoyalityFreeSet1/03.jpg" alt="" >
 		
 		<!-- Centre Shadow  -->
 			<!-- <img id="ShadowCentreLeft" class="LeftCentreShadow" src="DropShadow.png" > -->
 			<!-- <img id="ShadowCentreMiddle" class="MiddleCentreShadow" src="DropShadow.png" > -->
 			<!-- <img id="ShadowCentreRight" class="RightCentreShadow" src="DropShadow.png" > -->
 		<!-- Centre images  -->
-			<img id="centreLeft" class="LeftCentre" src="http://192.168.2.239/PhotoBooth/01.jpg" alt="" >
-			<img id="centreMiddle" class="MiddleCentre" src="http://192.168.2.239/PhotoBooth/02.jpg" alt="" >
-			<img id="centreRight" class="RightCentre" src="http://192.168.2.239/PhotoBooth/03.jpg" alt="">
+			<img id="centreLeft" class="LeftCentre" src="http://192.168.2.209/PhotoBooth/01.jpg" alt="" >
+			<img id="centreMiddle" class="MiddleCentre" src="http://192.168.2.209/PhotoBooth/02.jpg" alt="" >
+			<img id="centreRight" class="RightCentre" src="http://192.168.2.209/PhotoBooth/03.jpg" alt="">
 			
 		<!-- FrontShadow  -->
-			<img id="ShadowLeft" class="LeftShadowPos" src="DropShadow.png" >
-			<img id="ShadowMid" class="MiddleShadowPos" src="DropShadow.png" >
-			<img id="ShadowRight" class="RightShadowPos" src="DropShadow.png" >
+			<img id="ShadowLeft" class="LeftShadowPos1" src="DropShadow.png" >
+			<img id="ShadowMid" class="MiddleShadowPos1" src="DropShadow.png" >
+			<img id="ShadowRight" class="RightShadowPos1" src="DropShadow.png" >
 		<!-- Front images -->
-			<img id="leftTopMiddle" class="LeftMiddle" src="http://192.168.2.239/PhotoBooth/04.jpg" alt="" >
-			<img id="middleTopMiddle" class="Middle" src="http://192.168.2.239/PhotoBooth/05.jpg" alt="" >
-			<img id="rightTopMiddle" class="RightMiddle" src="http://192.168.2.239/PhotoBooth/06.jpg" alt="" >
+			<img id="leftTopMiddle" class="LeftMiddle" src="http://192.168.2.209/PhotoBooth/04.jpg" alt="" >
+			<img id="middleTopMiddle" class="Middle" src="http://192.168.2.209/PhotoBooth/05.jpg" alt="" >
+			<img id="rightTopMiddle" class="RightMiddle" src="http://192.168.2.209/PhotoBooth/06.jpg" alt="" >
 			
 		<!-- overlay -->	
 			<img id="overlayContainer" class="overlayClass" src="mask.png" >
@@ -59,7 +59,7 @@
 		var totalDuration = 4000; //total time between slides 
 		var transitDuration = 3000; //the duration for the transition 
 		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDuration = 4000; //for the wait between transition 
+		var waitDuration = 100; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -162,7 +162,7 @@
 				rainDropTransition('#middleTopMiddle',yTargetPos,ReturnArrayPosition(1),totalDuration);//Regular outside transition
 				
 				//shadow stuff 
-				//document.getElementById("ShadowLeft").className = "LeftShadowPos";//change to transition class 
+				//document.getElementById("ShadowLeft").className = "LeftShadowPos1";//change to transition class 
 				//setImageVisible('ShadowLeft',false);// turn off image 
 				setImageVisible('ShadowMid',true);
 				rainDropTransition('#ShadowMid',yTargetPos,ReturnArrayPosition(1),totalDuration); 
@@ -235,9 +235,14 @@
 				setImageVisible('backLeft',true);
 				
 				SetValuesMin('#leftTopMiddle',-500,ReturnArrayPosition(0));//set the front value  300 0.35
+				
 				// shadow stuff 
 				setImageVisible('ShadowRight',false);	
 				//document.getElementById("ShadowRight").className = "RightShadowPosTrans";//change to transition class 
+				if (CurrentAngleSet==0)// setting the back position 
+					document.getElementById("ShadowLeft").className = "LeftShadowPos1";
+				else 
+					document.getElementById("ShadowLeft").className = "LeftShadowPos2";
 				SetValuesMin('#ShadowLeft',-500,ReturnArrayPosition(0));//set front shadow values
 				
 				//Centre
@@ -279,9 +284,14 @@
 				setImageVisible('backMiddle',true);
 				
 				SetValuesMin('#middleTopMiddle',-600,ReturnArrayPosition(1));//set the front value 
+				
 				// shadow stuff 
 				setImageVisible('ShadowLeft',false);	
 				//document.getElementById("ShadowLeft").className = "LeftShadowPosTrans";//change to transition class 
+				if (CurrentAngleSet==0)// setting the back position 
+					document.getElementById("ShadowMid").className = "MiddleShadowPos1";
+				else 
+					document.getElementById("ShadowMid").className = "MiddleShadowPos2";
 				SetValuesMin('#ShadowMid',-600,ReturnArrayPosition(1));//set front shadow values  
 				//setImageVisible('ShadowMid',true);
 						
@@ -325,7 +335,11 @@
 				SetValuesMin('#rightTopMiddle',-700,ReturnArrayPosition(2));//set the front value 450 0.3
 				// shadow stuff 
 				setImageVisible('ShadowMid',false);
-				//document.getElementById("ShadowMid").className = "MiddleShadowPosTrans";//change to transition class 				
+				//document.getElementById("ShadowMid").className = "MiddleShadowPosTrans";//change to transition class 
+				if (CurrentAngleSet==0)// setting the back position 
+					document.getElementById("ShadowRight").className = "RightShadowPos1";
+				else 
+					document.getElementById("ShadowRight").className = "RightShadowPos2";				
 				SetValuesX('#ShadowRight',70,-700,ReturnArrayPosition(2));//set front shadow values 0.2 -->
 				//setImageVisible('ShadowRight',true);
 

@@ -138,15 +138,23 @@
   	width: 640px;
 	height: 360px;
 	z-index: 3;
-	/* -webkit-transition-duration: 1s; */
-    /* -webkit-transition-timing-function: ease; */
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	Opacity :1;
 	-webkit-transform: translateZ(0);
-	/* transition-property:-webkit-filter; */
 }
 
 .LeftShadowPos
+{
+	position:absolute;
+	left:28px;
+	top:246px;
+  	width: 680px;
+	height: 400px;
+	z-index: 3;
+	Opacity :0.8;
+}
+
+.LeftShadowPosTrans
 {
 	position:absolute;
 	left:28px;
@@ -154,6 +162,10 @@
   	width: 680px;
 	height: 400px;
 	z-index: 3;
+	Opacity :1;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-out;
+	Opacity :0;
 }
 
 
@@ -267,11 +279,26 @@
 .MiddleShadowPos
 {
 	position:absolute;
+	left:566px;
+	top:256px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+	Opacity :0.8;
+}
+
+.MiddleShadowPosTrans
+{
+	position:absolute;
 	left:568px;
 	top:256px;
   	width: 680px;
 	height: 400px;
 	z-index:2;
+	Opacity :1;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-out;
+	Opacity :0;
 }
 
 .MiddleCentre {
@@ -362,10 +389,25 @@
 {
 	position:absolute;
 	left:997px;
+	top:257px;
+  	width: 680px;
+	height: 400px;
+	z-index:1;
+	Opacity :0.8;
+}
+
+.RightShadowPosTrans
+{
+	position:absolute;
+	left:997px;
 	top:260px;
   	width: 680px;
 	height: 400px;
 	z-index:1;
+	Opacity :1;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-out;
+	Opacity :0;
 }
 
 .RightCentre {

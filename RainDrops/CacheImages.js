@@ -5,8 +5,8 @@ var defaultArray = [];// image array copy for downloading
 var imgArray=[] ;
 
 
-var imgPath  = "http://192.168.2.239/PhotoBooth/";
-var StaticImgPath  = "http://192.168.2.239/PhotoBoothStatic/";// Insert simulated static image path here
+var imgPath  = "http://192.168.2.209/PhotoBooth/";
+var StaticImgPath  = "http://192.168.2.209/PhotoBoothStatic/";// Insert simulated static image path here
 // Static Image Gallery PhotoBoothStatic/
 var StaicImgArray = [StaticImgPath+"00Static.jpg"];
 

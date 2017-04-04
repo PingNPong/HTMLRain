@@ -198,4 +198,3 @@ function LoadImages(MaxImage)
 		img.src = url;
 	};  
 }
-

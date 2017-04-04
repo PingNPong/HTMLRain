@@ -476,8 +476,8 @@
   	width: 640px;
 	height: 360px;
 	z-index:1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
-	-webkit-box-shadow: 5px 5px 20px black;
 }
 
 
@@ -505,4 +505,10 @@
   bottom: 0;
   right: 0;
   z-index:9;
+}
+
+.loadClass{
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

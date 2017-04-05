@@ -57,10 +57,10 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 4000; //total time between slides 
+		var totalDuration = 2000; //total time between slides 
 		var transitDuration = 3000; //the duration for the transition 
 		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDuration = 2000; //for the wait between transition 
+		var waitDuration = 100; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -71,8 +71,8 @@
 		var currentImg=0;
 		var PreJumpImg=0;// image prejump
 		var ImgState=0;
-		var maxDynamicImages=12;
-		var maxImages=22;
+		var maxDynamicImages=9;
+		var maxImages=19;
 		var Connected = false; 
 		var PrePos1 = 0;
 		var PrePos2 = 0;
@@ -194,7 +194,7 @@
 			{
 				TransitionState = 0;	
 				ReadFiles();// check if there is a change 
-				LoadSetImages(maxDynamicImages,currentImg,3,Math.random());
+				LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
 				
 				if (CurrentAngleSet==0)
 					CurrentAngleSet=1;
@@ -233,12 +233,11 @@
 			if (ImgState>0 )
 			{//if you have a previous state that is currently being referrenced 
 				FarBackImage=returnPreviousInt(6,PreJumpImg,maxImages);
-				console.log(ImgState+" FarBack="+FarBackImage);
+				//console.log(ImgState+" FarBack="+FarBackImage);
 				if (ImgState>1 )
 				{
-					
 					PrevImage=returnPreviousInt(3,PreJumpImg,maxImages);
-					console.log(ImgState+" PrevImage="+PrevImage);
+					//console.log(ImgState+" PrevImage="+PrevImage);
 				}
 			}
 			

@@ -46,27 +46,40 @@ function SetImageArray(MaxImage)
 		//console.log(putImage+" =put image ");
 		StaicImgArray.push(putImage);
 	}
+	// setting the max image size to proper 
+	var TargetSize = 0 ;
+	if (MaxImage<10 )
+		TargetSize=10;
+	else 
+		TargetSize=MaxImage;
 	
 	// merging the 2 arrays together 
-	for (i=0; i< MaxImage ; i++)
+	for (i=0; i< TargetSize ; i++)
 	{
-		var putImage="";
-		
-		imgArray.push(DynamicImgArray[i]);
-		defaultArray.push(DynamicImgArray[i]);
-		//console.log(i+" dynamic i="+DynamicImgArray[i]);
+		if (i<MaxImage)
+		{// add dynamic images if there are any to add 
+			imgArray.push(DynamicImgArray[i]);
+			defaultArray.push(DynamicImgArray[i]);
+			//console.log(i+" dynamic i="+DynamicImgArray[i]);
+		}
+
 		if (i<10)
-		{
+		{// add static images if there are any to add 
 			imgArray.push(StaicImgArray[i]);
 			defaultArray.push(StaicImgArray[i]);
 			//console.log(i+" static i="+StaicImgArray[i]);
 		}
 
 	}
+	
+	// for (i=0; i< 19 ; i++)
+	// {
+		// console.log(i+" d array "+defaultArray[i]);
+	// }
 }
 
 /* Cache Images with shifted items expected */
-function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
+function LoadSetImages(MaxImage,maxStatic,StartIndex,Amount,ExtraAddOn)
 {
 	var image = new Image();
 	//setting image location 
@@ -83,7 +96,7 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 		// image exists and is loaded
 		//console.log("Success set loading "+image.src);
 		ImageLoaded();
-		SetImages(StartIndex,Amount,ExtraAddOn);
+		SetImages(StartIndex,Amount,ExtraAddOn,maxStatic);
 	});
 	
 	image.addEventListener('error', function() {
@@ -98,15 +111,16 @@ function LoadSetImages(MaxImage,StartIndex,Amount,ExtraAddOn)
 		loadedImages=false;
 	});
 	//imgPath+imageLocation
+	//console.log(imgArray[StartIndex]);
 	image.src =imgArray[StartIndex];
 }
 /* Cache Images with standard item location expected */
-function SetImages(StartIndex,Amount,ExtraAddOn)
+function SetImages(StartIndex,Amount,ExtraAddOn,maxStatic)
 {
 	for(i = StartIndex; i < StartIndex+Amount; i++)
 	{
 		var settingIndex=0;
-		if ((i)<22)
+		if ((i)<maxStatic)
 		{//when the new number will be fine
 			//console.log(currentImg-index+" is now "+(maxImages + (currentImg-index)));
 			settingIndex= i;
@@ -114,7 +128,7 @@ function SetImages(StartIndex,Amount,ExtraAddOn)
 		else 
 		{//when the new number will be larger than the max = 22 -->
 			//console.log(i-22+" reset the index");
-			settingIndex = i-22;
+			settingIndex = i-maxStatic;
 		}
 		
 
@@ -160,16 +174,15 @@ function PreLoadImages(MaxImage)
 	});
 		
 	var putImage="";
-	if ( (MaxImage/2)<10 )
+	if ( (MaxImage-1)<10 )
 	{// if its less than 10 we put 0 before 
-		putImage="0"+(MaxImage/2)+".jpg";
+		putImage="0"+(MaxImage-1)+".jpg";
 	}
 	else 
 	{
-		putImage=(MaxImage/2)+".jpg";
+		putImage=(MaxImage-1)+".jpg";
 	}
 			
-		
 	image.src = imgPath+ putImage;
 }
 

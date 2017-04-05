@@ -6,24 +6,24 @@ var LastNumber=0;
 
 function ReadFiles()
 {
-	$.ajax({
-        url: "http://192.168.2.209/PhotoBooth/Mod.txt",//"http://192.168.2.209/PhotoBooth/Mod.txt",
-        dataType: "text",  // jQuery will infer this, but you can set explicitly
-        success: function (data)
-		{
-			currentNumber=data;
-			//console.log("reading File"+ currentNumber+ " vs "+LastNumber);
-			if (currentNumber!=LastNumber)
-			{// if the file number is not the same 
-				console.log("Not the same number  "+currentNumber+"!="+LastNumber);
-				PreJumpImg = currentImg;
-				currentImg = 0;	// reset the numbers;
-				console.log("prejump="+PreJumpImg);
-				LastNumber=currentNumber;
-				ImgState=2;
-			}
-		}
-    });
+	// $.ajax({
+        // url: "http://192.168.2.209/PhotoBooth/Mod.txt",//"http://192.168.2.209/PhotoBooth/Mod.txt",
+        // dataType: "text",  // jQuery will infer this, but you can set explicitly
+        // success: function (data)
+		// {
+			// currentNumber=data;
+			// //console.log("reading File"+ currentNumber+ " vs "+LastNumber);
+			// if (currentNumber!=LastNumber)
+			// {// if the file number is not the same 
+				// //console.log("Not the same number  "+currentNumber+"!="+LastNumber);
+				// PreJumpImg = currentImg;
+				// currentImg = 0;	// reset the numbers;
+				// console.log("prejump="+PreJumpImg);
+				// LastNumber=currentNumber;
+				// ImgState=2;
+			// }
+		// }
+    // });
 
 	// if (currentNumber!=LastNumber)
 	// {// if the file number is not the same 

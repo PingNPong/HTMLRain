@@ -1,12 +1,5 @@
 /* NVYVE */
 /* Philip Ong   March 17,2017 */
-:root {
-  --widthImg: 640px;
-  --widthShadow: 680px;
-  --heightImg: 360px;
-  --heightShadow: 400px;
-}
-
 .shadow {
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -95,158 +88,316 @@
 	/* z-index:1; */
 	/*-webkit-backface-visibility: hidden;*/
 }
+/*----Middle Content ------*/
+#ShadowCentreLeft img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowCentreMiddle img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowCentreRight img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Back Content ------*/
+#ShadowBackLeft img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+#ShadowBackMiddle img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+#ShadowBackRight img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+
+
 /* Positioning classes ------------ */ 
-
-  	/* width: var(--widthImg); */
-	/* height: var(--heightImg); */
-
-.LeftTopImg {/* Positioning  left front image No shadow ------------ */ 
+.LeftTop {/* left top positioning with no shadow*/
     position:absolute;
 	left:60px;
 	top:280px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 3;
 	Opacity :1;
 	-webkit-transform: translateZ(0);
 }
 
-.LeftTopShadowImg {/* Positioning  left front image Yes shadow ------------ */ 
+.LeftTopShadow {/* left top positioning with shadow*/
     position:absolute;
 	left:60px;
 	top:280px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 3;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	Opacity :1;
 	-webkit-transform: translateZ(0);
 }
 
-.LeftShadowPos1{/* Left front shadow position1 ------------ */ 
+.LeftShadowPos1
+{
 	position:absolute;
 	left:26px;
 	top:249px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index: 3;
 }
 
-.LeftShadowPos2{/* Left front shadow position2 ------------ */ 
+.LeftShadowPos2
+{
 	position:absolute;
 	left:32px;
 	top:243px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index: 3;
 }
 
-.LeftCentre {/* Positioning Left centre image ------------ */ 
+.LeftShadowPosTrans
+{
+	position:absolute;
+	left:28px;
+	top:248px;
+  	width: 680px;
+	height: 400px;
+	z-index: 3;
+	Opacity :1;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-out;
+	Opacity :0;
+}
+
+
+.LeftTest {
+	-webkit-transition-duration: 2s;
+    -webkit-transition-timing-function: ease;
+    position:absolute;
+	left:60px;
+	top:280px;
+  	width: 640px;
+	height: 360px;
+	z-index: 3;
+	Opacity :0;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+}
+
+.LeftCentre {
     position:absolute;
 	left:60px;
 	top:420px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 3;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
+/*No shadow rendering  */
+.LeftCentreNS {
+	    position:absolute;
+	left:60px;
+	top:420px;
+  	width: 640px;
+	height: 360px;
+	z-index: 3;
+	-webkit-transform: translateZ(0);
+}
 
-.LeftBack {/* Positioning Left back image ------------ */ 
+.LeftCentreShadow {
+    position:absolute;
+	left:40px;
+	top:400px;
+  	width: 680px;
+	height: 400px;
+	z-index:3;
+}
+
+.LeftBack {
     position:absolute;
 	left:60px;
 	top:420px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	/* -webkit-transform: translateZ(0); */
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
+/*No shadow rendering  */
+.LeftBackNS {
+    position:absolute;
+	left:60px;
+	top:420px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftBackShadow {
+    position:absolute;
+	left:40px;
+	top:400px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+}
 
 
-.MiddleTopImg {/* Positioning Middle front image no shadow ------------ */ 
+.MiddleTop {/* middle top positioning with no shadow*/
     position:absolute;
 	left:600px;
 	top:290px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 2;
 	-webkit-transform: translateZ(0);
 }
 
-.MiddleShadowImg {/* Positioning Middle front image Yes shadow ------------ */ 
+.MiddleShadow {/* middle top positioning with shadow*/
 	position:absolute;
 	left:600px;
 	top:290px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 2;
+	/* -webkit-transition : transition-timing-function: ease; */
+	/* -webkit-transition-duration: 2s; */
+	/* -webkit-transition-timing-function: ease-out; */
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	
+    /* position:absolute; */
+	/* left:580px; */
+	/* top:270px; */
+  	/* width: 680px; */
+	/* height: 400px; */
+	/* z-index:2; */
 }
-
 .MiddleShadowPos1
-{/* Middle front shadow position1 ------------ */ 
+{
 	position:absolute;
 	left:573px;
 	top:252px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index:2;
 }
 
 .MiddleShadowPos2
-{/* Middle front shadow position1 ------------ */ 
+{
 	position:absolute;
 	left:565px;
 	top:262px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index:2;
 }
 
-.MiddleCentre {/* Positioning Left centre image ------------ */
+.MiddleShadowPosTrans
+{
+	position:absolute;
+	left:568px;
+	top:256px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+	Opacity :1;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-out;
+	Opacity :0;
+}
+
+.MiddleCentre {
     position:absolute;
 	left:600px;
 	top:390px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
-.MiddleBack {/* Positioning Middle centre image ------------ */
+/*No shadow rendering  */
+.MiddleCentreNS {
+    position:absolute;
+	left:600px;
+	top:380px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleCentreShadow {
+    position:absolute;
+	left:580px;
+	top:370px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+}
+
+.MiddleBack {
     position:absolute;
 	left:600px;
 	top:390px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
 }
 
-.RightMiddleImg {/* Positioning Right image ------------ */
+/*No shadow rendering  */
+.MiddleBackNS {
+    position:absolute;
+	left:600px;
+	top:390px;
+  	width: 640px;
+	height: 360px;
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleBackShadow {
+    position:absolute;
+	left:580px;
+	top:370px;
+  	width: 680px;
+	height: 400px;
+	z-index:2;
+}
+
+.RightTop {/* right top positioning with no shadow*/
     position:absolute;
 	left:1100px;
 	top:300px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 1;
 	-webkit-transform: translateZ(0);
 }
 
-.RightShadow {/* Positioning Right centre image ------------ */
+.RightTopShadow {/* right top positioning with shadow*/
 	position:absolute;
 	left:1100px;
 	top:300px;
-	width: var(--widthImg);
-	height: var(--heightImg);
+  	width: 640px;
+	height: 360px;
 	z-index: 1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -257,8 +408,8 @@
 	position:absolute;
 	left:992px;
 	top:260px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index:1;
 }
 
@@ -267,11 +418,24 @@
 	position:absolute;
 	left:1002px;
 	top:255px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index:1;
 }
 
+.RightShadowPosTrans
+{
+	position:absolute;
+	left:997px;
+	top:260px;
+  	width: 680px;
+	height: 400px;
+	z-index:1;
+	Opacity :1;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: ease-out;
+	Opacity :0;
+}
 
 .RightCentre {
     position:absolute;
@@ -285,12 +449,23 @@
 	/* -webkit-box-shadow: 5px 5px 20px black; */
 }
 
+.RightCentreNS {
+    position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index:1;
+	-webkit-transform: translateZ(0);
+}
+
+
 .RightCentreShadow {
     position:absolute;
 	left:1090px;
 	top:280px;
-	width: var(--widthShadow);
-	height: var(--heightShadow);
+  	width: 680px;
+	height: 400px;
 	z-index:1;
 }
 
@@ -303,6 +478,26 @@
 	z-index:1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
+}
+
+
+.RightBackNS {
+    position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index:1;
+	-webkit-transform: translateZ(0);
+}
+
+.RightBackShadow {
+    position:absolute;
+	left:1090px;
+	top:280px;
+  	width: 680px;
+	height: 400px;
+	z-index:1;
 }
 
 .overlayClass{

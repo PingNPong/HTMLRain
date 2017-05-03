@@ -57,10 +57,9 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 2000; //total time between slides 
-		var transitDuration = 3000; //the duration for the transition 
-		var waitDurationP1 = 10; //for the wait between the setting of transitions 
-		var waitDuration = 100; //for the wait between transition 
+		var totalDuration = 3000; //total time between slides 
+		var extraLoadDuration = 6500; //the duration for the transition 
+		var waitDuration = 2000; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -80,6 +79,7 @@
 		var FarBackPos1 = 0;
 		var FarBackPos2 = 0;
 		var FarBackPos3 = 0;
+		var ExtraLoading= false;// if we are waiting for the extra load 
 		
 		var angleArray = [-10,20,-20,18,-15,20];
 		var CurrentAngleSet= 0;
@@ -137,6 +137,7 @@
 			
 			Connected = loadedImages ; 
 			ReadFiles();
+			ExtraLoading= false;
 		});
 		
 		//Transition for dropping in from the transition state-draw 3
@@ -196,6 +197,7 @@
 				ReadFiles();// check if there is a change 
 				LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
 				
+				// changing the back angle set 
 				if (CurrentAngleSet==0)
 					CurrentAngleSet=1;
 				else 
@@ -203,9 +205,20 @@
 					
 				if (ImgState>0)
 				{// for image state changes 
+					//if (ImgState==2)
+					//{
+					//	ExtraLoading=true;
+					//}
 					ImgState--;
 				}
-			
+				
+				if (ExtraLoading==true)
+				{
+					console.log("ExtraLoading undo");
+					totalDuration = 3000; //total time between slides 
+					waitDuration = 2000; //for the wait between transition 
+					ExtraLoading=false;
+				}
 			}
 			else 
 			{
@@ -215,6 +228,14 @@
 			
 			if (Connected)
 			{
+				//if (ExtraLoading==false)
+				//{
+				//	setTimeout(TransitionOut,totalDuration);
+				//}
+				//else 
+				//{
+				// 	setTimeout(ExtraLoad,extraLoadDuration);
+				//}
 				setTimeout(TransitionOut,totalDuration);
 			}
 			else 
@@ -223,6 +244,20 @@
 			}
 			
 		}		
+		
+		function ExtraLoad ()
+		{
+			LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
+			
+			if (Connected)
+			{
+				setTimeout(TransitionOut,totalDuration);
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
 		
 		//Setup the images for the transition out 1st part-draw 1 
 		function TransitionOut()

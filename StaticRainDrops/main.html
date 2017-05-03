@@ -1,0 +1,463 @@
+<!-- // main for an image gallery which will display images from a local file  -->
+<!-- // new images will transition in from the top, like rain drops  and old ones should transtion out -->
+<!-- NVYVE-->
+<!-- Philip Ong   March 17,2017-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rain drops page </title>
+	<link rel="stylesheet" href="style.css">
+	<script src='jquery-3.1.1.min.js'></script>
+	<!-- using this transit library will result in better for bright sign performace  -->
+	<script src='jquery.transit.js'></script>
+	<script src='functions.js'></script>
+	<script src='CacheImages.js'></script>
+	<script src='ReadTextFile.js'></script>
+</head>
+
+<body>
+	<!----- body area ----->
+	<div id="main-container">
+		<div id="Centre-container">
+		
+		<!-- Back images  -->
+			<img id="backLeft" class="LeftBack" src="PhotoBoothStatic/00.jpg" alt="" >
+			<img id="backMiddle" class="MiddleBack" src="PhotoBoothStatic/01.jpg" alt="" >
+			<img id="backRight" class="RightBack" src="PhotoBoothStatic/02.jpg" alt="" >
+			
+		<!-- Centre images  -->
+			<img id="centreLeft" class="LeftCentre" src="PhotoBoothStatic/03.jpg" alt="" >
+			<img id="centreMiddle" class="MiddleCentre" src="PhotoBoothStatic/04.jpg" alt="" >
+			<img id="centreRight" class="RightCentre" src="PhotoBoothStatic/05.jpg" alt="">
+			
+		<!-- FrontShadow  -->
+			<img id="ShadowLeft" class="LeftShadowPos1" src="DropShadow.png" >
+			<img id="ShadowMid" class="MiddleShadowPos1" src="DropShadow.png" >
+			<img id="ShadowRight" class="RightShadowPos1" src="DropShadow.png" >
+		<!-- Front images -->
+			<img id="leftTopMiddle" class="LeftTopImg" src="PhotoBoothStatic/06.jpg" alt="" >
+			<img id="middleTopMiddle" class="MiddleTopImg" src="PhotoBoothStatic/07.jpg" alt="" >
+			<img id="rightTopMiddle" class="RightMiddleImg" src="PhotoBoothStatic/08.jpg" alt="" >
+			
+		<!-- overlay -->	
+			<img id="overlayContainer" class="overlayClass" src="mask.png" >
+		</div>
+		<!----- end body area ----->
+	</div>
+	
+
+	<script id= 'code'>
+	{/// begin code area  
+		var totalDuration = 3000; //total time between slides 
+		var extraLoadDuration = 3000; //the duration for the transition  6500
+		var waitDuration = 1000; //for the wait between transition  2000
+		var UpdateInterval = 8000; //the wait between the each check  
+		var TransitionState=0;
+		
+		var xLeftPos = -540;// 500
+		var xRightPos = 500;
+		var yTargetPos = 100;
+		var yTargetPos2 = 140;
+		var currentImg=0;
+		var PreJumpImg=0;// image prejump
+		var ImgState=0;
+		var maxDynamicImages=9;
+		var maxImages=19;
+		var Connected = false; 
+		var PrePos1 = 0;
+		var PrePos2 = 0;
+		var PrePos3 = 0;
+		var FarBackPos1 = 0;
+		var FarBackPos2 = 0;
+		var FarBackPos3 = 0;
+		var ExtraLoading= false;// if we are waiting for the extra load 
+		
+		var angleArray = [-10,20,-20,18,-15,20];
+		var CurrentAngleSet= 0;
+		
+		//the start up function 
+		$(function (){
+			var ImageFound=false;
+			console.log("initializing");
+			PreLoadImages(maxDynamicImages);
+			
+			SetValuesMin('#centreLeft',0,ReturnArrayPosition(0));//yTargetPos2-10
+			SetValuesMin('#centreMiddle',0,ReturnArrayPosition(1));//yTargetPos
+			SetValuesMin('#centreRight',10,ReturnArrayPosition(2));
+			
+			//Back Layer Setup
+			SetValuesMin('#backLeft',0,ReturnArrayPosition(3));//yTargetPos2-10
+			SetValuesMin('#backMiddle',0,ReturnArrayPosition(4));//yTargetPos2-10
+			SetValuesMin('#backRight',0,ReturnArrayPosition(5));//yTargetPos2-10
+			
+			// Middle z-layer Setup 
+			$('#centreLeft').css('z-index', 2); 
+			$('#centreMiddle').css('z-index', 2); 
+			$('#centreRight').css('z-index', 2); 
+			
+			//Back z-layer Setup
+			$('#backLeft').css('z-index', 1); 
+			$('#backMiddle').css('z-index', 1); 
+			$('#backRight').css('z-index', 1); 
+			
+			$('#overlayContainer').css('z-index', 9); 
+			
+			setImageVisible('backLeft',false);
+			setImageVisible('backMiddle',false);
+			setImageVisible('backRight',false);
+			
+			setTimeout(Update, 1000);
+			
+			Connected = loadedImages ; 
+			ReadFiles();
+			ExtraLoading= false;
+		});
+		
+		//Transition for dropping in from the transition state-draw 3
+		function DropIn()
+		{
+			var randomAngle=RandomNumber(0,50,25);
+			if (TransitionState == 0)
+			{// -10 15 -35
+				FarBackPos1=PrePos1;
+				PrePos1=randomAngle;
+				
+				setImageVisible('leftTopMiddle',true);
+				rainDropTransition('#leftTopMiddle',yTargetPos2,ReturnArrayPosition(0),totalDuration);//Regular outside transition
+
+				setImageVisible('ShadowLeft',true);
+				rainDropTransition('#ShadowLeft',yTargetPos2,ReturnArrayPosition(0),totalDuration); 
+			}
+			else if (TransitionState == 1)
+			{
+				FarBackPos2=PrePos2;
+				PrePos2=randomAngle;
+				
+				setImageVisible('middleTopMiddle',true);
+				rainDropTransition('#middleTopMiddle',yTargetPos,ReturnArrayPosition(1),totalDuration);//Regular outside transition
+
+				setImageVisible('ShadowMid',true);
+				rainDropTransition('#ShadowMid',yTargetPos,ReturnArrayPosition(1),totalDuration); 
+			}
+			else if (TransitionState == 2)
+			{	
+				FarBackPos3=PrePos3;
+				PrePos3=randomAngle;
+				
+				setImageVisible('rightTopMiddle',true);
+				rainDropTransition('#rightTopMiddle',0,ReturnArrayPosition(2),totalDuration);//Regular outside transition
+
+				setImageVisible('ShadowRight',true);
+				rainDropTransition('#ShadowRight',10,ReturnArrayPosition(2),totalDuration); 
+			}
+			
+			//from main 
+
+			NextImage();// only transition to next image after we have the image numbers set 
+
+			if (TransitionState == 2)
+			{
+				TransitionState = 0;	
+				ReadFiles();// check if there is a change 
+				LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
+				
+				// changing the back angle set 
+				if (CurrentAngleSet==0)
+					CurrentAngleSet=1;
+				else 
+					CurrentAngleSet=0;
+					
+				if (ImgState>0)
+				{// for image state changes 
+					//if (ImgState==2)
+					//{
+					//	ExtraLoading=true;
+					//}
+					ImgState--;
+				}
+				
+				if (ExtraLoading==true)
+				{
+					console.log("ExtraLoading undo");
+					totalDuration = 3000; //total time between slides 
+					waitDuration = 2000; //for the wait between transition 
+					ExtraLoading=false;
+				}
+			}
+			else 
+			{
+				TransitionState = Math.min(TransitionState+1, 2);
+			}
+				
+			
+			if (Connected)
+			{
+				//if (ExtraLoading==false)
+				//{
+				//	setTimeout(TransitionOut,totalDuration);
+				//}
+				//else 
+				//{
+				// 	setTimeout(ExtraLoad,extraLoadDuration);
+				//}
+				setTimeout(TransitionOut,totalDuration);
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+			
+		}		
+		
+		function ExtraLoad ()
+		{
+			LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
+			
+			if (Connected)
+			{
+				setTimeout(TransitionOut,totalDuration);
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
+		
+		//Setup the images for the transition out 1st part-draw 1 
+		function TransitionOut()
+		{
+			var randomAngle=RandomNumber(0,50,25);
+			var PrevImage=returnPreviousInt(3,currentImg,maxImages);// 22 because there are 22 images 
+			var FarBackImage=returnPreviousInt(6,currentImg,maxImages);// 22 because there are 22 images 
+			if (ImgState>0 )
+			{//if you have a previous state that is currently being referrenced 
+				FarBackImage=returnPreviousInt(6,PreJumpImg,maxImages);
+				if (ImgState>1 )
+				{
+					PrevImage=returnPreviousInt(3,PreJumpImg,maxImages);
+				}
+			}
+			
+			if (TransitionState == 0)
+			{	
+				// main area Turn off shadow 
+				document.getElementById("leftTopMiddle").className = "LeftTopImg";// turn off shadow 
+				document.getElementById("rightTopMiddle").className = "RightShadow";// turn on shadow
+				document.getElementById("backLeft").className = "LeftBack";// turn off Back shadow 
+				document.getElementById("backRight").className = "RightBackNS";// turn on Back shadow 
+			
+				ChangeImg('#backLeft',imgArray[FarBackImage]);//Change the Centre image to the previous
+				ChangeImg('#centreLeft',imgArray[PrevImage]);//Change the Centre image to the previous
+				ChangeImg('#leftTopMiddle',imgArray[currentImg]);//Change the front image to current
+				
+				setImageVisible('leftTopMiddle',false);
+				setImageVisible('backRight',false);// offset turn off after use 
+				setImageVisible('backLeft',true);
+				
+				SetValuesMin('#leftTopMiddle',-500,ReturnArrayPosition(0));//set the front value  300 0.35
+				
+				// shadow positioning 
+				setImageVisible('ShadowRight',false);	
+				if (CurrentAngleSet==0)// setting the shadow position of the left shadow pos1 
+					document.getElementById("ShadowLeft").className = "LeftShadowPos1";
+				else 
+					document.getElementById("ShadowLeft").className = "LeftShadowPos2";
+				SetValuesMin('#ShadowLeft',-500,ReturnArrayPosition(0));//set front shadow values
+				
+				//Centre
+				SetValuesNT('centreLeft',420,ReturnArrayPosition(3));// set the Centre picture value 
+				//Back Images 
+				SetValuesNT('backLeft',420,ReturnArrayPosition(0));// set the Centre picture value 
+				
+				// set z index of the shadows -1
+				$('#ShadowLeft').css('z-index', 8);  
+				$('#ShadowMid').css('z-index', 6);  
+				$('#ShadowRight').css('z-index', 7);
+				
+				//set z index of Centre pictures
+				$('#centreLeft').css('z-index', 5); 
+				$('#centreMiddle').css('z-index', 3); 
+				$('#centreRight').css('z-index', 4); 
+				
+				//set z index of pictures
+				$('#leftTopMiddle').css('z-index', 8); 
+				$('#middleTopMiddle').css('z-index', 6); 
+				$('#rightTopMiddle').css('z-index', 7); 
+			}
+			else if (TransitionState == 1)
+			{		
+				document.getElementById("leftTopMiddle").className = "LeftTopShadowImg";// turn on shadow
+				document.getElementById("middleTopMiddle").className = "MiddleTopImg";// turn off shadow
+				document.getElementById("backLeft").className = "LeftBackNS";// turn off Back shadow 
+				document.getElementById("backMiddle").className = "MiddleBack";// turn On Back shadow 
+				
+				ChangeImg('#backMiddle',imgArray[FarBackImage]);//Change the Centre image to the previous
+				ChangeImg('#centreMiddle',imgArray[PrevImage]);//Change the Centre image to the previous
+				ChangeImg('#middleTopMiddle',imgArray[currentImg]);//Change the front image to current
+				
+				setImageVisible('middleTopMiddle',false);
+				setImageVisible('backLeft',false);// offset turn off after use 
+				setImageVisible('backMiddle',true);
+				
+				SetValuesMin('#middleTopMiddle',-600,ReturnArrayPosition(1));//set the front value 
+				
+				// shadow stuff 
+				setImageVisible('ShadowLeft',false);	
+			
+				if (CurrentAngleSet==0)// setting the back position 
+					document.getElementById("ShadowMid").className = "MiddleShadowPos1";
+				else 
+					document.getElementById("ShadowMid").className = "MiddleShadowPos2";
+				SetValuesMin('#ShadowMid',-600,ReturnArrayPosition(1));//set front shadow values  
+				//setImageVisible('ShadowMid',true);
+						
+				SetValuesNT('centreMiddle',390,ReturnArrayPosition(4));// set the Centre picture value 
+				//SetValuesNT('ShadowCentreMiddle',370,PrePos2); 
+				//Back Images 
+				
+				SetValuesNT('backMiddle',390,ReturnArrayPosition(1));// set the Centre picture value 
+				// SetValuesNT('ShadowBackMiddle',370,FarBackPos2); 
+				
+				// set z index of the shadows -1
+				$('#ShadowLeft').css('z-index', 7);  
+				$('#ShadowMid').css('z-index', 8);  
+				$('#ShadowRight').css('z-index', 6);  
+				
+				//set z index of pictures
+				$('#leftTopMiddle').css('z-index', 7);
+				$('#middleTopMiddle').css('z-index', 8); 
+				$('#rightTopMiddle').css('z-index', 6); 
+				
+				//set z index of Centre pictures
+				$('#centreLeft').css('z-index', 4); 
+				$('#centreMiddle').css('z-index', 5); 
+				$('#centreRight').css('z-index', 3); 
+			}
+			else if (TransitionState == 2)
+			{	
+				document.getElementById("middleTopMiddle").className = "MiddleShadowImg";// turn on shadow
+				document.getElementById("rightTopMiddle").className = "RightMiddleImg";// turn off shadow
+				document.getElementById("backMiddle").className = "MiddleBackNS";// turn off Back shadow 
+				document.getElementById("backRight").className = "RightBack";// turn On Back shadow 
+			
+				ChangeImg('#backRight',imgArray[FarBackImage]);//Change the Centre image to the previous
+				ChangeImg('#centreRight',imgArray[PrevImage]);//Change the Centre image to the previous	
+				ChangeImg('#rightTopMiddle',imgArray[currentImg]);//Change the front image to current
+				
+				setImageVisible('rightTopMiddle',false);
+				setImageVisible('backMiddle',false);// offset turn off after use 
+				setImageVisible('backRight',true);
+					
+				SetValuesMin('#rightTopMiddle',-700,ReturnArrayPosition(2));//set the front value 450 0.3
+				// shadow stuff 
+				setImageVisible('ShadowMid',false);
+				if (CurrentAngleSet==0)// setting the back position 
+					document.getElementById("ShadowRight").className = "RightShadowPos1";
+				else 
+					document.getElementById("ShadowRight").className = "RightShadowPos2";				
+				SetValuesX('#ShadowRight',70,-700,ReturnArrayPosition(2));//set front shadow values 0.2 -->
+				//setImageVisible('ShadowRight',true);
+
+				SetValuesNT('centreRight',290,ReturnArrayPosition(5));// set the Centre picture value 
+				// SetValuesNT('ShadowCentreRight',280,PrePos3); 
+				//Back Images 
+				
+				SetValuesNT('backRight',390,ReturnArrayPosition(2));// set the Centre picture value 
+				//SetValuesNT('ShadowBackRight',370,FarBackPos2);
+				
+				// set z index of the shadows -1 
+				$('#ShadowLeft').css('z-index', 6);  
+				$('#ShadowMid').css('z-index', 7); 
+				$('#ShadowRight').css('z-index', 8); 
+				
+				$('#leftTopMiddle').css('z-index', 6); 
+				$('#middleTopMiddle').css('z-index', 7); 
+				$('#rightTopMiddle').css('z-index', 8); 
+				
+				//set z index of Centre pictures
+				$('#centreLeft').css('z-index', 3); 
+				$('#centreMiddle').css('z-index', 4); 
+				$('#centreRight').css('z-index', 5);
+			}
+			
+			setTimeout(DropIn,waitDuration);
+		}
+		
+		//the next image in the list 
+		function NextImage()
+		{
+			var ImageFound=false;
+			if (currentImg +1== maxImages)
+				currentImg = 0;	
+			else 
+				currentImg = Math.min(currentImg+1, maxImages);
+			
+			//only if the prejumpping works out 
+			if (ImgState > 0)
+			{
+				if (PreJumpImg +1== maxImages)
+					PreJumpImg = 0;	
+				else 
+					PreJumpImg = Math.min(PreJumpImg+1, maxImages);
+			}
+			
+			if (currentImg==0)
+			{// if the current image has been reset 
+				if (loadedImages)
+				{
+					Connected = true; 
+				}
+				else 
+				{
+					Connected = false; 
+				}
+			}
+		}
+		
+		// Main function reccursively calling itself  
+		function Update()
+		{
+			if (Connected)
+			{
+				TransitionOut();
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
+		
+		//the check which will 
+		function RefreshCheck()
+		{
+			PreLoadImages(maxDynamicImages,Math.random());
+			if (Connected)
+			{
+				setTimeout(Update,1000);
+			}
+			else 
+			{
+				setTimeout(RefreshCheck, UpdateInterval);
+			}
+		}
+		
+		//loaded image functions 
+		function ImageLoaded()
+		{
+			//console.log("Image loaded called");
+			Connected=true;
+		}
+		
+		function FailedToLoad()
+		{
+			console.log("FailedToLoad called");
+			Connected=false;
+		}
+		
+		
+	}/// end code area
+	/// help me I'm... just a quote from pentagon wars
+	</script>
+</body>
+</html>

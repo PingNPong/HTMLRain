@@ -1,0 +1,319 @@
+/* NVYVE */
+/* Philip Ong   March 17,2017 */
+:root {
+  --widthImg: 640px;
+  --widthShadow: 680px;
+  --heightImg: 360px;
+  --heightShadow: 400px;
+}
+
+.shadow {
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+/* containers  ---------------------*/
+#overlayContainer{
+    /* z-index:5; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#main-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background-color:#000000;
+	
+	/* z-index:-1; */
+}
+
+#Centre-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background:white; 
+	/* background-image: url("01.jpg"); */
+	
+	/* z-index:0; */
+}
+
+/* content ------------------*/
+#centreLeft  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#centreMiddle  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#centreRight img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Middle Content ------*/
+#leftTopMiddle  img{
+	/* z-index:4; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#middleTopMiddle  img{
+	/* z-index:3; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#rightTopMiddle  img{
+	/* z-index:2; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Back Content ------*/
+#backLeft  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+#backMiddle  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+#backRight  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+/* Shadow ------------------*/
+#ShadowLeft img{
+	/* z-index:3; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowMid img{
+	/* z-index:2; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowRight img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/* Positioning classes ------------ */ 
+
+  	/* width: var(--widthImg); */
+	/* height: var(--heightImg); */
+
+.LeftTopImg {/* Positioning  left front image No shadow ------------ */ 
+    position:absolute;
+	left:60px;
+	top:280px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 3;
+	Opacity :1;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftTopShadowImg {/* Positioning  left front image Yes shadow ------------ */ 
+    position:absolute;
+	left:60px;
+	top:280px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 3;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	Opacity :1;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftShadowPos1{/* Left front shadow position1 ------------ */ 
+	position:absolute;
+	left:26px;
+	top:249px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index: 3;
+}
+
+.LeftShadowPos2{/* Left front shadow position2 ------------ */ 
+	position:absolute;
+	left:32px;
+	top:243px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index: 3;
+}
+
+.LeftCentre {/* Positioning Left centre image ------------ */ 
+    position:absolute;
+	left:60px;
+	top:420px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 3;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+
+.LeftBack {/* Positioning Left back image ------------ */ 
+    position:absolute;
+	left:60px;
+	top:420px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-transform: translateZ(0); */
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+
+
+.MiddleTopImg {/* Positioning Middle front image no shadow ------------ */ 
+    position:absolute;
+	left:600px;
+	top:290px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 2;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleShadowImg {/* Positioning Middle front image Yes shadow ------------ */ 
+	position:absolute;
+	left:600px;
+	top:290px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+}
+
+.MiddleShadowPos1
+{/* Middle front shadow position1 ------------ */ 
+	position:absolute;
+	left:573px;
+	top:252px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index:2;
+}
+
+.MiddleShadowPos2
+{/* Middle front shadow position1 ------------ */ 
+	position:absolute;
+	left:565px;
+	top:262px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index:2;
+}
+
+.MiddleCentre {/* Positioning Left centre image ------------ */
+    position:absolute;
+	left:600px;
+	top:390px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+.MiddleBack {/* Positioning Middle centre image ------------ */
+    position:absolute;
+	left:600px;
+	top:390px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+}
+
+.RightMiddleImg {/* Positioning Right image ------------ */
+    position:absolute;
+	left:1100px;
+	top:300px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 1;
+	-webkit-transform: translateZ(0);
+}
+
+.RightShadow {/* Positioning Right centre image ------------ */
+	position:absolute;
+	left:1100px;
+	top:300px;
+	width: var(--widthImg);
+	height: var(--heightImg);
+	z-index: 1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+}
+
+.RightShadowPos1
+{
+	position:absolute;
+	left:992px;
+	top:260px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index:1;
+}
+
+.RightShadowPos2
+{
+	position:absolute;
+	left:1002px;
+	top:255px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index:1;
+}
+
+
+.RightCentre {
+    position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index:1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+.RightCentreShadow {
+    position:absolute;
+	left:1090px;
+	top:280px;
+	width: var(--widthShadow);
+	height: var(--heightShadow);
+	z-index:1;
+}
+
+.RightBack {
+    position:absolute;
+	left:1100px;
+	top:300px;
+  	width: 640px;
+	height: 360px;
+	z-index:1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+}
+
+.overlayClass{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index:9;
+}
+
+.loadClass{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

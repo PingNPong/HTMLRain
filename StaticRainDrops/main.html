@@ -20,20 +20,12 @@
 	<!----- body area ----->
 	<div id="main-container">
 		<div id="Centre-container">
-		
-		<!-- Back Shadow  -->
-			<!-- <img id="ShadowBackLeft" class="LeftCentreShadow" src="DropShadow.png" > -->
-			<!-- <img id="ShadowBackMiddle" class="MiddleCentreShadow" src="DropShadow.png" > -->
-			<!-- <img id="ShadowBackRight" class="RightCentreShadow" src="DropShadow.png" > -->
+	
 		<!-- Back images  -->
 			<img id="backLeft" class="LeftBack" src="http://192.168.2.209/RoyalityFreeSet1/01.jpg" alt="" >
 			<img id="backMiddle" class="MiddleBack" src="http://192.168.2.209/RoyalityFreeSet1/02.jpg" alt="" >
 			<img id="backRight" class="RightBack" src="http://192.168.2.209/RoyalityFreeSet1/03.jpg" alt="" >
 		
-		<!-- Centre Shadow  -->
-			<!-- <img id="ShadowCentreLeft" class="LeftCentreShadow" src="DropShadow.png" > -->
-			<!-- <img id="ShadowCentreMiddle" class="MiddleCentreShadow" src="DropShadow.png" > -->
-			<!-- <img id="ShadowCentreRight" class="RightCentreShadow" src="DropShadow.png" > -->
 		<!-- Centre images  -->
 			<img id="centreLeft" class="LeftCentre" src="http://192.168.2.209/PhotoBooth/01.jpg" alt="" >
 			<img id="centreMiddle" class="MiddleCentre" src="http://192.168.2.209/PhotoBooth/02.jpg" alt="" >
@@ -153,8 +145,6 @@
 				rainDropTransition('#leftTopMiddle',yTargetPos2,ReturnArrayPosition(0),totalDuration);//Regular outside transition
 
 				//shadow stuff 
-				//document.getElementById("ShadowRight").className = "RightShadowPos";//change to transition class 
-				//setImageVisible('ShadowRight',false);// turn off image 
 				setImageVisible('ShadowLeft',true);
 				rainDropTransition('#ShadowLeft',yTargetPos2,ReturnArrayPosition(0),totalDuration); 
 			}
@@ -167,8 +157,6 @@
 				rainDropTransition('#middleTopMiddle',yTargetPos,ReturnArrayPosition(1),totalDuration);//Regular outside transition
 				
 				//shadow stuff 
-				//document.getElementById("ShadowLeft").className = "LeftShadowPos1";//change to transition class 
-				//setImageVisible('ShadowLeft',false);// turn off image 
 				setImageVisible('ShadowMid',true);
 				rainDropTransition('#ShadowMid',yTargetPos,ReturnArrayPosition(1),totalDuration); 
 			}
@@ -181,8 +169,6 @@
 				rainDropTransition('#rightTopMiddle',0,ReturnArrayPosition(2),totalDuration);//Regular outside transition
 				
 				// shadow management 
-				//document.getElementById("ShadowMid").className = "MiddleShadowPos";//change to regular class 
-				//setImageVisible('ShadowMid',false);// turn off image 
 				setImageVisible('ShadowRight',true);
 				rainDropTransition('#ShadowRight',10,ReturnArrayPosition(2),totalDuration); 
 			}
@@ -277,7 +263,7 @@
 			}
 			
 			if (TransitionState == 0)
-			{	
+			{	// going to left transition 
 				// main area Turn off shadow 
 				document.getElementById("leftTopMiddle").className = "LeftTop";// turn off shadow 
 				document.getElementById("rightTopMiddle").className = "RightTopShadow";// turn on shadow
@@ -296,7 +282,6 @@
 				
 				// shadow stuff 
 				setImageVisible('ShadowRight',false);	
-				//document.getElementById("ShadowRight").className = "RightShadowPosTrans";//change to transition class 
 				if (CurrentAngleSet==0)// setting the back position 
 					document.getElementById("ShadowLeft").className = "LeftShadowPos1";
 				else 
@@ -305,11 +290,9 @@
 				
 				//Centre
 				SetValuesNT('centreLeft',420,ReturnArrayPosition(3));// set the Centre picture value 
-				//SetValuesNT('ShadowCentreLeft',400,PrePos1);
-				//Back Images 
 				
+				//Back Images 
 				SetValuesNT('backLeft',420,ReturnArrayPosition(0));// set the Centre picture value 
-				//SetValuesNT('ShadowBackLeft',400,FarBackPos1); 
 				
 				// set z index of the shadows -1
 				$('#ShadowLeft').css('z-index', 8);  
@@ -327,7 +310,7 @@
 				$('#rightTopMiddle').css('z-index', 7); 
 			}
 			else if (TransitionState == 1)
-			{		
+			{	// going to middle transition 
 				document.getElementById("leftTopMiddle").className = "LeftTopShadow";// turn on shadow
 				document.getElementById("middleTopMiddle").className = "MiddleTop";// turn off shadow
 				document.getElementById("backLeft").className = "LeftBackNS";// turn off Back shadow 
@@ -345,20 +328,17 @@
 				
 				// shadow stuff 
 				setImageVisible('ShadowLeft',false);	
-				//document.getElementById("ShadowLeft").className = "LeftShadowPosTrans";//change to transition class 
+				
 				if (CurrentAngleSet==0)// setting the back position 
 					document.getElementById("ShadowMid").className = "MiddleShadowPos1";
 				else 
 					document.getElementById("ShadowMid").className = "MiddleShadowPos2";
 				SetValuesMin('#ShadowMid',-600,ReturnArrayPosition(1));//set front shadow values  
-				//setImageVisible('ShadowMid',true);
 						
 				SetValuesNT('centreMiddle',390,ReturnArrayPosition(4));// set the Centre picture value 
-				//SetValuesNT('ShadowCentreMiddle',370,PrePos2); 
 				//Back Images 
 				
 				SetValuesNT('backMiddle',390,ReturnArrayPosition(1));// set the Centre picture value 
-				// SetValuesNT('ShadowBackMiddle',370,FarBackPos2); 
 				
 				// set z index of the shadows -1
 				$('#ShadowLeft').css('z-index', 7);  
@@ -376,7 +356,8 @@
 				$('#centreRight').css('z-index', 3); 
 			}
 			else if (TransitionState == 2)
-			{	
+			{	// going to right transition 
+				//No shadow on the back 
 				document.getElementById("middleTopMiddle").className = "MiddleShadow";// turn on shadow
 				document.getElementById("rightTopMiddle").className = "RightTop";// turn off shadow
 				document.getElementById("backMiddle").className = "MiddleBackNS";// turn off Back shadow 
@@ -399,14 +380,11 @@
 				else 
 					document.getElementById("ShadowRight").className = "RightShadowPos2";				
 				SetValuesX('#ShadowRight',70,-700,ReturnArrayPosition(2));//set front shadow values 0.2 -->
-				//setImageVisible('ShadowRight',true);
 
 				SetValuesNT('centreRight',290,ReturnArrayPosition(5));// set the Centre picture value 
-				// SetValuesNT('ShadowCentreRight',280,PrePos3); 
 				//Back Images 
 				
 				SetValuesNT('backRight',390,ReturnArrayPosition(2));// set the Centre picture value 
-				//SetValuesNT('ShadowBackRight',370,FarBackPos2);
 				
 				// set z index of the shadows -1 
 				$('#ShadowLeft').css('z-index', 6);  

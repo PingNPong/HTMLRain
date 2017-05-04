@@ -1,5 +1,25 @@
 /* NVYVE */
 /* Philip Ong   March 17,2017 */
+:root {
+  --Top-Img:280px; 
+
+  --Width-Img:640px;
+  --Heigth-Img:360px;
+}
+
+/* height */
+/*360px :33.3% */
+/*400px :37.03*/
+
+/* width */
+/*640px :33.3% */
+/*680px :35.43*/
+
+/* positioning */
+/*60px 3.1%; */
+/*280px 25.9%; */
+/*420px 38.89% */
+
 .shadow {
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -120,12 +140,17 @@
 
 
 /* Positioning classes ------------ */ 
+.LeftPosition
+{/* left top positioning with no shadow*/
+    
+}
+
 .LeftTop {/* left top positioning with no shadow*/
     position:absolute;
 	left:60px;
 	top:280px;
-  	width: 640px;
-	height: 360px;
+	width: 640px;
+	height:360px;
 	z-index: 3;
 	Opacity :1;
 	-webkit-transform: translateZ(0);
@@ -255,13 +280,6 @@
 	/* -webkit-transition-duration: 2s; */
 	/* -webkit-transition-timing-function: ease-out; */
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
-	
-    /* position:absolute; */
-	/* left:580px; */
-	/* top:270px; */
-  	/* width: 680px; */
-	/* height: 400px; */
-	/* z-index:2; */
 }
 .MiddleShadowPos1
 {

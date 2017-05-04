@@ -138,6 +138,17 @@ function SetValuesNT2(ImageName,yTarget,Rotation,time)
 	});
 }
 
+function SetCSSValues(ImageName,setWidth,setHeight,setTop,setLeft)
+{
+    $(ImageName).width(setWidth);
+	$(ImageName).height(setHeight);
+	$(ImageName).css 
+	({
+		top: setTop, left:setLeft
+	});
+}
+
+
 
 // === return functions ====
 

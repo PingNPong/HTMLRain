@@ -76,6 +76,13 @@
 		var angleArray = [-10,20,-20,18,-15,20];
 		var CurrentAngleSet= 0;
 		
+		//Canvas variables 
+		var WidthImg=680;
+		var HeigthImg=400;
+		
+		var LeftLeft='100px';
+		var LeftTop='350px';
+		
 		//the start up function 
 		$(function (){
 			var ImageFound=false;
@@ -130,6 +137,12 @@
 			Connected = loadedImages ; 
 			ReadFiles();
 			ExtraLoading= false;
+			
+			//setting the background variables 
+			//setting the left side 
+			SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftTop,LeftLeft);
+			SetCSSValues(".LeftTopShadow",WidthImg,HeigthImg,LeftTop,LeftLeft);
+			//SetCSSValues(".LeftTopShadow",WidthImg,HeigthImg);
 		});
 		
 		//Transition for dropping in from the transition state-draw 3
@@ -211,6 +224,17 @@
 				TransitionState = Math.min(TransitionState+1, 2);
 			}
 				
+			/*360px :33.3% */
+			/*400px :37.03*/
+
+			/* width */
+			/*640px :33.3% */
+			/*680px :35.43*/
+
+			/* positioning */
+			/*60px 3.1%; */
+			/*280px 25.9%; */
+			/*420px 38.89% */
 			
 			if (Connected)
 			{

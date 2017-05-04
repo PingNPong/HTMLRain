@@ -147,10 +147,10 @@
 
 .LeftTop {/* left top positioning with no shadow*/
     position:absolute;
-	left:60px;
-	top:280px;
-	width: 640px;
-	height:360px;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index: 3;
 	Opacity :1;
 	-webkit-transform: translateZ(0);
@@ -158,10 +158,10 @@
 
 .LeftTopShadow {/* left top positioning with shadow*/
     position:absolute;
-	left:60px;
-	top:280px;
-  	width: 640px;
-	height: 360px;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index: 3;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	Opacity :1;
@@ -171,20 +171,20 @@
 .LeftShadowPos1
 {
 	position:absolute;
-	left:26px;
-	top:249px;
-  	width: 680px;
-	height: 400px;
+	left:1.35%;/* 26px*//* 1.35%*/
+	top:23%;/* 249px*//* 23%*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index: 3;
 }
 
 .LeftShadowPos2
 {
 	position:absolute;
-	left:32px;
-	top:243px;
-  	width: 680px;
-	height: 400px;
+	left: 1.67%;/* 32px*//* 1.67%*/
+	top:22.5%;/* 243px*//* 22.5%*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index: 3;
 }
 
@@ -193,10 +193,10 @@
 	-webkit-transition-duration: 2s;
     -webkit-transition-timing-function: ease;
     position:absolute;
-	left:60px;
-	top:280px;
-  	width: 640px;
-	height: 360px;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index: 3;
 	Opacity :0;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
@@ -204,10 +204,10 @@
 
 .LeftCentre {
     position:absolute;
-	left:60px;
-	top:420px;
-  	width: 640px;
-	height: 360px;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index: 3;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -217,10 +217,10 @@
 /*No shadow rendering  */
 .LeftCentreNS {
 	    position:absolute;
-	left:60px;
-	top:420px;
-  	width: 640px;
-	height: 360px;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index: 3;
 	-webkit-transform: translateZ(0);
 }
@@ -228,10 +228,10 @@
 
 .LeftBack {
     position:absolute;
-	left:60px;
-	top:420px;
-  	width: 640px;
-	height: 360px;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	/* -webkit-transform: translateZ(0); */
@@ -241,40 +241,40 @@
 /*No shadow rendering  */
 .LeftBackNS {
     position:absolute;
-	left:60px;
-	top:420px;
-  	width: 640px;
-	height: 360px;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index:2;
 	-webkit-transform: translateZ(0);
 }
 
 .LeftBackShadow {
     position:absolute;
-	left:40px;
-	top:400px;
-  	width: 680px;
-	height: 400px;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:37%;/* 400px*/ /* 37%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
 	z-index:2;
 }
 
 
 .MiddleTop {/* middle top positioning with no shadow*/
     position:absolute;
-	left:600px;
-	top:290px;
-  	width: 640px;
-	height: 360px;
+	left:31.3%;/* 600px*/
+	top:26.9%;/* 290px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index: 2;
 	-webkit-transform: translateZ(0);
 }
 
 .MiddleShadow {/* middle top positioning with shadow*/
 	position:absolute;
-	left:600px;
-	top:290px;
-  	width: 640px;
-	height: 360px;
+	left:31.3%;/* 600px*/
+	top:26.9%;/* 290px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index: 2;
 	/* -webkit-transition : transition-timing-function: ease; */
 	/* -webkit-transition-duration: 2s; */
@@ -284,30 +284,30 @@
 .MiddleShadowPos1
 {
 	position:absolute;
-	left:573px;
-	top:252px;
-  	width: 680px;
-	height: 400px;
+	left:29.86%;/* 573px*/
+	top:23.33%;/* 252px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index:2;
 }
 
 .MiddleShadowPos2
 {
 	position:absolute;
-	left:565px;
-	top:262px;
-  	width: 680px;
-	height: 400px;
+	left:29.43%;/* 565px*/
+	top:24.26%;/* 262px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index:2;
 }
 
 
 .MiddleCentre {
     position:absolute;
-	left:600px;
-	top:390px;
-  	width: 640px;
-	height: 360px;
+	left:31.3%;/* 600px*/
+	top:36.1%;/* 390px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -317,20 +317,20 @@
 /*No shadow rendering for efficent use */
 .MiddleCentreNS {
     position:absolute;
-	left:600px;
-	top:380px;
-  	width: 640px;
-	height: 360px;
+	left:31.3%;/* 600px*/
+	top:35.1%;/* 380px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:2;
 	-webkit-transform: translateZ(0);
 }
 
 .MiddleBack {
     position:absolute;
-	left:600px;
-	top:390px;
-  	width: 640px;
-	height: 360px;
+	left:31.3%;/* 600px*/
+	top:36.1%;/* 390px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:2;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -339,39 +339,39 @@
 /*No shadow rendering for efficent use  */
 .MiddleBackNS {
     position:absolute;
-	left:600px;
-	top:390px;
-  	width: 640px;
-	height: 360px;
+	left:31.3%;/* 600px*/
+	top:36.1%;/* 390px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:2;
 	-webkit-transform: translateZ(0);
 }
 
 .MiddleBackShadow {
     position:absolute;
-	left:580px;
-	top:370px;
-  	width: 680px;
-	height: 400px;
+	left:30.2%; /* 580px*/
+	top:35.26%;/* 370px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index:2;
 }
 
 .RightTop {/* right top positioning with no shadow*/
     position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index: 1;
 	-webkit-transform: translateZ(0);
 }
 
 .RightTopShadow {/* right top positioning with shadow*/
 	position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index: 1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -380,30 +380,30 @@
 .RightShadowPos1
 {
 	position:absolute;
-	left:992px;
-	top:260px;
-  	width: 680px;
-	height: 400px;
+	left:51.67%;/* 992px*/
+	top:24.07%;/* 260px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index:1;
 }
 
 .RightShadowPos2
 {
 	position:absolute;
-	left:1002px;
-	top:255px;
-  	width: 680px;
-	height: 400px;
+	left:52.18%;/* 1002px*/
+	top:23.6%;/* 255px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index:1;
 }
 
 
 .RightCentre {
     position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -412,20 +412,20 @@
 
 .RightCentreNS {
     position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:1;
 	-webkit-transform: translateZ(0);
 }
 
 .RightBack {
     position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:1;
 	-webkit-filter: drop-shadow(5px 5px 5px #222);
 	-webkit-transform: translateZ(0);
@@ -434,20 +434,20 @@
 
 .RightBackNS {
     position:absolute;
-	left:1100px;
-	top:300px;
-  	width: 640px;
-	height: 360px;
+	left:57.29%;/* 1100px*/
+	top:25.93%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
 	z-index:1;
 	-webkit-transform: translateZ(0);
 }
 
 .RightBackShadow {
     position:absolute;
-	left:1090px;
-	top:280px;
-  	width: 680px;
-	height: 400px;
+	left:56.77%;/* 1090px*/
+	top:280px; /* 280px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
 	z-index:1;
 }
 

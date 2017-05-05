@@ -43,7 +43,7 @@
 		<!-- overlay -->	
 			<img id="overlayContainer" class="overlayClass" src="mask.png" >
 		</div>
-		<!----- end body area ----->
+		--- end body area ----->
 	</div>
 	
 
@@ -79,21 +79,86 @@
 		//Canvas variables 
 		var WidthImg=640;
 		var HeigthImg=360;
-		
-		var LeftLeft='60px';
-		var LeftTop='280px';
+		var WidthShadow=680;
+		var HeigthShadow=400;
+		//left 
+		var LeftLeftPos='60px';
+		var LeftTopPos='280px';
+		var LeftCentreBackPos='420px';
+		var LeftBackNSPos='400px';
+		var LeftShadow1left='26px';
+		var LeftShadow2left='32px';
+		var LeftShadow1top='249px';
+		var LeftShadow2top='243px';
+		//centre
+		var CentreLeftPos='600px';
+		var CentreTopPos='290px';
+		var CentreCentreBackPos='390px';
+		var CentreBackNSPos='380px';
+		var CentreShadow1left='573px';
+		var CentreShadow2left='565px';
+		var CentreShadow1top='252px';
+		var CentreShadow2top='262px';
+		//centre
+		var RightLeftPos='1100px';
+		var RightTopPos='300px';
+		var RightCentreBackPos='390px';
+		var RightBackNSPos='380px';
+		var RightShadow1left='992px';
+		var RightShadow2left='1002px';
+		var RightShadow1top='260px';
+		var RightShadow2top='255px';
 		
 		//the start up function 
 		$(function (){
+			//setting the background variables 
+			///setting the left side 
+			////setting the front image  
+			SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos);
+			SetCSSValues(".LeftTopShadow",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos);
+			////setting the centre image  
+			SetCSSValues(".LeftCentre",WidthImg,HeigthImg,LeftCentreBackPos,LeftLeftPos);
+			SetCSSValues(".LeftCentreNS",WidthImg,HeigthImg,LeftCentreBackPos,LeftLeftPos);
+			////setting the back image  
+			SetCSSValues(".LeftBack",WidthImg,HeigthImg,LeftCentreBackPos,LeftLeftPos);
+			SetCSSValues(".LeftBackNS",WidthImg,HeigthImg,LeftCentreBackPos,LeftLeftPos);
+			////setting the shadow position 
+			SetCSSValues(".LeftShadowPos1",WidthShadow,HeigthShadow,LeftShadow1top,LeftShadow1left);
+			SetCSSValues(".LeftShadowPos2",WidthShadow,HeigthShadow,LeftShadow2top,LeftShadow2left);
+			
+			///setting the Cetnre side 
+			////setting the front image  
+			SetCSSValues(".MiddleTop",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos);
+			SetCSSValues(".MiddleShadow",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos);
+			////setting the centre image  
+			SetCSSValues(".MiddleCentre",WidthImg,HeigthImg,CentreCentreBackPos,CentreLeftPos);
+			SetCSSValues(".MiddleCentreNS",WidthImg,HeigthImg,CentreBackNSPos,CentreLeftPos);
+			////setting the back image  
+			SetCSSValues(".MiddleBack",WidthImg,HeigthImg,CentreCentreBackPos,CentreLeftPos);
+			SetCSSValues(".MiddleBackNS",WidthImg,HeigthImg,CentreCentreBackPos,CentreLeftPos);
+			////setting the shadow position 
+			SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,CentreShadow1top,CentreShadow1left);
+			SetCSSValues(".MiddleShadowPos2",WidthShadow,HeigthShadow,CentreShadow2top,CentreShadow2left);
+		
+			///setting the Cetnre side 
+			////setting the front image  
+			SetCSSValues(".RightTop",WidthImg,HeigthImg,RightTopPos,RightLeftPos);
+			SetCSSValues(".RightTopShadow",WidthImg,HeigthImg,RightTopPos,RightLeftPos);
+			////setting the centre image  
+			SetCSSValues(".RightCentre",WidthImg,HeigthImg,RightCentreBackPos,RightLeftPos);
+			SetCSSValues(".RightCentreNS",WidthImg,HeigthImg,RightCentreBackPos,RightLeftPos);
+			////setting the back image  
+			SetCSSValues(".RightBack",WidthImg,HeigthImg,RightCentreBackPos,RightLeftPos);
+			SetCSSValues(".RightBackNS",WidthImg,HeigthImg,RightCentreBackPos,RightLeftPos);
+			////setting the shadow position 
+			SetCSSValues(".RightShadowPos1",WidthShadow,HeigthShadow,RightShadow1top,RightShadow1left);
+			SetCSSValues(".RightShadowPos2",WidthShadow,HeigthShadow,RightShadow2top,RightShadow2left);
+		
 			var ImageFound=false;
 			console.log("initializing");
 			PreLoadImages(maxDynamicImages);
 			
 			//intial setup 
-			//Middle layer Setup 
-			//SetValuesMin('#ShadowCentreLeft',0,-10);//yTargetPos2-10 
-			//SetValuesMin('#ShadowCentreMiddle',0,15);//yTargetPos 
-			//SetValuesX('#ShadowCentreRight',0,10,-35); 
 			
 			SetValuesMin('#centreLeft',0,ReturnArrayPosition(0));//yTargetPos2-10
 			SetValuesMin('#centreMiddle',0,ReturnArrayPosition(1));//yTargetPos
@@ -104,27 +169,15 @@
 			SetValuesMin('#backMiddle',0,ReturnArrayPosition(4));//yTargetPos2-10
 			SetValuesMin('#backRight',0,ReturnArrayPosition(5));//yTargetPos2-10
 			
-			//SetValuesMin('#ShadowBackLeft',0,15);//yTargetPos2-10 
-			//SetValuesMin('#ShadowBackMiddle',0,-35);//yTargetPos2-10 
-			//SetValuesMin('#ShadowBackRight',0,10);//yTargetPos2-10 
-			
 			// Middle z-layer Setup 
 			$('#centreLeft').css('z-index', 2); 
 			$('#centreMiddle').css('z-index', 2); 
 			$('#centreRight').css('z-index', 2); 
 			
-			// $('#ShadowCentreLeft').css('z-index', 1);  
-			// $('#ShadowCentreMiddle').css('z-index', 1);  
-			// $('#ShadowCentreRight').css('z-index', 1); 
-			
 			//Back z-layer Setup
 			$('#backLeft').css('z-index', 1); 
 			$('#backMiddle').css('z-index', 1); 
 			$('#backRight').css('z-index', 1); 
-			
-			//$('#ShadowBackLeft').css('z-index', 0); 
-			//$('#ShadowBackMiddle').css('z-index', 0); 
-			//$('#ShadowBackRight').css('z-index', 0); 
 			
 			$('#overlayContainer').css('z-index', 9); 
 			
@@ -137,12 +190,6 @@
 			Connected = loadedImages ; 
 			ReadFiles();
 			ExtraLoading= false;
-			
-			//setting the background variables 
-			//setting the left side 
-			SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftTop,LeftLeft);
-			SetCSSValues(".LeftTopShadow",WidthImg,HeigthImg,LeftTop,LeftLeft);
-			//SetCSSValues(".LeftTopShadow",WidthImg,HeigthImg);
 		});
 		
 		//Transition for dropping in from the transition state-draw 3
@@ -226,14 +273,6 @@
 				
 			if (Connected)
 			{
-				//if (ExtraLoading==false)
-				//{
-				//	setTimeout(TransitionOut,totalDuration);
-				//}
-				//else 
-				//{
-				// 	setTimeout(ExtraLoad,extraLoadDuration);
-				//}
 				setTimeout(TransitionOut,totalDuration);
 			}
 			else 
@@ -391,7 +430,7 @@
 					document.getElementById("ShadowRight").className = "RightShadowPos1";
 				else 
 					document.getElementById("ShadowRight").className = "RightShadowPos2";				
-				SetValuesX('#ShadowRight',70,-700,ReturnArrayPosition(2));//set front shadow values 0.2 -->
+				SetValuesX('#ShadowRight',70,-700,ReturnArrayPosition(2));//set front shadow values 0.2
 
 				SetValuesNT('centreRight',290,ReturnArrayPosition(5));// set the Centre picture value 
 				//Back Images 

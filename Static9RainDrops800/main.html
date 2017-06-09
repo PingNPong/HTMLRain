@@ -78,9 +78,9 @@
 		//below are for the levels 
 		var CurrentLevel = 0;
 		// target positions before the end of the transition 
-		var leftArray = [460,280,100,// all left array are here 
-						490,310,130,// centre array are here 
-						570,300,120]; // right array are here
+		var leftArray = ['140px',280,'1200px',// all left array are here 
+						'260px',310,'1300px',// centre array are here 
+						'200px',300,'1100px']; // right array are here
 						
 		var topArray = ['400px','370px','400px',// all bottom array are here  (+20) (0) is top 
 						'220px','240px','180px',// centre array are here 
@@ -95,9 +95,13 @@
 						-65,-145,-200,// centre array are here 
 						-240,-300,-320]; // right array are here 
 						
-		var ShadowLeftTopArray = ['380px','340px','400px', // bottom 
+		var ShadowTopArray = ['380px','340px','400px', // bottom 
 								'195px','215px','160px', //middle 
-								'10px','60px','40px']; // top 
+								'20px','70px','40px']; // top 
+								
+		var ShadowLeftArray = ['120px','340px','1200px', // bottom 
+								'240px','215px','1300px', //middle 
+								'180px','70px','1100px']; // top 
 						
 		var CurrentAngleSet= 0;
 		var Names=['#leftBottom','#middleBottom','#rightBottom','#centreLeft','#centreMiddle','#centreRight','#topLeft','#topMiddle','#topRight']
@@ -110,7 +114,9 @@
 		var WidthShadow=510; // 680
 		var HeigthShadow=352; //470
 		//left 
-		var LeftLeftPos='140px';
+		var LeftLeftPos1='140px';
+		var LeftLeftPos2='260px';
+		var LeftLeftPos3='200px';
 		var LeftTopPos='400px';//280px (20.6%/25.2%(1080))
 		var LeftAniTopPos='400px';//280px (20.6%/25.2%(1080))
 		var LeftCentrePos='220px';//420px (38%/38%(1080))
@@ -131,7 +137,9 @@
 		var CentreShadow1top='362px';//252 (35.1%(1080))
 		var CentreShadow2top='262px';//262 (35.1%(1080))nani!
 		//right
-		var RightLeftPos='1300px';//1100
+		var RightLeftPos1='1200px';//1100
+		var RightLeftPos2='1300px';//1100
+		var RightLeftPos3='1100px';//1100
 		var RightTopPos='400px';// 300 (27%/27%(1080))
 		var RightAniTopPos='400px';// 300 (27%/27%(1080))
 		var RightCentrePos='180px';// 390
@@ -146,15 +154,15 @@
 						//setting the background variables 
 			///setting the left side 
 			////setting the front image  
-			SetCSSValues(".LeftAni",WidthImg,HeigthImg,LeftAniTopPos,LeftLeftPos);
+			SetCSSValues(".LeftAni",WidthImg,HeigthImg,LeftAniTopPos,LeftLeftPos1);
 			//SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos);
-			SetCSSValues(".LeftBottomShadow",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos);
+			SetCSSValues(".LeftBottomShadow",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos1);
 			////setting the centre image  
-			SetCSSValues(".LeftCentre",WidthImg,HeigthImg,LeftCentrePos,LeftLeftPos);
-			SetCSSValues(".LeftCentreNS",WidthImg,HeigthImg,LeftCentrePos,LeftLeftPos);
+			SetCSSValues(".LeftCentre",WidthImg,HeigthImg,LeftCentrePos,LeftLeftPos2);
+			SetCSSValues(".LeftCentreNS",WidthImg,HeigthImg,LeftCentrePos,LeftLeftPos1);
 			////setting the back image  
-			SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftBackPos,LeftLeftPos);
-			SetCSSValues(".LeftTopNS",WidthImg,HeigthImg,LeftBackPos,LeftLeftPos);
+			SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftBackPos,LeftLeftPos3);
+			SetCSSValues(".LeftTopNS",WidthImg,HeigthImg,LeftBackPos,LeftLeftPos1);
 			////setting the shadow position 
 			SetCSSValues(".LeftShadowPos1",WidthShadow,HeigthShadow,LeftShadow1top,LeftShadow1left);
 			SetCSSValues(".LeftShadowPos2",WidthShadow,HeigthShadow,LeftShadow2top,LeftShadow2left);
@@ -176,15 +184,15 @@
 		
 			///setting the Centre side 
 			////setting the front image  
-			SetCSSValues(".RightAni",WidthImg,HeigthImg,RightAniTopPos,RightLeftPos);
+			SetCSSValues(".RightAni",WidthImg,HeigthImg,RightAniTopPos,RightLeftPos1);
 			//SetCSSValues(".RightTop",WidthImg,HeigthImg,RightTopPos,RightLeftPos);
-			SetCSSValues(".RightBottomShadow",WidthImg,HeigthImg,RightTopPos,RightLeftPos);
+			SetCSSValues(".RightBottomShadow",WidthImg,HeigthImg,RightTopPos,RightLeftPos1);
 			////setting the centre image  
-			SetCSSValues(".RightCentre",WidthImg,HeigthImg,RightCentrePos,RightLeftPos);
-			SetCSSValues(".RightCentreNS",WidthImg,HeigthImg,RightCentrePos,RightLeftPos);
+			SetCSSValues(".RightCentre",WidthImg,HeigthImg,RightCentrePos,RightLeftPos2);
+			SetCSSValues(".RightCentreNS",WidthImg,HeigthImg,RightCentrePos,RightLeftPos2);
 			////setting the back image  
-			SetCSSValues(".RightTop",WidthImg,HeigthImg,RightBackPos,RightLeftPos);
-			SetCSSValues(".RightTopNS",WidthImg,HeigthImg,RightBackPos,RightLeftPos);
+			SetCSSValues(".RightTop",WidthImg,HeigthImg,RightBackPos,RightLeftPos3);
+			SetCSSValues(".RightTopNS",WidthImg,HeigthImg,RightBackPos,RightLeftPos3);
 			////setting the shadow position 
 			SetCSSValues(".RightShadowPos1",WidthShadow,HeigthShadow,RightShadow1top,RightShadow1left);
 			SetCSSValues(".RightShadowPos2",WidthShadow,HeigthShadow,RightShadow2top,RightShadow2left);
@@ -352,7 +360,7 @@
 			PrevX=randomx;
 			var PrevImage=returnPreviousInt(1,currentImg,maxImages);// 22 because there are 22 images 
 			var FarBackImage=returnPreviousInt(9,currentImg,maxImages);// 22 because there are 22 images 
-			if (ImgState>0 )
+			if (ImgState>0)
 			{//if you have a previous state that is currently being referenced 
 				FarBackImage=returnPreviousInt(6,PreJumpImg,maxImages);
 				if (ImgState>1 )
@@ -365,8 +373,8 @@
 			{	// going to left transition 
 				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);				
 				// setting the animation positions 
-				SetCSSValues(".LeftAni",WidthImg,HeigthImg,topArray[CurrentPosition],LeftLeftPos);
-				SetCSSValues(".LeftShadowPos1",WidthShadow,HeigthShadow,ShadowLeftTopArray[CurrentPosition],LeftShadow1left);
+				SetCSSValues(".LeftAni",WidthImg,HeigthImg,topArray[CurrentPosition],leftArray[CurrentPosition]);
+				SetCSSValues(".LeftShadowPos1",WidthShadow,HeigthShadow,ShadowTopArray[CurrentPosition],ShadowLeftArray[CurrentPosition]);
 				
 				// turning off previous transition objects 
 				setImageVisible('TransitionRight',false);	
@@ -390,7 +398,7 @@
 				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);			
 				// setting the animation positions 
 				SetCSSValues(".MiddleAni",WidthImg,HeigthImg,topArray[CurrentPosition],CentreLeftPos);
-				SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,ShadowLeftTopArray[CurrentPosition],CentreShadow1left);
+				SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,ShadowTopArray[CurrentPosition],CentreShadow1left);
 				
 				// turning off previous transition objects 
 				setImageVisible('TransitionLeft',false);	
@@ -414,8 +422,8 @@
 			{	// going to right transition 
 				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);			
 				// setting the animation positions 
-				SetCSSValues(".RightAni",WidthImg,HeigthImg,topArray[CurrentPosition],RightLeftPos);
-				SetCSSValues(".RightShadowPos1",WidthShadow,HeigthShadow,ShadowLeftTopArray[CurrentPosition],RightShadow1left);
+				SetCSSValues(".RightAni",WidthImg,HeigthImg,topArray[CurrentPosition],leftArray[CurrentPosition]);
+				SetCSSValues(".RightShadowPos1",WidthShadow,HeigthShadow,ShadowTopArray[CurrentPosition],ShadowLeftArray[CurrentPosition]);
 				
 				// turning off previous transition objects 
 				setImageVisible('TransitionMiddle',false);	

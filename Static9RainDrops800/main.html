@@ -1,0 +1,511 @@
+<!-- // main for an image gallery which will display images from a local file  -->
+<!-- // new images will transition in from the top, like rain drops  and old ones should transtion out -->
+<!-- // images are set to drop to 9 different locations rather than 3  -->
+<!-- NVYVE-->
+<!-- Philip Ong   March 17,2017-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rain drops page </title>
+	<link rel="stylesheet" href="style.css">
+	<script src='jquery-3.1.1.min.js'></script>
+	<!-- using this transit library will result in better for bright sign performace  -->
+	<script src='jquery.transit.js'></script>
+	<script src='functions.js'></script>
+	<script src='CacheImages.js'></script>
+	<script src='ReadTextFile.js'></script>
+</head>
+
+<body>
+	<!----- body area ----->
+	<div id="main-container">
+		<div id="Centre-container">
+	
+		<!-- Back images  -->
+			<img id="topLeft" class="LeftTop" src="PhotoBoothStatic/01.jpg" alt="" >
+			<img id="topMiddle" class="MiddleTop" src="PhotoBoothStatic/02.jpg" alt="" >
+			<img id="topRight" class="RightTop" src="PhotoBoothStatic/03.jpg" alt="" >
+		
+		<!-- Centre images  -->
+			<img id="centreLeft" class="LeftCentre" src="PhotoBoothStatic/04.jpg" alt="" >
+			<img id="centreMiddle" class="MiddleCentre" src="PhotoBoothStatic/05.jpg" alt="" >
+			<img id="centreRight" class="RightCentre" src="PhotoBoothStatic/06.jpg" alt="">
+		<!-- Front images -->
+			<img id="leftBottom" class="LeftBottomShadow" src="PhotoBoothStatic/07.jpg" alt="" >
+			<img id="middleBottom" class="MiddleShadow" src="PhotoBoothStatic/08.jpg" alt="" >
+			<img id="rightBottom" class="RightBottomShadow" src="PhotoBoothStatic/09.jpg" alt="" >
+			
+		<!-- FrontShadow  -->
+			<img id="ShadowLeft" class="LeftShadowPos1" src="DropShadow.png" >
+			<img id="ShadowMid" class="MiddleShadowPos1" src="DropShadow.png" >
+			<img id="ShadowRight" class="RightShadowPos1" src="DropShadow.png" >	
+		<!-- Front images -->
+			<img id="TransitionLeft" class="LeftAni" src="http://192.168.2.209/PhotoBooth/04.jpg" alt="" >
+			<img id="TransitionMiddle" class="MiddleAni" src="http://192.168.2.209/PhotoBooth/05.jpg" alt="" >
+			<img id="TransitionRight" class="RightAni" src="http://192.168.2.209/PhotoBooth/06.jpg" alt="" >
+			
+		<!-- overlay -->	
+			<!-- <img id="overlayContainer" class="overlayClass" src="mask.png" > -->
+		</div>
+		<!--- end body area ----->
+	</div>
+	
+
+	<script id= 'code'>
+	{/// begin code area  
+		var totalDuration = 3000; //total time between slides 
+		var extraLoadDuration = 6500; //the duration for the transition 
+		var waitDuration = 1000; //for the wait between transition 
+		var UpdateInterval = 8000; //the wait between the each check  
+		var TransitionState=0;
+		
+		var xLeftPos = -540;// 500
+		var xRightPos = 500;
+		var yTargetPos = 100;
+		var yTargetPos2 = 140;
+		var currentImg=0;
+		var PreJumpImg=0;// image prejump
+		var ImgState=0;
+		var maxDynamicImages=9;
+		var maxImages=19;
+		var Connected = false; 
+		var PrePos1 = 0;
+		var PrePos2 = 0;
+		var PrePos3 = 0;
+		var ExtraLoading= false;// if we are waiting for the extra load 
+		
+		//below are for the levels 
+		var CurrentLevel = 0;
+		// target positions before the end of the transition 
+		var leftArray = [460,280,100,// all left array are here 
+						490,310,130,// centre array are here 
+						570,300,120]; // right array are here
+						
+		var topArray = [-10,0,10,// all left array are here  (+20) (0) is top 
+						-180,-130,-220,// centre array are here 
+						-360,-280,-340]; // right array are here 						
+		
+		var angleArray = [-5,12,-10,12,-10,18,-5,12,-10];
+		var ShadowTopArray = [110,-10,30,// all left array are here (-30) (0) is bottom
+						-65,-145,-200,// centre array are here 
+						-240,-300,-320]; // right array are here 	
+		var topArray =[5];				
+						
+		var CurrentAngleSet= 0;
+		var Names=['#leftBottom','#middleBottom','#rightBottom','#centreLeft','#centreMiddle','#centreRight','#topLeft','#topMiddle','#topRight']
+		var LayerNames=['#leftBottom','#middleBottom','#rightBottom','#topLeft','#topMiddle','#topRight','#centreLeft','#centreMiddle','#centreRight']
+		var TransitionNames=['#ShadowLeft','#ShadowMid','#ShadowRight','#TransitionLeft','#TransitionMiddle','#TransitionRight'];
+		
+		//Canvas variables 
+		var WidthImg=480; //640 92%
+		var HeigthImg=322; //430 
+		var WidthShadow=510; // 680
+		var HeigthShadow=352; //470
+		//left 
+		var LeftLeftPos='140px';
+		var LeftTopPos='400px';//280px (20.6%/25.2%(1080))
+		var LeftAniTopPos='400px';//280px (20.6%/25.2%(1080))
+		var LeftCentrePos='220px';//420px (38%/38%(1080))
+		var LeftBackPos='40px';//420px (38%/38%(1080))
+		var LeftShadow1left='120px';//26px
+		var LeftShadow2left='32px';//32px nani!
+		var LeftShadow1top='260px';//249px (23%(1080))
+		var LeftShadow2top='243px';//243px (22.5%(1080))
+		//centre
+		var CentreLeftPos='720px';//500
+		var CentreTopPos='370px';// 290 (26%/26%(1080))
+		var CentreAniTopPos='370px';// 290 (26%/26%(1080))
+		var CentreCentrePos='240px';//390 (36.1%(1080))
+		var CentreBackPos='90px';//390 (36.1%(1080))
+		var CentreBackNSPos='380px';//380 (35.1%(1080)) muda 
+		var CentreShadow1left='703px';//573 
+		var CentreShadow2left='565px';//565 nani!
+		var CentreShadow1top='362px';//252 (35.1%(1080))
+		var CentreShadow2top='262px';//262 (35.1%(1080))nani!
+		//right
+		var RightLeftPos='1300px';//1100
+		var RightTopPos='400px';// 300 (27%/27%(1080))
+		var RightAniTopPos='400px';// 300 (27%/27%(1080))
+		var RightCentrePos='180px';// 390
+		var RightBackPos='60px';// 390
+		var RightShadow1left='1208px';//1008
+		var RightShadow2left='565px';//565 nani!
+		var RightShadow1top='360px';//117
+		var RightShadow2top='145px';
+		
+		//the start up function 
+		$(function (){
+						//setting the background variables 
+			///setting the left side 
+			////setting the front image  
+			SetCSSValues(".LeftAni",WidthImg,HeigthImg,LeftAniTopPos,LeftLeftPos);
+			//SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos);
+			SetCSSValues(".LeftBottomShadow",WidthImg,HeigthImg,LeftTopPos,LeftLeftPos);
+			////setting the centre image  
+			SetCSSValues(".LeftCentre",WidthImg,HeigthImg,LeftCentrePos,LeftLeftPos);
+			SetCSSValues(".LeftCentreNS",WidthImg,HeigthImg,LeftCentrePos,LeftLeftPos);
+			////setting the back image  
+			SetCSSValues(".LeftTop",WidthImg,HeigthImg,LeftBackPos,LeftLeftPos);
+			SetCSSValues(".LeftTopNS",WidthImg,HeigthImg,LeftBackPos,LeftLeftPos);
+			////setting the shadow position 
+			SetCSSValues(".LeftShadowPos1",WidthShadow,HeigthShadow,LeftShadow1top,LeftShadow1left);
+			SetCSSValues(".LeftShadowPos2",WidthShadow,HeigthShadow,LeftShadow2top,LeftShadow2left);
+			
+			///setting the Centre side 
+			////setting the front image  
+			SetCSSValues(".MiddleAni",WidthImg,HeigthImg,CentreAniTopPos,CentreLeftPos);
+			//SetCSSValues(".MiddleTop",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos);
+			SetCSSValues(".MiddleShadow",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos);
+			////setting the centre image  
+			SetCSSValues(".MiddleCentre",WidthImg,HeigthImg,CentreCentrePos,CentreLeftPos);
+			SetCSSValues(".MiddleCentreNS",WidthImg,HeigthImg,CentreCentrePos,CentreLeftPos);
+			////setting the back image  
+			SetCSSValues(".MiddleTop",WidthImg,HeigthImg,CentreBackPos,CentreLeftPos);
+			SetCSSValues(".MiddleTopNS",WidthImg,HeigthImg,CentreBackPos,CentreLeftPos);
+			////setting the shadow position 
+			SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,CentreShadow1top,CentreShadow1left);
+			SetCSSValues(".MiddleShadowPos2",WidthShadow,HeigthShadow,CentreShadow2top,CentreShadow2left);
+		
+			///setting the Centre side 
+			////setting the front image  
+			SetCSSValues(".RightAni",WidthImg,HeigthImg,RightAniTopPos,RightLeftPos);
+			//SetCSSValues(".RightTop",WidthImg,HeigthImg,RightTopPos,RightLeftPos);
+			SetCSSValues(".RightBottomShadow",WidthImg,HeigthImg,RightTopPos,RightLeftPos);
+			////setting the centre image  
+			SetCSSValues(".RightCentre",WidthImg,HeigthImg,RightCentrePos,RightLeftPos);
+			SetCSSValues(".RightCentreNS",WidthImg,HeigthImg,RightCentrePos,RightLeftPos);
+			////setting the back image  
+			SetCSSValues(".RightTop",WidthImg,HeigthImg,RightBackPos,RightLeftPos);
+			SetCSSValues(".RightTopNS",WidthImg,HeigthImg,RightBackPos,RightLeftPos);
+			////setting the shadow position 
+			SetCSSValues(".RightShadowPos1",WidthShadow,HeigthShadow,RightShadow1top,RightShadow1left);
+			SetCSSValues(".RightShadowPos2",WidthShadow,HeigthShadow,RightShadow2top,RightShadow2left);
+		
+			var ImageFound=false;
+			console.log("initializing");
+			PreLoadImages(maxDynamicImages);
+			
+			//Transition setup 
+			SetValuesMin('#TransitionLeft',-10,ReturnArrayPosition(0));//yTargetPos2-10
+			SetValuesMin('#middleBottom',0,ReturnArrayPosition(1));//yTargetPos
+			SetValuesMin('#rightBottom',10,ReturnArrayPosition(2));
+			
+			//Top setup 
+			SetValuesMin('#leftBottom',-10,ReturnArrayPosition(0));//yTargetPos2-10
+			SetValuesMin('#middleBottom',0,ReturnArrayPosition(1));//yTargetPos
+			SetValuesMin('#rightBottom',10,ReturnArrayPosition(2));
+			
+			//centre setup 
+			SetValuesMin('#centreLeft',0,ReturnArrayPosition(0));//yTargetPos2-10
+			SetValuesMin('#centreMiddle',0,ReturnArrayPosition(1));//yTargetPos
+			SetValuesMin('#centreRight',10,ReturnArrayPosition(2));
+			
+			//Back Layer Setup
+			SetValuesMin('#topLeft',0,ReturnArrayPosition(3));//yTargetPos2-10
+			SetValuesMin('#topMiddle',0,ReturnArrayPosition(4));//yTargetPos2-10
+			SetValuesMin('#topRight',0,ReturnArrayPosition(5));//yTargetPos2-10
+			
+			
+			// Top z-layer Setup 
+			$('#leftBottom').css('z-index', 3); 
+			$('#middleBottom').css('z-index', 3); 
+			$('#rightBottom').css('z-index', 3); 
+			
+			// Middle z-layer Setup 
+			$('#centreLeft').css('z-index', 2); 
+			$('#centreMiddle').css('z-index', 2); 
+			$('#centreRight').css('z-index', 2); 
+			
+			//Back z-layer Setup
+			$('#topLeft').css('z-index', 1); 
+			$('#topMiddle').css('z-index', 1); 
+			$('#topRight').css('z-index', 1); 
+			
+			<!-- $('#overlayContainer').css('z-index', 1);  -->
+			
+			setTimeout(Update, 1000);
+			
+			Connected = loadedImages ; 
+			ReadFiles();
+			ExtraLoading= false;
+			
+			CurrentHeightlevel=0;
+		});// -------------------end start function 
+		
+		//Transition for dropping in from the transition state-draw 3
+		function DropIn()
+		{
+			var randomAngle=RandomNumber(0,50,25);
+			if (TransitionState == 0)
+			{// -10 15 -35
+				PrePos1=randomAngle;
+				
+				setImageVisible('TransitionLeft',true);
+				var TopPosition= (CurrentHeightlevel*3+TransitionState);
+				rainDropTransitionX('#TransitionLeft',0,topArray[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition (3)ReturnArrayPosition(0)
+
+				//shadow stuff 
+				setImageVisible('ShadowLeft',true);
+				rainDropTransitionX('#ShadowLeft',0,ShadowTopArray[TopPosition],angleArray[TopPosition],totalDuration); 
+			}
+			else if (TransitionState == 1)
+			{
+				PrePos2=randomAngle;
+				
+				setImageVisible('TransitionMiddle',true);
+				var TopPosition= (CurrentHeightlevel*3+TransitionState);
+				rainDropTransitionX('#TransitionMiddle',0,topArray[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition
+				
+				//shadow stuff 
+				setImageVisible('ShadowMid',true);
+				rainDropTransitionX('#ShadowMid',0,ShadowTopArray[TopPosition],angleArray[TopPosition],totalDuration); 
+			}
+			else if (TransitionState == 2)
+			{	
+				PrePos3=randomAngle;
+				
+				setImageVisible('TransitionRight',true);
+				var TopPosition= (CurrentHeightlevel*3+TransitionState);
+				rainDropTransitionX('#TransitionRight',0,topArray[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition
+				
+				// shadow management 
+				setImageVisible('ShadowRight',true);
+				rainDropTransitionX('#ShadowRight',70,ShadowTopArray[TopPosition],angleArray[TopPosition],totalDuration); 
+			}
+			
+			//from main 
+
+			NextImage();// only transition to next image after we have the image numbers set 
+
+			if (TransitionState == 2)
+			{
+				TransitionState = 0;	
+				ReadFiles();// check if there is a change 
+				LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
+				
+				// for setting the current height level 
+				if (CurrentHeightlevel==2)
+				{// reset all the height items 
+					CurrentAngleSet=0;
+					CurrentHeightlevel=-1;
+				}
+				CurrentHeightlevel = Math.min(CurrentHeightlevel+1, 2);
+				
+				// changing the back angle set 
+				CurrentAngleSet++;
+
+			}
+			else 
+			{
+				TransitionState = Math.min(TransitionState+1, 2);
+				
+			}
+			//console.log(" returning image pos="+ReturnTopArrayPosition (CurrentHeightlevel,TransitionState,3)); 
+			
+			if (Connected)
+			{
+				//if (ExtraLoading==false)
+				//{
+				//	setTimeout(TransitionOut,totalDuration);
+				//}
+				//else 
+				//{
+				// 	setTimeout(ExtraLoad,extraLoadDuration);
+				//}
+				setTimeout(TransitionOut,totalDuration);
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+			
+		}// end drop in function 		
+		
+		function ExtraLoad ()
+		{
+			LoadSetImages(maxDynamicImages,maxImages,currentImg,3,Math.random());
+			
+			if (Connected)
+			{
+				setTimeout(TransitionOut,totalDuration);
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
+		
+		//Setup the images for the transition out 1st part-draw 1 
+		function TransitionOut()
+		{
+			var randomAngle=RandomNumber(0,80,25);
+			var randomx=RandomPosition(-640,2000,100);
+			var randomy=RandomPosition(-800,1100,100);
+			PrevX=randomx;
+			var PrevImage=returnPreviousInt(1,currentImg,maxImages);// 22 because there are 22 images 
+			var FarBackImage=returnPreviousInt(9,currentImg,maxImages);// 22 because there are 22 images 
+			if (ImgState>0 )
+			{//if you have a previous state that is currently being referenced 
+				FarBackImage=returnPreviousInt(6,PreJumpImg,maxImages);
+				if (ImgState>1 )
+				{
+					PrevImage=returnPreviousInt(1,PreJumpImg,maxImages);
+				}
+			}
+			
+			if (TransitionState == 0)
+			{	// going to left transition 	
+				// turning off previous transition objects 
+				setImageVisible('TransitionRight',false);	
+				setImageVisible('ShadowRight',false);
+				// getting the transition image ready for the transition 
+				ChangeImg('#TransitionLeft',imgArray[currentImg]);
+				SetValuesX('#TransitionLeft',randomx,randomy,randomAngle);//set the front value  300 0.35  SetValuesMin('#TransitionLeft',randomy,randomAngle)
+				// setting the previous image (right image)
+				var namePosition= (CurrentHeightlevel*3+TransitionState)-1;// -1 because we need to do the previous one 
+				SetCurrentImage(PrevImage,namePosition);	
+				// setting the back position 
+				if (CurrentAngleSet==0)
+					document.getElementById("ShadowLeft").className = "LeftShadowPos1";
+				else 
+					document.getElementById("ShadowLeft").className = "LeftShadowPos2";
+				//setting values off screen 
+				SetValuesX('#ShadowLeft',randomx,randomy+140,randomAngle);//set front shadow off screen +140
+				SetValuesNT('centreLeft',420,ReturnArrayPosition(3));// set the Centre picture value 
+				SetValuesNT('topLeft',420,ReturnArrayPosition(0));// set the Centre picture value 
+				//setting the layers of the name
+				SetLayers(namePosition);
+				SetTransition(TransitionState);
+			}
+			else if (TransitionState == 1)
+			{	// going to middle transition 			
+				// turning off previous transition objects 
+				setImageVisible('TransitionLeft',false);	
+				setImageVisible('ShadowLeft',false);
+				// setting the previous image (left image)
+				var namePosition= (CurrentHeightlevel*3+TransitionState)-1;// -1 because we need to do the previous one 
+				SetCurrentImage(PrevImage,namePosition);	
+				// getting the transition image ready for the transition 
+				ChangeImg('#TransitionMiddle',imgArray[currentImg]);
+				SetValuesX('#TransitionMiddle',randomx,randomy,randomAngle);//-900
+				// setting the back position 
+				if (CurrentAngleSet==0)
+					document.getElementById("ShadowMid").className = "MiddleShadowPos1";
+				else 
+					document.getElementById("ShadowMid").className = "MiddleShadowPos2";
+				//setting values off screen 
+				SetValuesX('#ShadowMid',randomx,randomy,randomAngle);//set front shadow values  -900
+				SetValuesNT('centreMiddle',390,ReturnArrayPosition(4));// set the Centre picture value  
+				SetValuesNT('topMiddle',390,ReturnArrayPosition(1));// set the Centre picture value 
+				
+				SetLayers(namePosition);
+				SetTransition(TransitionState);
+				
+			}
+			else if (TransitionState == 2)
+			{	// going to right transition 
+				// turning off previous transition objects 
+				setImageVisible('TransitionMiddle',false);	
+				setImageVisible('ShadowMid',false);
+				// setting the previous image (middle image)
+				var namePosition= (CurrentHeightlevel*3+TransitionState)-1;// -1 because we need to do the previous one 
+				SetCurrentImage(PrevImage,namePosition);
+				// getting the transition image ready for the transition 
+				ChangeImg('#TransitionRight',imgArray[currentImg]);
+				SetValuesX('#TransitionRight',randomx,randomy,randomAngle);//-1000
+				// setting the back position 
+				if (CurrentAngleSet==0)
+					document.getElementById("ShadowRight").className = "RightShadowPos1";
+				else 
+					document.getElementById("ShadowRight").className = "RightShadowPos2";	
+				//setting values offscreen 
+				SetValuesX('#ShadowRight',randomx+70,randomy,randomAngle);//set front shadow values 0.2 X(+70)
+				SetValuesNT('centreRight',290,ReturnArrayPosition(5));// set the Centre picture value 
+				SetValuesNT('topRight',390,ReturnArrayPosition(2));// set the Centre picture value 
+				
+				SetLayers(namePosition);
+				SetTransition(TransitionState);
+				
+			}
+			
+			setTimeout(DropIn,waitDuration);
+		}
+		
+		//the next image in the list 
+		function NextImage()
+		{
+			var ImageFound=false;
+			if (currentImg +1== maxImages)
+				currentImg = 0;	
+			else 
+				currentImg = Math.min(currentImg+1, maxImages);
+			
+			//only if the prejumpping works out 
+			if (ImgState > 0)
+			{
+				if (PreJumpImg +1== maxImages)
+					PreJumpImg = 0;	
+				else 
+					PreJumpImg = Math.min(PreJumpImg+1, maxImages);
+			}
+			
+			if (currentImg==0)
+			{// if the current image has been reset 
+				if (loadedImages)
+				{
+					Connected = true; 
+				}
+				else 
+				{
+					Connected = false; 
+				}
+			}
+		}
+		
+		// Main function reccursively calling itself  
+		function Update()
+		{
+			if (Connected)
+			{
+				TransitionOut();
+			}
+			else 
+			{
+				RefreshCheck();
+			}
+		}
+		
+		//the check which will 
+		function RefreshCheck()
+		{
+			PreLoadImages(maxDynamicImages,Math.random());
+			if (Connected)
+			{
+				setTimeout(Update,1000);
+			}
+			else 
+			{
+				setTimeout(RefreshCheck, UpdateInterval);
+			}
+		}
+		
+		//loaded image functions 
+		function ImageLoaded()
+		{
+			//console.log("Image loaded called");
+			Connected=true;
+		}
+		
+		function FailedToLoad()
+		{
+			console.log("FailedToLoad called");
+			Connected=false;
+		}
+		
+		
+	}/// end code area
+	/// help me I'm... just a quote from pentagon wars
+	</script>
+</body>
+</html>

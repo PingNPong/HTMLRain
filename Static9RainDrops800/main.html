@@ -54,9 +54,9 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 3000; //total time between slides 
+		var totalDuration = 1000; //total time between slides 
 		var extraLoadDuration = 6500; //the duration for the transition 
-		var waitDuration = 1000; //for the wait between transition 
+		var waitDuration = 500; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -82,15 +82,22 @@
 						490,310,130,// centre array are here 
 						570,300,120]; // right array are here
 						
-		var topArray = [-10,0,10,// all left array are here  (+20) (0) is top 
-						-180,-130,-220,// centre array are here 
-						-360,-280,-340]; // right array are here 						
+		var topArray = ['400px','370px','400px',// all bottom array are here  (+20) (0) is top 
+						'220px','240px','180px',// centre array are here 
+						'40px','90px','60px']; // top array are here 	
+
+		var TargetTopAnimation = [ -10,0,10,// all bottom array are here 
+							0,0,0,// centre array are here 
+							0,0,0];// top array are here 	
 		
 		var angleArray = [-5,12,-10,12,-10,18,-5,12,-10];
 		var ShadowTopArray = [110,-10,30,// all left array are here (-30) (0) is bottom
 						-65,-145,-200,// centre array are here 
-						-240,-300,-320]; // right array are here 	
-		var topArray =[5];				
+						-240,-300,-320]; // right array are here 
+						
+		var ShadowLeftTopArray = ['380px','340px','400px', // bottom 
+								'195px','215px','160px', //middle 
+								'10px','60px','40px']; // top 
 						
 		var CurrentAngleSet= 0;
 		var Names=['#leftBottom','#middleBottom','#rightBottom','#centreLeft','#centreMiddle','#centreRight','#topLeft','#topMiddle','#topRight']
@@ -243,11 +250,11 @@
 				
 				setImageVisible('TransitionLeft',true);
 				var TopPosition= (CurrentHeightlevel*3+TransitionState);
-				rainDropTransitionX('#TransitionLeft',0,topArray[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition (3)ReturnArrayPosition(0)
-
+				rainDropTransitionX('#TransitionLeft',0,TargetTopAnimation[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition (3)ReturnArrayPosition(0)
+				//topArray[TopPosition]-10 is perfect for the 1st 
 				//shadow stuff 
 				setImageVisible('ShadowLeft',true);
-				rainDropTransitionX('#ShadowLeft',0,ShadowTopArray[TopPosition],angleArray[TopPosition],totalDuration); 
+				rainDropTransitionX('#ShadowLeft',0,0,angleArray[TopPosition],totalDuration); 
 			}
 			else if (TransitionState == 1)
 			{
@@ -255,11 +262,11 @@
 				
 				setImageVisible('TransitionMiddle',true);
 				var TopPosition= (CurrentHeightlevel*3+TransitionState);
-				rainDropTransitionX('#TransitionMiddle',0,topArray[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition
+				rainDropTransitionX('#TransitionMiddle',0,TargetTopAnimation[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition
 				
 				//shadow stuff 
 				setImageVisible('ShadowMid',true);
-				rainDropTransitionX('#ShadowMid',0,ShadowTopArray[TopPosition],angleArray[TopPosition],totalDuration); 
+				rainDropTransitionX('#ShadowMid',0,0,angleArray[TopPosition],totalDuration); 
 			}
 			else if (TransitionState == 2)
 			{	
@@ -267,11 +274,11 @@
 				
 				setImageVisible('TransitionRight',true);
 				var TopPosition= (CurrentHeightlevel*3+TransitionState);
-				rainDropTransitionX('#TransitionRight',0,topArray[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition
+				rainDropTransitionX('#TransitionRight',0,TargetTopAnimation[TopPosition],angleArray[TopPosition],totalDuration);//Regular outside transition
 				
 				// shadow management 
 				setImageVisible('ShadowRight',true);
-				rainDropTransitionX('#ShadowRight',70,ShadowTopArray[TopPosition],angleArray[TopPosition],totalDuration); 
+				rainDropTransitionX('#ShadowRight',70,0,angleArray[TopPosition],totalDuration); 
 			}
 			
 			//from main 
@@ -355,7 +362,12 @@
 			}
 			
 			if (TransitionState == 0)
-			{	// going to left transition 	
+			{	// going to left transition 
+				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);				
+				// setting the animation positions 
+				SetCSSValues(".LeftAni",WidthImg,HeigthImg,topArray[CurrentPosition],LeftLeftPos);
+				SetCSSValues(".LeftShadowPos1",WidthShadow,HeigthShadow,ShadowLeftTopArray[CurrentPosition],LeftShadow1left);
+				
 				// turning off previous transition objects 
 				setImageVisible('TransitionRight',false);	
 				setImageVisible('ShadowRight',false);
@@ -365,11 +377,6 @@
 				// setting the previous image (right image)
 				var namePosition= (CurrentHeightlevel*3+TransitionState)-1;// -1 because we need to do the previous one 
 				SetCurrentImage(PrevImage,namePosition);	
-				// setting the back position 
-				if (CurrentAngleSet==0)
-					document.getElementById("ShadowLeft").className = "LeftShadowPos1";
-				else 
-					document.getElementById("ShadowLeft").className = "LeftShadowPos2";
 				//setting values off screen 
 				SetValuesX('#ShadowLeft',randomx,randomy+140,randomAngle);//set front shadow off screen +140
 				SetValuesNT('centreLeft',420,ReturnArrayPosition(3));// set the Centre picture value 
@@ -379,7 +386,12 @@
 				SetTransition(TransitionState);
 			}
 			else if (TransitionState == 1)
-			{	// going to middle transition 			
+			{	// going to middle transition 		
+				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);			
+				// setting the animation positions 
+				SetCSSValues(".MiddleAni",WidthImg,HeigthImg,topArray[CurrentPosition],CentreLeftPos);
+				SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,ShadowLeftTopArray[CurrentPosition],CentreShadow1left);
+				
 				// turning off previous transition objects 
 				setImageVisible('TransitionLeft',false);	
 				setImageVisible('ShadowLeft',false);
@@ -389,11 +401,6 @@
 				// getting the transition image ready for the transition 
 				ChangeImg('#TransitionMiddle',imgArray[currentImg]);
 				SetValuesX('#TransitionMiddle',randomx,randomy,randomAngle);//-900
-				// setting the back position 
-				if (CurrentAngleSet==0)
-					document.getElementById("ShadowMid").className = "MiddleShadowPos1";
-				else 
-					document.getElementById("ShadowMid").className = "MiddleShadowPos2";
 				//setting values off screen 
 				SetValuesX('#ShadowMid',randomx,randomy,randomAngle);//set front shadow values  -900
 				SetValuesNT('centreMiddle',390,ReturnArrayPosition(4));// set the Centre picture value  
@@ -405,6 +412,11 @@
 			}
 			else if (TransitionState == 2)
 			{	// going to right transition 
+				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);			
+				// setting the animation positions 
+				SetCSSValues(".RightAni",WidthImg,HeigthImg,topArray[CurrentPosition],RightLeftPos);
+				SetCSSValues(".RightShadowPos1",WidthShadow,HeigthShadow,ShadowLeftTopArray[CurrentPosition],RightShadow1left);
+				
 				// turning off previous transition objects 
 				setImageVisible('TransitionMiddle',false);	
 				setImageVisible('ShadowMid',false);
@@ -414,11 +426,6 @@
 				// getting the transition image ready for the transition 
 				ChangeImg('#TransitionRight',imgArray[currentImg]);
 				SetValuesX('#TransitionRight',randomx,randomy,randomAngle);//-1000
-				// setting the back position 
-				if (CurrentAngleSet==0)
-					document.getElementById("ShadowRight").className = "RightShadowPos1";
-				else 
-					document.getElementById("ShadowRight").className = "RightShadowPos2";	
 				//setting values offscreen 
 				SetValuesX('#ShadowRight',randomx+70,randomy,randomAngle);//set front shadow values 0.2 X(+70)
 				SetValuesNT('centreRight',290,ReturnArrayPosition(5));// set the Centre picture value 

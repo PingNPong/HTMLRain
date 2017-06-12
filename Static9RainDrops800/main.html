@@ -54,9 +54,9 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 1000; //total time between slides 
+		var totalDuration = 3000; //total time between slides 
 		var extraLoadDuration = 6500; //the duration for the transition 
-		var waitDuration = 500; //for the wait between transition 
+		var waitDuration = 1500; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -78,9 +78,9 @@
 		//below are for the levels 
 		var CurrentLevel = 0;
 		// target positions before the end of the transition 
-		var leftArray = ['140px',280,'1200px',// all left array are here 
-						'260px',310,'1300px',// centre array are here 
-						'200px',300,'1100px']; // right array are here
+		var leftArray = ['140px','720px','1200px',// all left array are here 
+						'260px','780px','1300px',// centre array are here 
+						'200px','640px','1100px']; // right array are here
 						
 		var topArray = ['400px','370px','400px',// all bottom array are here  (+20) (0) is top 
 						'220px','240px','180px',// centre array are here 
@@ -90,18 +90,18 @@
 							0,0,0,// centre array are here 
 							0,0,0];// top array are here 	
 		
-		var angleArray = [-5,12,-10,12,-10,18,-5,12,-10];
+		var angleArray = [-5,16,-10,12,-10,18,-5,16,-10];
 		var ShadowTopArray = [110,-10,30,// all left array are here (-30) (0) is bottom
 						-65,-145,-200,// centre array are here 
 						-240,-300,-320]; // right array are here 
 						
-		var ShadowTopArray = ['380px','340px','400px', // bottom 
+		var ShadowTopArray = ['370px','340px','400px', // bottom 
 								'195px','215px','160px', //middle 
 								'20px','70px','40px']; // top 
 								
-		var ShadowLeftArray = ['120px','340px','1200px', // bottom 
-								'240px','215px','1300px', //middle 
-								'180px','70px','1100px']; // top 
+		var ShadowLeftArray = ['120px','700px','1110px', // bottom 
+								'240px','760px','1215px', //middle 
+								'180px','620px','1010px']; // top 
 						
 		var CurrentAngleSet= 0;
 		var Names=['#leftBottom','#middleBottom','#rightBottom','#centreLeft','#centreMiddle','#centreRight','#topLeft','#topMiddle','#topRight']
@@ -126,7 +126,10 @@
 		var LeftShadow1top='260px';//249px (23%(1080))
 		var LeftShadow2top='243px';//243px (22.5%(1080))
 		//centre
-		var CentreLeftPos='720px';//500
+		var CentreLeftPos1='720px';
+		var CentreLeftPos2='780px';
+		var CentreLeftPos3='640px';
+		//var CentreLeftPos='720px';//500
 		var CentreTopPos='370px';// 290 (26%/26%(1080))
 		var CentreAniTopPos='370px';// 290 (26%/26%(1080))
 		var CentreCentrePos='240px';//390 (36.1%(1080))
@@ -169,15 +172,15 @@
 			
 			///setting the Centre side 
 			////setting the front image  
-			SetCSSValues(".MiddleAni",WidthImg,HeigthImg,CentreAniTopPos,CentreLeftPos);
+			SetCSSValues(".MiddleAni",WidthImg,HeigthImg,CentreAniTopPos,CentreLeftPos1);
 			//SetCSSValues(".MiddleTop",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos);
-			SetCSSValues(".MiddleShadow",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos);
+			SetCSSValues(".MiddleShadow",WidthImg,HeigthImg,CentreTopPos,CentreLeftPos1);
 			////setting the centre image  
-			SetCSSValues(".MiddleCentre",WidthImg,HeigthImg,CentreCentrePos,CentreLeftPos);
-			SetCSSValues(".MiddleCentreNS",WidthImg,HeigthImg,CentreCentrePos,CentreLeftPos);
+			SetCSSValues(".MiddleCentre",WidthImg,HeigthImg,CentreCentrePos,CentreLeftPos2);
+			SetCSSValues(".MiddleCentreNS",WidthImg,HeigthImg,CentreCentrePos,CentreLeftPos1);
 			////setting the back image  
-			SetCSSValues(".MiddleTop",WidthImg,HeigthImg,CentreBackPos,CentreLeftPos);
-			SetCSSValues(".MiddleTopNS",WidthImg,HeigthImg,CentreBackPos,CentreLeftPos);
+			SetCSSValues(".MiddleTop",WidthImg,HeigthImg,CentreBackPos,CentreLeftPos3);
+			SetCSSValues(".MiddleTopNS",WidthImg,HeigthImg,CentreBackPos,CentreLeftPos1);
 			////setting the shadow position 
 			SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,CentreShadow1top,CentreShadow1left);
 			SetCSSValues(".MiddleShadowPos2",WidthShadow,HeigthShadow,CentreShadow2top,CentreShadow2left);
@@ -397,8 +400,8 @@
 			{	// going to middle transition 		
 				var CurrentPosition= (CurrentHeightlevel*3+TransitionState);			
 				// setting the animation positions 
-				SetCSSValues(".MiddleAni",WidthImg,HeigthImg,topArray[CurrentPosition],CentreLeftPos);
-				SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,ShadowTopArray[CurrentPosition],CentreShadow1left);
+				SetCSSValues(".MiddleAni",WidthImg,HeigthImg,topArray[CurrentPosition],leftArray[CurrentPosition]);
+				SetCSSValues(".MiddleShadowPos1",WidthShadow,HeigthShadow,ShadowTopArray[CurrentPosition],ShadowLeftArray[CurrentPosition]);
 				
 				// turning off previous transition objects 
 				setImageVisible('TransitionLeft',false);	

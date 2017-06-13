@@ -1,0 +1,514 @@
+/* NVYVE */
+/* Philip Ong   March 17,2017 */
+:root {
+  --Top-Img:280px; 
+
+  --Width-Img:640px;
+  --Heigth-Img:360px;
+}
+
+/* height */
+/*360px :33.3% */
+/*400px :37.03*/
+
+/* width */
+/*640px :33.3% */
+/*680px :35.43*/
+
+/* positioning */
+/*60px 3.1%; */
+/*280px 25.9%; */
+/*420px 38.89% */
+
+.shadow {
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+body {
+    overflow-y: hidden;
+	overflow-x: hidden; 	
+}
+
+/* containers  ---------------------*/
+#overlayContainer{
+    /* z-index:5; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#main-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background:gray; 
+	/* background-color:#000000; */
+	/* background-image: url("PhotoBoothStatic/00.jpg");  */
+	/* z-index:-1; */
+}
+
+#Centre-container {
+	width: 1920px;
+	height: 1080px;
+	top:0;
+	right:0;
+	position:absolute;
+	background:gray; 
+	/* background-image: url("01.jpg"); */
+	
+	/* z-index:0; */
+}
+
+/* content ------------------*/
+#centreLeft  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#centreMiddle  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#centreRight img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Middle Content ------*/
+#leftTopMiddle  img{
+	/* z-index:4; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#middleTopMiddle  img{
+	/* z-index:3; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#rightTopMiddle  img{
+	/* z-index:2; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Back Content ------*/
+#backLeft  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+#backMiddle  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+#backRight  img{
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+/* Shadow ------------------*/
+#ShadowLeft img{
+	/* z-index:3; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowMid img{
+	/* z-index:2; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowRight img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Middle Content ------*/
+#ShadowCentreLeft img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowCentreMiddle img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+#ShadowCentreRight img{
+	/* z-index:1; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----Back Content ------*/
+#ShadowBackLeft img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+#ShadowBackMiddle img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+#ShadowBackRight img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+/*----transition Content ------*/
+#TransitionLeft img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+#TransitionMiddle img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+#TransitionRight img{
+	/* z-index:0; */
+	/*-webkit-backface-visibility: hidden;*/
+}
+
+
+
+/* Positioning classes ------------ */ 
+.LeftPosition
+{/* left top positioning with no shadow*/
+    
+}
+
+.LeftTop {/* left top positioning with no shadow*/
+    position:absolute;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index: 3;
+	Opacity :1;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftBottomShadow {/* left top positioning with shadow*/
+    position:absolute;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index: 3;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	Opacity :1;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftShadowPos1
+{
+	position:absolute;
+	left:1.35%;/* 26px*//* 1.35%*/
+	top:23%;/* 249px*//* 23%*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index: 3;
+}
+
+.LeftShadowPos2
+{
+	position:absolute;
+	left: 1.67%;/* 32px*//* 1.67%*/
+	top:22.5%;/* 243px*//* 22.5%*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index: 3;
+}
+
+
+.LeftTest {
+	-webkit-transition-duration: 2s;
+    -webkit-transition-timing-function: ease;
+    position:absolute;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index: 3;
+	Opacity :0;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+}
+
+.LeftCentre {
+    position:absolute;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index: 3;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+/*No shadow rendering  */
+.LeftCentreNS {
+	    position:absolute;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index: 3;
+	-webkit-transform: translateZ(0);
+}
+
+
+.LeftTop {
+    position:absolute;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	/* -webkit-transform: translateZ(0); */
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+/*No shadow rendering  */
+.LeftTopNS {
+    position:absolute;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:38.9%;/* 420px*/ /* 38.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.LeftTopShadow {
+    position:absolute;
+	left:3.1%;/* 60px*/ /*3.1%*/
+	top:37%;/* 400px*/ /* 37%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index:2;
+}
+
+.LeftAni {/* left animation positioning with no shadow*/
+    position:absolute;
+	left:3.1%;/* 60px*/ /* 3.1%*/
+	top:25.9%;/* 280px*/ /* 25.9%*/
+	width: 33.3%;/* 640px*/ /* 33.3%*/
+	height:33.3%;/* 360px*/ /* 33.3%*/
+	z-index: 3;
+	Opacity :1;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleTop {/* middle top positioning with no shadow*/
+    position:absolute;
+	left:31.3%;/* 600px*/
+	top:26.9%;/* 290px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index: 2;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleShadow {/* middle top positioning with shadow*/
+	position:absolute;
+	left:31.3%;/* 600px*/
+	top:26.9%;/* 290px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index: 2;
+	/* -webkit-transition : transition-timing-function: ease; */
+	/* -webkit-transition-duration: 2s; */
+	/* -webkit-transition-timing-function: ease-out; */
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+}
+.MiddleShadowPos1
+{
+	position:absolute;
+	left:29.86%;/* 573px*/
+	top:23.33%;/* 252px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index:2;
+}
+
+.MiddleShadowPos2
+{
+	position:absolute;
+	left:29.43%;/* 565px*/
+	top:24.26%;/* 262px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index:2;
+}
+
+
+.MiddleCentre {
+    position:absolute;
+	left:31.3%;/* 600px*/
+	top:36.1%;/* 390px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+/*No shadow rendering for efficent use */
+.MiddleCentreNS {
+    position:absolute;
+	left:31.3%;/* 600px*/
+	top:35.1%;/* 380px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleTop {
+    position:absolute;
+	left:31.3%;/* 600px*/
+	top:36.1%;/* 390px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+}
+
+/*No shadow rendering for efficent use  */
+.MiddleTopNS {
+    position:absolute;
+	left:31.3%;/* 600px*/
+	top:36.1%;/* 390px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:2;
+	-webkit-transform: translateZ(0);
+}
+
+.MiddleTopShadow {
+    position:absolute;
+	left:30.2%; /* 580px*/
+	top:35.26%;/* 370px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index:2;
+}
+
+.MiddleAni {/* middle animation positioning with no shadow*/
+    position:absolute;
+	left:31.3%;/* 600px*/
+	top:26.9%;/* 290px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index: 2;
+	-webkit-transform: translateZ(0);
+}
+
+.RightTop {/* right top positioning with no shadow*/
+    position:absolute;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index: 1;
+	-webkit-transform: translateZ(0);
+}
+
+.RightBottomShadow {/* right top positioning with shadow*/
+	position:absolute;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index: 1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+}
+
+.RightShadowPos1
+{
+	position:absolute;
+	left:51.67%;/* 992px*/
+	top:24.07%;/* 260px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index:1;
+}
+
+.RightShadowPos2
+{
+	position:absolute;
+	left:52.18%;/* 1002px*/
+	top:23.6%;/* 255px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index:1;
+}
+
+
+.RightCentre {
+    position:absolute;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+	/* -webkit-box-shadow: 5px 5px 20px black; */
+}
+
+.RightCentreNS {
+    position:absolute;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:1;
+	-webkit-transform: translateZ(0);
+}
+
+.RightTop {
+    position:absolute;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:1;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	-webkit-transform: translateZ(0);
+}
+
+
+.RightTopNS {
+    position:absolute;
+	left:57.29%;/* 1100px*/
+	top:25.93%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index:1;
+	-webkit-transform: translateZ(0);
+}
+
+.RightTopShadow {
+    position:absolute;
+	left:56.77%;/* 1090px*/
+	top:280px; /* 280px*/
+  	width: 35.43%; /* 680px*/
+	height: 37.03%; /* 400px*/
+	z-index:1;
+}
+
+.RightAni {/* right aniation positioning with no shadow*/
+    position:absolute;
+	left:57.29%;/* 1100px*/
+	top:27.78%;/* 300px*/
+	width: 33.3%;/* 640px*/
+	height:33.3%;/* 360px*/
+	z-index: 1;
+	-webkit-transform: translateZ(0);
+}
+
+.overlayClass{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index:9;
+}
+
+.loadClass{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

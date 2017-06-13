@@ -54,9 +54,9 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 1000; //total time between slides 
+		var totalDuration = 3000; //total time between slides 
 		var extraLoadDuration = 6500; //the duration for the transition 
-		var waitDuration = 500; //for the wait between transition 
+		var waitDuration = 1500; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -95,11 +95,11 @@
 						<!-- -65,-145,-200,// centre array are here  -->
 						<!-- -240,-300,-320]; // right array are here  -->
 						
-		var ShadowTopArray = ['370px','330px','390px', // bottom 
+		var ShadowTopArray = ['370px','350px','390px', // bottom 
 								'195px','215px','160px', //middle 
 								'20px','70px','40px']; // top 
 								
-		var ShadowLeftArray = ['100px','700px','1210px', // bottom 
+		var ShadowLeftArray = ['100px','705px','1210px', // bottom 
 								'80px','720px','1295px', //middle 
 								'60px','640px','1210px']; // top 
 						
@@ -389,7 +389,7 @@
 				var namePosition= (CurrentHeightlevel*3+TransitionState)-1;// -1 because we need to do the previous one 
 				SetCurrentImage(PrevImage,namePosition);	
 				//setting values off screen 
-				SetValuesX('#ShadowLeft',randomx,randomy+140,randomAngle);//set front shadow off screen +140
+				SetValuesX('#ShadowLeft',randomx,randomy,randomAngle);//set front shadow off screen +140
 				//SetValuesNT('centreLeft',420,angleArray[CurrentPosition]);// set the Centre picture value 
 				//SetValuesNT('topLeft',420,angleArray[CurrentPosition]);// set the Centre picture value 
 				//setting the layers of the name

@@ -54,9 +54,9 @@
 
 	<script id= 'code'>
 	{/// begin code area  
-		var totalDuration = 3000; //total time between slides 
+		var totalDuration = 1000; //total time between slides 
 		var extraLoadDuration = 6500; //the duration for the transition 
-		var waitDuration = 1500; //for the wait between transition 
+		var waitDuration = 500; //for the wait between transition 
 		var UpdateInterval = 8000; //the wait between the each check  
 		var TransitionState=0;
 		
@@ -79,8 +79,8 @@
 		var CurrentLevel = 0;
 		// target positions before the end of the transition 
 		var leftArray = ['120px','720px','1300px',// all bottom array are here 
-						'100px','740px','1380px',// centre array are here 
-						'75px','660px','1300px']; // top array are here
+						'160px','740px','1380px',// centre array are here 
+						'75px','660px','1200px']; // top array are here
 						
 		var topArray = ['400px','370px','400px',// all bottom array are here  (+20) (0) is top 
 						'220px','240px','185px',// centre array are here 
@@ -100,8 +100,8 @@
 								'20px','70px','40px']; // top 
 								
 		var ShadowLeftArray = ['100px','705px','1210px', // bottom 
-								'80px','720px','1295px', //middle 
-								'60px','640px','1210px']; // top 
+								'140px','720px','1295px', //middle 
+								'60px','640px','1110px']; // top 
 						
 		var CurrentAngleSet= 0;
 		var Names=['#leftBottom','#middleBottom','#rightBottom','#centreLeft','#centreMiddle','#centreRight','#topLeft','#topMiddle','#topRight']
@@ -115,7 +115,7 @@
 		var HeigthShadow=352; //470
 		//left 
 		var LeftLeftPos1='120px';
-		var LeftLeftPos2='100px';
+		var LeftLeftPos2='160px';
 		var LeftLeftPos3='75px';
 		var LeftTopPos='400px';//280px (20.6%/25.2%(1080))
 		var LeftAniTopPos='400px';//280px (20.6%/25.2%(1080))
@@ -142,7 +142,7 @@
 		//right
 		var RightLeftPos1='1300px';//1100
 		var RightLeftPos2='1380px';//1100
-		var RightLeftPos3='1300px';//1100
+		var RightLeftPos3='1200px';//1100
 		var RightTopPos='400px';// 300 (27%/27%(1080))
 		var RightAniTopPos='400px';// 300 (27%/27%(1080))
 		var RightCentrePos='180px';// 390
